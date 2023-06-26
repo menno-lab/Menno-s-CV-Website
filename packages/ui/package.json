@@ -1,19 +1,26 @@
 {
-  "name": "ui",
-  "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
-  "license": "MIT",
-  "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "eslint": "^7.32.0",
-    "react": "^17.0.2",
-    "tsconfig": "workspace:*",
-    "typescript": "^4.5.2"
-  }
+    "name": "ui",
+    "version": "0.0.0",
+    "main": "./src/index.tsx",
+    "types": "./src/index.tsx",
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint \"**/*.ts*\"",
+        "generate:component": "turbo gen react-component"
+    },
+    "dependencies": {
+        "@chakra-ui/next-js": "^2.1.4",
+        "@chakra-ui/react": "^2.7.1",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "framer-motion": "^10.12.17"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.0",
+        "@types/react-dom": "^18.2.0",
+        "eslint": "^7.32.0",
+        "react": "^17.0.2",
+        "tsconfig": "workspace:*",
+        "typescript": "^4.5.2"
+    }
 }

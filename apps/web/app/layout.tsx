@@ -1,11 +1,11 @@
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+import { ThemeProvider } from 'ui';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang='en'>
+            <body>
+                <ThemeProvider>{children}</ThemeProvider>
+            </body>
+        </html>
+    );
 }

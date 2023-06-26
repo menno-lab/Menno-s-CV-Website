@@ -4880,8 +4880,7 @@ var z = /* @__PURE__ */ Object.freeze({
 
 // src/app.ts
 function createContext({
-  event,
-  context
+  event
 }) {
   return {
     event,
