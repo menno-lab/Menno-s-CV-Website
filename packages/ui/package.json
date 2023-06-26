@@ -9,6 +9,7 @@
         "generate:component": "turbo gen react-component"
     },
     "dependencies": {
+        "@chakra-ui/icons": "^2.0.19",
         "@chakra-ui/next-js": "^2.1.4",
         "@chakra-ui/react": "^2.7.1",
         "@emotion/react": "^11.11.1",
@@ -16,11 +17,10 @@
         "framer-motion": "^10.12.17"
     },
     "devDependencies": {
-        "@types/react": "^18.2.0",
-        "@types/react-dom": "^18.2.0",
+        "@types/react": "18.2.8",
+        "@types/react-dom": "18.2.4",
         "eslint": "^7.32.0",
-        "react": "^17.0.2",
-        "tsconfig": "workspace:*",
-        "typescript": "^4.5.2"
+        "react": "18.2.0",
+        "tsconfig": "workspace:*"
     }
 }

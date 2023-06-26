@@ -1,34 +1,31 @@
-'use client';
-
 import { CacheProvider } from '@chakra-ui/next-js';
-import { ChakraProvider, ComponentStyleConfig, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, DarkMode, LightMode, extendTheme } from '@chakra-ui/react';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { COLOR_SCHEMES } from '../utils/colorSchemes';
 
 interface ColorModeState {
-    theme: ColorTheme;
-    selectedTheme: ThemeParams;
+    theme: ThemeParams;
+    themeConfig: ColorTheme;
     changeTheme: (newTheme: ColorTheme) => void;
 }
 
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [theme, setTheme] = useState<ColorTheme>({ themeName: 'sunrise', mode: 'light' });
+    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'classic', mode: 'dark' });
 
     function changeTheme(newTheme: ColorTheme) {
-        setTheme(newTheme);
+        setThemeConfig(newTheme);
     }
 
-    const selectedTheme: ThemeParams = COLOR_SCHEMES[theme.themeName][theme.mode];
+    const theme: ThemeParams = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
 
     const chakraTheme = extendTheme({
-        colors: selectedTheme,
+        colors: theme,
         components: {
             Text: {
                 baseStyle: {
-                    color: selectedTheme.primary,
-                    backgroundColor: '#46f700',
+                    color: theme.primary,
                 },
             },
         },
@@ -36,7 +33,7 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
 
     return (
         <CacheProvider>
-            <ColorThemeContext.Provider value={{ theme, changeTheme, selectedTheme }}>
+            <ColorThemeContext.Provider value={{ theme, changeTheme, themeConfig }}>
                 <ChakraProvider theme={chakraTheme}>{children}</ChakraProvider>
             </ColorThemeContext.Provider>
         </CacheProvider>
