@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint \"**/*.ts*\"",
-        "generate:component": "turbo gen react-component"
+        "gen": "turbo gen react-component"
     },
     "dependencies": {
         "@chakra-ui/icons": "^2.0.19",

@@ -2,9 +2,9 @@ export const COLOR_SCHEMES: Record<string, ThemeItem> = {
     classic: {
         light: {
             background: '#FFFFFF',
-            primary: '#000000',
-            secondary: '#808080',
-            accent: '#FFFFFF',
+            primary: '#009688',
+            secondary: '#7B1FA2',
+            accent: '#FFEB3B',
             text: '#000000',
         },
         dark: {
@@ -25,9 +25,9 @@ export const COLOR_SCHEMES: Record<string, ThemeItem> = {
         },
         dark: {
             background: '#212121',
-            primary: '#FFFFFF',
+            primary: '#009688',
             secondary: '#607D8B',
-            accent: '#FFFFFF',
+            accent: '#F44336',
             text: '#FFFFFF',
         },
     },

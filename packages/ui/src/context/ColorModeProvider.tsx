@@ -21,11 +21,41 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
     const theme: ThemeParams = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
 
     const chakraTheme = extendTheme({
-        colors: theme,
+        semanticTokens: {
+            colors: {
+                accent: {
+                    default: 'purple',
+                    classic: 'red',
+                    elegant: 'green',
+                },
+            },
+        },
         components: {
+            Button: {
+                variants: {
+                    primary: {
+                        bg: theme.primary,
+                        color: '#FFFFFF',
+                    },
+                    secondary: {
+                        bg: theme.secondary,
+                        color: '#FFFFFF',
+                    },
+                },
+            },
             Text: {
                 baseStyle: {
-                    color: theme.primary,
+                    color: theme.text,
+                },
+            },
+            Icon: {
+                baseStyle: {
+                    color: theme.text,
+                },
+            },
+            Link: {
+                baseStyle: {
+                    color: theme.text,
                 },
             },
         },
