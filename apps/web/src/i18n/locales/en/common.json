@@ -1,7 +1,8 @@
 {
-    "nav": {
-        "home": "Home",
-        "contact": "Contact",
-        "test": "helehleheheehueuhe1!!!1!"
-    }
+    "navItems": [
+        {
+            "label": "Home",
+            "href": "#"
+        }
+    ]
 }
