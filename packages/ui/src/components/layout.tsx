@@ -1,9 +1,16 @@
 import { PropsWithChildren } from 'react';
-import { BoxProps, Box as ChakraBox, Flex as ChakraFlex, Container as ChakraContainer } from '@chakra-ui/react';
+import {
+    BoxProps,
+    Box as ChakraBox,
+    Flex as ChakraFlex,
+    Container as ChakraContainer,
+    VStack as ChakraVStack,
+    StackProps,
+} from '@chakra-ui/react';
 import { useTheme } from '../context/ColorModeProvider';
 
 interface CustomLayoutProps extends BoxProps {
-    bg?: 'primary' | 'secondary' | 'background' | 'accent';
+    bg?: SemanticColor;
 }
 
 export function Box({ children, bg, ...props }: PropsWithChildren<CustomLayoutProps>) {
@@ -31,4 +38,8 @@ export function Container({ children, bg, ...props }: PropsWithChildren<CustomLa
             {children}
         </ChakraContainer>
     );
+}
+
+export function VStack({ children, ...props }: PropsWithChildren<StackProps>) {
+    return <ChakraVStack {...props}>{children}</ChakraVStack>;
 }

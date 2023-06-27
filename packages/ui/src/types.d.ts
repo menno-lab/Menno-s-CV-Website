@@ -1,5 +1,6 @@
 type colorScheme = string;
 type ColorMode = 'light' | 'dark';
+type SemanticColor = 'primary' | 'secondary' | 'background' | 'accent';
 
 interface ThemeParams {
     background: string;

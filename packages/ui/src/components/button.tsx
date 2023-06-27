@@ -1,6 +1,21 @@
 import { PropsWithChildren } from 'react';
 import { Button as ChakraButton, ButtonProps } from '@chakra-ui/react';
+import { useTheme } from '../context/ColorModeProvider';
+import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
 
-export function Button({ children, ...props }: PropsWithChildren<ButtonProps>) {
-    return <ChakraButton {...props}>{children}</ChakraButton>;
+interface CustomButtonProps extends ButtonProps {
+    variant: SemanticColor;
+}
+
+export function Button({ children, variant, ...props }: PropsWithChildren<CustomButtonProps>) {
+    const { theme, themeConfig } = useTheme();
+    const isDarkMode = themeConfig.mode === 'dark';
+    const bg = isDarkMode ? makeColorBrighter(theme[variant], 0.1) : makeColorDarker(theme[variant], 0.1);
+    const hover = isDarkMode ? makeColorBrighter(theme[variant], 0.2) : makeColorDarker(theme[variant], 0.2);
+
+    return (
+        <ChakraButton {...props} bg={bg} _hover={{ bg: hover }} color={'#FFFFFF'} boxShadow='md'>
+            {children}
+        </ChakraButton>
+    );
 }

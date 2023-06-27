@@ -1,5 +1,5 @@
 import { CacheProvider } from '@chakra-ui/next-js';
-import { ChakraProvider, DarkMode, LightMode, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { COLOR_SCHEMES } from '../utils/colorSchemes';
 
@@ -12,7 +12,7 @@ interface ColorModeState {
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'classic', mode: 'dark' });
+    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'pastel', mode: 'dark' });
 
     function changeTheme(newTheme: ColorTheme) {
         setThemeConfig(newTheme);
@@ -22,13 +22,7 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
 
     const chakraTheme = extendTheme({
         semanticTokens: {
-            colors: {
-                accent: {
-                    default: 'purple',
-                    classic: 'red',
-                    elegant: 'green',
-                },
-            },
+            colors: theme,
         },
         components: {
             Button: {
@@ -48,14 +42,19 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
                     color: theme.text,
                 },
             },
-            Icon: {
+            Link: {
                 baseStyle: {
                     color: theme.text,
                 },
             },
-            Link: {
+            Heading: {
                 baseStyle: {
                     color: theme.text,
+                },
+            },
+            Kbd: {
+                baseStyle: {
+                    color: 'black',
                 },
             },
         },
