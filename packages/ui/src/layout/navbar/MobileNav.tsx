@@ -1,14 +1,16 @@
 import { Link } from '@chakra-ui/next-js';
 import { Flex, Stack, useColorModeValue, Text } from '@chakra-ui/react';
 import { NavItem } from './Navbar';
+import { useTheme } from '../../context/ColorModeProvider';
 
 interface MobileNavProps {
     navItems: NavItem[];
 }
 
 export function MobileNav({ navItems }: MobileNavProps) {
+    const { theme } = useTheme();
     return (
-        <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+        <Stack bg={theme.background} p={4} display={{ md: 'none' }}>
             {navItems.map((navItem) => (
                 <MobileNavItem key={navItem.label} navItem={navItem} />
             ))}

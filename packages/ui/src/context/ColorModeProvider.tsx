@@ -1,5 +1,5 @@
 import { CacheProvider } from '@chakra-ui/next-js';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { COLOR_SCHEMES } from '../utils/colorSchemes';
 
@@ -12,7 +12,7 @@ interface ColorModeState {
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'pastel', mode: 'dark' });
+    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: 'light' });
 
     function changeTheme(newTheme: ColorTheme) {
         setThemeConfig(newTheme);
@@ -63,7 +63,11 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
     return (
         <CacheProvider>
             <ColorThemeContext.Provider value={{ theme, changeTheme, themeConfig }}>
-                <ChakraProvider theme={chakraTheme}>{children}</ChakraProvider>
+                <ChakraProvider theme={chakraTheme}>
+                    <Box bg={theme.background} zIndex={-5} minHeight={'100vh'}>
+                        {children}
+                    </Box>
+                </ChakraProvider>
             </ColorThemeContext.Provider>
         </CacheProvider>
     );

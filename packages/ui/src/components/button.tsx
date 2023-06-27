@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Button as ChakraButton, ButtonProps } from '@chakra-ui/react';
+import { Button as ChakraButton, ButtonProps , IconButton as ChakraIconButton, IconButtonProps} from '@chakra-ui/react';
 import { useTheme } from '../context/ColorModeProvider';
 import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
 
@@ -18,4 +18,8 @@ export function Button({ children, variant, ...props }: PropsWithChildren<Custom
             {children}
         </ChakraButton>
     );
+}
+
+export function IconButton({ children, ...props }: PropsWithChildren<IconButtonProps>) {
+    return <ChakraIconButton {...props}>{children}</ChakraIconButton>;
 }

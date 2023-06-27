@@ -5,15 +5,21 @@ import {
     Flex as ChakraFlex,
     Container as ChakraContainer,
     VStack as ChakraVStack,
+    Circle as ChakraCircle,
+    Stack as ChakraStack,
     StackProps,
 } from '@chakra-ui/react';
 import { useTheme } from '../context/ColorModeProvider';
 
-interface CustomLayoutProps extends BoxProps {
+interface CustomBoxProps extends BoxProps {
     bg?: SemanticColor;
 }
 
-export function Box({ children, bg, ...props }: PropsWithChildren<CustomLayoutProps>) {
+interface CustomStackProps extends StackProps {
+    bg?: SemanticColor;
+}
+
+export function Box({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
     const { theme } = useTheme();
     return (
         <ChakraBox {...props} backgroundColor={bg ? theme[bg] : undefined}>
@@ -22,7 +28,7 @@ export function Box({ children, bg, ...props }: PropsWithChildren<CustomLayoutPr
     );
 }
 
-export function Flex({ children, bg, ...props }: PropsWithChildren<CustomLayoutProps>) {
+export function Flex({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
     const { theme } = useTheme();
     return (
         <ChakraFlex {...props} backgroundColor={bg ? theme[bg] : undefined}>
@@ -31,7 +37,7 @@ export function Flex({ children, bg, ...props }: PropsWithChildren<CustomLayoutP
     );
 }
 
-export function Container({ children, bg, ...props }: PropsWithChildren<CustomLayoutProps>) {
+export function Container({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
     const { theme } = useTheme();
     return (
         <ChakraContainer {...props} backgroundColor={bg ? theme[bg] : undefined}>
@@ -40,6 +46,14 @@ export function Container({ children, bg, ...props }: PropsWithChildren<CustomLa
     );
 }
 
-export function VStack({ children, ...props }: PropsWithChildren<StackProps>) {
+export function VStack({ children, ...props }: PropsWithChildren<CustomStackProps>) {
     return <ChakraVStack {...props}>{children}</ChakraVStack>;
+}
+
+export function Circle({ children, ...props }: PropsWithChildren<CustomBoxProps>) {
+    return <ChakraCircle {...props}>{children}</ChakraCircle>;
+}
+
+export function Stack({ children, ...props }: PropsWithChildren<CustomStackProps>) {
+    return <ChakraStack {...props}>{children}</ChakraStack>;
 }
