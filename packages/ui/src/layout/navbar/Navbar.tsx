@@ -20,8 +20,8 @@ export function Navbar({ navItems }: NavbarProps) {
 
     return (
         <Box bg={theme.background} position='fixed' width='100vw' zIndex={2} top={0} borderBottom={1} borderStyle={'solid'}>
-            <Container maxW={'7xl'}>
-                <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
+            <Container maxW={'7xl'} px={0} py={2}>
+                <Flex minH={'60px'} py={{ base: 2 }} align={'center'}>
                     <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
                         <IconButton
                             onClick={onToggle}
@@ -38,7 +38,7 @@ export function Navbar({ navItems }: NavbarProps) {
                             <Stack direction={'row'} spacing={4}>
                                 {navItems.map((navItem) => (
                                     <Box key={navItem.label}>
-                                        <Link p={2} href={navItem.href ?? '#'} fontWeight={500}>
+                                        <Link p={2} href={`#${navItem.href}`} fontWeight={500}>
                                             {navItem.label}
                                         </Link>
                                     </Box>
