@@ -28,7 +28,6 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
             Button: {
                 baseStyle: {
                     _focus: {
-                        bg: theme.accent,
                         color: '#FFFFFF',
                     },
                 },
@@ -44,6 +43,11 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
                 },
             },
             Text: {
+                baseStyle: {
+                    color: theme.text,
+                },
+            },
+            Icon: {
                 baseStyle: {
                     color: theme.text,
                 },

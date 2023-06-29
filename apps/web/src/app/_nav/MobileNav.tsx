@@ -10,11 +10,11 @@ import {
     Flex,
     HamburgerIcon,
     IconButton,
-    NavItem,
     Text,
     ThemeSelectorMobile,
     useDisclosure,
 } from 'ui';
+import { NavItem } from '../../utils/types';
 
 interface MobileNavProps {
     navItems: NavItem[];

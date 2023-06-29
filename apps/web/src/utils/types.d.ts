@@ -4,3 +4,8 @@ export interface RouteWithChildren {
         lang: Language;
     };
 }
+
+export interface NavItem {
+    label: string;
+    href: string;
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container } from 'ui';
-import ProfileImage from '../../../../../public/images/profile.png';
 import { ClearHashAnchor } from './clearHashAnchor';
+import ProfileImage from '../../../../public/images/profile.png';
 
 export function HeroSection() {
     return (
-        <Container as='section' maxW={'7xl'} paddingTop={'80px'} height='100vh'>
+        <Container as='section' maxW={'7xl'} px={4} paddingTop={'80px'} height='100vh'>
             <Box>
                 <Stack spacing={6}>
                     <Stack
