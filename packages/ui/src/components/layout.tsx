@@ -1,4 +1,4 @@
-import { AbsoluteCenter as ChakraAbsoluteCenter, AbsoluteCenterProps } from '@chakra-ui/react';
+import { AbsoluteCenter as ChakraAbsoluteCenter, AbsoluteCenterProps, ContainerProps } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import {
     BoxProps,
@@ -20,6 +20,10 @@ interface CustomStackProps extends StackProps {
     bg?: SemanticColor;
 }
 
+interface CustomContainerProps extends ContainerProps {
+    bg?: SemanticColor;
+}
+
 export function Box({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
     const { theme } = useTheme();
     return (
@@ -38,7 +42,7 @@ export function Flex({ children, bg, ...props }: PropsWithChildren<CustomBoxProp
     );
 }
 
-export function Container({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
+export function Container({ children, bg, ...props }: PropsWithChildren<CustomContainerProps>) {
     const { theme } = useTheme();
     return (
         <ChakraContainer {...props} backgroundColor={bg ? theme[bg] : undefined}>
