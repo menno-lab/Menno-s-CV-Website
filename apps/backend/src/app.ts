@@ -1,9 +1,10 @@
-import { CreateAWSLambdaContextOptions, awsLambdaRequestHandler } from '@trpc/server/adapters/aws-lambda';
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import { awsLambdaRequestHandler } from '@trpc/server/adapters/aws-lambda';
+import type { CreateAWSLambdaContextOptions } from '@trpc/server/adapters/aws-lambda';
+import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { contactRoutes } from './routes/contactRoutes';
 import { router } from './trpc';
 
-function createContext({ event, context }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
+function createContext({ event }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
     return {
         event: event,
         apiVersion: (event as { version?: string }).version ?? '1.0',
@@ -15,9 +16,9 @@ const appRouter = router({
     contact: contactRoutes,
 });
 
+export type AppRouter = typeof appRouter;
+
 export const handler = awsLambdaRequestHandler({
     router: appRouter,
     createContext,
 });
-
-export type AppRouter = typeof appRouter;

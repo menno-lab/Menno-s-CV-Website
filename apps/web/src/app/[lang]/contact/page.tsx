@@ -11,7 +11,9 @@ export default function page() {
                         Contact Menno
                     </Heading>
                 </SlideInFade>
-                <ContactForm />
+                <SlideInFade from={'left'}>
+                    <ContactForm />
+                </SlideInFade>
             </VStack>
         </Flex>
     );

@@ -1,10 +1,6 @@
 {
     "navItems": [
         {
-            "label": "Home",
-            "href": "#"
-        },
-        {
             "label": "Projects",
             "href": "projects"
         }

@@ -10,6 +10,7 @@
         "dev": "serverless offline --httpPort 4050"
     },
     "dependencies": {
+        "@slack/web-api": "^6.8.1",
         "@trpc/server": "10.10.0",
         "aws-lambda": "^1.0.7",
         "zod": "^3.20.6"
@@ -20,6 +21,7 @@
         "esbuild": "^0.17.10",
         "eslint": "^8.40.0",
         "serverless": "^3.18.1",
+        "serverless-dotenv-plugin": "^6.0.0",
         "serverless-esbuild": "^1.39.0",
         "serverless-offline": "^12.0.4",
         "tsconfig": "workspace:*"

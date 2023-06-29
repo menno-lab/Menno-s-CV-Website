@@ -12,7 +12,7 @@ interface ColorModeState {
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: 'light' });
+    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: 'dark' });
 
     function changeTheme(newTheme: ColorTheme) {
         setThemeConfig(newTheme);

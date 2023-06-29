@@ -164,6 +164,27 @@ var JSONRPC2_TO_HTTP_CODE = {
 function getStatusCodeFromKey(code) {
   return JSONRPC2_TO_HTTP_CODE[code] ?? 500;
 }
+function getHTTPStatusCode(json) {
+  const arr = Array.isArray(json) ? json : [
+    json
+  ];
+  const httpStatuses = new Set(arr.map((res) => {
+    if ("error" in res) {
+      const data = res.error.data;
+      if (typeof data.httpStatus === "number") {
+        return data.httpStatus;
+      }
+      const code = TRPC_ERROR_CODES_BY_NUMBER2[res.error.code];
+      return getStatusCodeFromKey(code);
+    }
+    return 200;
+  }));
+  if (httpStatuses.size !== 1) {
+    return 207;
+  }
+  const httpStatus = httpStatuses.values().next().value;
+  return httpStatus;
+}
 function getHTTPStatusCodeFromError(error) {
   const { code } = error;
   return getStatusCodeFromKey(code);
@@ -236,7 +257,7 @@ function createRouterFactory(config) {
         [key]: val
       }), {})
     };
-    const router = {
+    const router2 = {
       ...procedures,
       _def,
       createCaller(ctx) {
@@ -290,7 +311,7 @@ function createRouterFactory(config) {
         });
       }
     };
-    return router;
+    return router2;
   };
 }
 function callProcedure(opts) {
@@ -308,364 +329,367 @@ function callProcedure(opts) {
 var _a, _b, _c, _d;
 var isServerDefault = typeof window === "undefined" || "Deno" in window || ((_b = (_a = globalThis.process) == null ? void 0 : _a.env) == null ? void 0 : _b.NODE_ENV) === "test" || !!((_d = (_c = globalThis.process) == null ? void 0 : _c.env) == null ? void 0 : _d.JEST_WORKER_ID);
 
-// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/index.mjs
-function getParseFn(procedureParser) {
-  const parser = procedureParser;
-  if (typeof parser === "function") {
-    return parser;
-  }
-  if (typeof parser.parseAsync === "function") {
-    return parser.parseAsync.bind(parser);
-  }
-  if (typeof parser.parse === "function") {
-    return parser.parse.bind(parser);
-  }
-  if (typeof parser.validateSync === "function") {
-    return parser.validateSync.bind(parser);
-  }
-  if (typeof parser.create === "function") {
-    return parser.create.bind(parser);
-  }
-  throw new Error("Could not find a validator fn");
-}
-function mergeWithoutOverrides(obj1, ...objs) {
-  const newObj = Object.assign(/* @__PURE__ */ Object.create(null), obj1);
-  for (const overrides of objs) {
-    for (const key in overrides) {
-      if (key in newObj && newObj[key] !== overrides[key]) {
-        throw new Error(`Duplicate key ${key}`);
-      }
-      newObj[key] = overrides[key];
-    }
-  }
-  return newObj;
-}
-function createMiddlewareFactory() {
-  function createMiddlewareInner(middlewares) {
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/transformTRPCResponse-7a73a2df.mjs
+function transformTRPCResponseItem(router2, item) {
+  if ("error" in item) {
     return {
-      _middlewares: middlewares,
-      unstable_pipe(middlewareBuilderOrFn) {
-        const pipedMiddleware = "_middlewares" in middlewareBuilderOrFn ? middlewareBuilderOrFn._middlewares : [
-          middlewareBuilderOrFn
-        ];
-        return createMiddlewareInner([
-          ...middlewares,
-          ...pipedMiddleware
-        ]);
+      ...item,
+      error: router2._def._config.transformer.output.serialize(item.error)
+    };
+  }
+  if ("data" in item.result) {
+    return {
+      ...item,
+      result: {
+        ...item.result,
+        data: router2._def._config.transformer.output.serialize(item.result.data)
       }
     };
   }
-  function createMiddleware(fn) {
-    return createMiddlewareInner([
-      fn
+  return item;
+}
+function transformTRPCResponse(router2, itemOrItems) {
+  return Array.isArray(itemOrItems) ? itemOrItems.map((item) => transformTRPCResponseItem(router2, item)) : transformTRPCResponseItem(router2, itemOrItems);
+}
+
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/resolveHTTPResponse-b831e644.mjs
+var HTTP_METHOD_PROCEDURE_TYPE_MAP = {
+  GET: "query",
+  POST: "mutation"
+};
+function getRawProcedureInputOrThrow(req) {
+  try {
+    if (req.method === "GET") {
+      if (!req.query.has("input")) {
+        return void 0;
+      }
+      const raw = req.query.get("input");
+      return JSON.parse(raw);
+    }
+    if (typeof req.body === "string") {
+      return req.body.length === 0 ? void 0 : JSON.parse(req.body);
+    }
+    return req.body;
+  } catch (err) {
+    throw new TRPCError({
+      code: "PARSE_ERROR",
+      cause: getCauseFromUnknown(err)
+    });
+  }
+}
+async function resolveHTTPResponse(opts) {
+  var _a2;
+  const { createContext: createContext2, onError, router: router2, req } = opts;
+  const batchingEnabled = ((_a2 = opts.batching) == null ? void 0 : _a2.enabled) ?? true;
+  if (req.method === "HEAD") {
+    return {
+      status: 204
+    };
+  }
+  const type = HTTP_METHOD_PROCEDURE_TYPE_MAP[req.method] ?? "unknown";
+  let ctx = void 0;
+  let paths = void 0;
+  const isBatchCall = !!req.query.get("batch");
+  function endResponse(untransformedJSON, errors) {
+    var _a3;
+    let status = getHTTPStatusCode(untransformedJSON);
+    const headers = {
+      "Content-Type": "application/json"
+    };
+    const meta = ((_a3 = opts.responseMeta) == null ? void 0 : _a3.call(opts, {
+      ctx,
+      paths,
+      type,
+      data: Array.isArray(untransformedJSON) ? untransformedJSON : [
+        untransformedJSON
+      ],
+      errors
+    })) ?? {};
+    for (const [key, value] of Object.entries(meta.headers ?? {})) {
+      headers[key] = value;
+    }
+    if (meta.status) {
+      status = meta.status;
+    }
+    const transformedJSON = transformTRPCResponse(router2, untransformedJSON);
+    const body = JSON.stringify(transformedJSON);
+    return {
+      body,
+      status,
+      headers
+    };
+  }
+  try {
+    if (opts.error) {
+      throw opts.error;
+    }
+    if (isBatchCall && !batchingEnabled) {
+      throw new Error(`Batching is not enabled on the server`);
+    }
+    if (type === "subscription") {
+      throw new TRPCError({
+        message: "Subscriptions should use wsLink",
+        code: "METHOD_NOT_SUPPORTED"
+      });
+    }
+    if (type === "unknown") {
+      throw new TRPCError({
+        message: `Unexpected request method ${req.method}`,
+        code: "METHOD_NOT_SUPPORTED"
+      });
+    }
+    const rawInput = getRawProcedureInputOrThrow(req);
+    paths = isBatchCall ? opts.path.split(",") : [
+      opts.path
+    ];
+    ctx = await createContext2();
+    const deserializeInputValue = (rawValue) => {
+      return typeof rawValue !== "undefined" ? router2._def._config.transformer.input.deserialize(rawValue) : rawValue;
+    };
+    const getInputs = () => {
+      if (!isBatchCall) {
+        return {
+          0: deserializeInputValue(rawInput)
+        };
+      }
+      if (rawInput == null || typeof rawInput !== "object" || Array.isArray(rawInput)) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: '"input" needs to be an object when doing a batch call'
+        });
+      }
+      const input = {};
+      for (const key in rawInput) {
+        const k = key;
+        const rawValue = rawInput[k];
+        const value = deserializeInputValue(rawValue);
+        input[k] = value;
+      }
+      return input;
+    };
+    const inputs = getInputs();
+    const rawResults = await Promise.all(paths.map(async (path, index) => {
+      const input = inputs[index];
+      try {
+        const output = await callProcedure({
+          procedures: router2._def.procedures,
+          path,
+          rawInput: input,
+          ctx,
+          type
+        });
+        return {
+          input,
+          path,
+          data: output
+        };
+      } catch (cause) {
+        const error = getTRPCErrorFromUnknown(cause);
+        onError == null ? void 0 : onError({
+          error,
+          path,
+          input,
+          ctx,
+          type,
+          req
+        });
+        return {
+          input,
+          path,
+          error
+        };
+      }
+    }));
+    const errors = rawResults.flatMap((obj) => obj.error ? [
+      obj.error
+    ] : []);
+    const resultEnvelopes = rawResults.map((obj) => {
+      const { path, input } = obj;
+      if (obj.error) {
+        return {
+          error: router2.getErrorShape({
+            error: obj.error,
+            type,
+            path,
+            input,
+            ctx
+          })
+        };
+      } else {
+        return {
+          result: {
+            data: obj.data
+          }
+        };
+      }
+    });
+    const result = isBatchCall ? resultEnvelopes : resultEnvelopes[0];
+    return endResponse(result, errors);
+  } catch (cause) {
+    const error = getTRPCErrorFromUnknown(cause);
+    onError == null ? void 0 : onError({
+      error,
+      path: void 0,
+      input: void 0,
+      ctx,
+      type,
+      req
+    });
+    return endResponse({
+      error: router2.getErrorShape({
+        error,
+        type,
+        path: void 0,
+        input: void 0,
+        ctx
+      })
+    }, [
+      error
     ]);
   }
-  return createMiddleware;
 }
-function isPlainObject(obj) {
-  return obj && typeof obj === "object" && !Array.isArray(obj);
+
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/adapters/aws-lambda/index.mjs
+function isPayloadV1(event) {
+  return determinePayloadFormat(event) == "1.0";
 }
-function createInputMiddleware(parse) {
-  const inputMiddleware = async ({ next, rawInput, input }) => {
-    let parsedInput;
-    try {
-      parsedInput = await parse(rawInput);
-    } catch (cause) {
-      throw new TRPCError({
-        code: "BAD_REQUEST",
-        cause: getCauseFromUnknown(cause)
-      });
+function isPayloadV2(event) {
+  return determinePayloadFormat(event) == "2.0";
+}
+function determinePayloadFormat(event) {
+  const unknownEvent = event;
+  if (typeof unknownEvent.version === "undefined") {
+    return "1.0";
+  } else {
+    if ([
+      "1.0",
+      "2.0"
+    ].includes(unknownEvent.version)) {
+      return unknownEvent.version;
+    } else {
+      return "custom";
     }
-    const combinedInput = isPlainObject(input) && isPlainObject(parsedInput) ? {
-      ...input,
-      ...parsedInput
-    } : parsedInput;
-    return next({
-      input: combinedInput
-    });
-  };
-  inputMiddleware._type = "input";
-  return inputMiddleware;
+  }
 }
-function createOutputMiddleware(parse) {
-  const outputMiddleware = async ({ next }) => {
-    const result = await next();
-    if (!result.ok) {
-      return result;
-    }
-    try {
-      const data = await parse(result.data);
-      return {
-        ...result,
-        data
-      };
-    } catch (cause) {
-      throw new TRPCError({
-        message: "Output validation failed",
-        code: "INTERNAL_SERVER_ERROR",
-        cause: getCauseFromUnknown(cause)
-      });
-    }
-  };
-  outputMiddleware._type = "output";
-  return outputMiddleware;
-}
-var middlewareMarker = "middlewareMarker";
-function createNewBuilder(def1, def2) {
-  const { middlewares = [], inputs, ...rest } = def2;
-  return createBuilder({
-    ...mergeWithoutOverrides(def1, rest),
-    inputs: [
-      ...def1.inputs,
-      ...inputs ?? []
-    ],
-    middlewares: [
-      ...def1.middlewares,
-      ...middlewares
-    ]
+function getHTTPMethod(event) {
+  if (isPayloadV1(event)) {
+    return event.httpMethod;
+  }
+  if (isPayloadV2(event)) {
+    return event.requestContext.http.method;
+  }
+  throw new TRPCError({
+    code: "INTERNAL_SERVER_ERROR",
+    message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
   });
 }
-function createBuilder(initDef) {
-  const _def = initDef || {
-    inputs: [],
-    middlewares: []
-  };
+function getPath(event) {
+  if (isPayloadV1(event)) {
+    const matches = event.resource.matchAll(/\{(.*?)\}/g);
+    for (const match of matches) {
+      const group = match[1];
+      if (group.includes("+") && event.pathParameters) {
+        return event.pathParameters[group.replace("+", "")] || "";
+      }
+    }
+    return event.path.slice(1);
+  }
+  if (isPayloadV2(event)) {
+    const matches1 = event.routeKey.matchAll(/\{(.*?)\}/g);
+    for (const match1 of matches1) {
+      const group1 = match1[1];
+      if (group1.includes("+") && event.pathParameters) {
+        return event.pathParameters[group1.replace("+", "")] || "";
+      }
+    }
+    return event.rawPath.slice(1);
+  }
+  throw new TRPCError({
+    code: "INTERNAL_SERVER_ERROR",
+    message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
+  });
+}
+function transformHeaders(headers) {
+  const obj = {};
+  for (const [key, value] of Object.entries(headers)) {
+    if (typeof value === "undefined") {
+      continue;
+    }
+    obj[key] = Array.isArray(value) ? value.join(",") : value;
+  }
+  return obj;
+}
+var UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE = "Custom payload format version not handled by this adapter. Please use either 1.0 or 2.0. More information herehttps://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html";
+function lambdaEventToHTTPRequest(event) {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(event.queryStringParameters ?? {})) {
+    if (typeof value !== "undefined") {
+      query.append(key, value);
+    }
+  }
+  let body;
+  if (event.body && event.isBase64Encoded) {
+    body = Buffer.from(event.body, "base64").toString("utf8");
+  } else {
+    body = event.body;
+  }
   return {
-    _def,
-    input(input) {
-      const parser = getParseFn(input);
-      return createNewBuilder(_def, {
-        inputs: [
-          input
-        ],
-        middlewares: [
-          createInputMiddleware(parser)
-        ]
-      });
-    },
-    output(output) {
-      const parseOutput = getParseFn(output);
-      return createNewBuilder(_def, {
-        output,
-        middlewares: [
-          createOutputMiddleware(parseOutput)
-        ]
-      });
-    },
-    meta(meta) {
-      return createNewBuilder(_def, {
-        meta
-      });
-    },
-    /**
-    * @deprecated
-    * This functionality is deprecated and will be removed in the next major version.
-    */
-    unstable_concat(builder) {
-      return createNewBuilder(_def, builder._def);
-    },
-    use(middlewareBuilderOrFn) {
-      const middlewares = "_middlewares" in middlewareBuilderOrFn ? middlewareBuilderOrFn._middlewares : [
-        middlewareBuilderOrFn
-      ];
-      return createNewBuilder(_def, {
-        middlewares
-      });
-    },
-    query(resolver) {
-      return createResolver({
-        ..._def,
-        query: true
-      }, resolver);
-    },
-    mutation(resolver) {
-      return createResolver({
-        ..._def,
-        mutation: true
-      }, resolver);
-    },
-    subscription(resolver) {
-      return createResolver({
-        ..._def,
-        subscription: true
-      }, resolver);
-    }
+    method: getHTTPMethod(event),
+    query,
+    headers: event.headers,
+    body
   };
 }
-function createResolver(_def, resolver) {
-  const finalBuilder = createNewBuilder(_def, {
-    resolver,
-    middlewares: [
-      async function resolveMiddleware(opts) {
-        const data = await resolver(opts);
-        return {
-          marker: middlewareMarker,
-          ok: true,
-          data,
-          ctx: opts.ctx
-        };
-      }
-    ]
-  });
-  return createProcedureCaller(finalBuilder._def);
+function tRPCOutputToAPIGatewayOutput(event, response) {
+  if (isPayloadV1(event)) {
+    const resp = {
+      statusCode: response.status,
+      body: response.body ?? "",
+      headers: transformHeaders(response.headers ?? {})
+    };
+    return resp;
+  } else if (isPayloadV2(event)) {
+    const resp1 = {
+      statusCode: response.status,
+      body: response.body ?? void 0,
+      headers: transformHeaders(response.headers ?? {})
+    };
+    return resp1;
+  } else {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
+    });
+  }
 }
-var codeblock = `
-If you want to call this function on the server, you do the following:
-This is a client-only function.
-
-const caller = appRouter.createCaller({
-  /* ... your context */
-});
-
-const result = await caller.call('myProcedure', input);
-`.trim();
-function createProcedureCaller(_def) {
-  const procedure = async function resolve(opts) {
-    if (!opts || !("rawInput" in opts)) {
-      throw new Error(codeblock);
-    }
-    const callRecursive = async (callOpts = {
-      index: 0,
-      ctx: opts.ctx
-    }) => {
-      try {
-        const middleware = _def.middlewares[callOpts.index];
-        const result2 = await middleware({
-          ctx: callOpts.ctx,
-          type: opts.type,
-          path: opts.path,
-          rawInput: opts.rawInput,
-          meta: _def.meta,
-          input: callOpts.input,
-          next: async (nextOpts) => {
-            return await callRecursive({
-              index: callOpts.index + 1,
-              ctx: nextOpts && "ctx" in nextOpts ? {
-                ...callOpts.ctx,
-                ...nextOpts.ctx
-              } : callOpts.ctx,
-              input: nextOpts && "input" in nextOpts ? nextOpts.input : callOpts.input
-            });
-          }
+function awsLambdaRequestHandler(opts) {
+  return async (event, context) => {
+    const req = lambdaEventToHTTPRequest(event);
+    const path = getPath(event);
+    const createContext2 = async function _createContext() {
+      var _a2;
+      return await ((_a2 = opts.createContext) == null ? void 0 : _a2.call(opts, {
+        event,
+        context
+      }));
+    };
+    const response = await resolveHTTPResponse({
+      router: opts.router,
+      batching: opts.batching,
+      responseMeta: opts == null ? void 0 : opts.responseMeta,
+      createContext: createContext2,
+      req,
+      path,
+      error: null,
+      onError(o) {
+        var _a2;
+        (_a2 = opts == null ? void 0 : opts.onError) == null ? void 0 : _a2.call(opts, {
+          ...o,
+          req: event
         });
-        return result2;
-      } catch (cause) {
-        return {
-          ok: false,
-          error: getTRPCErrorFromUnknown(cause),
-          marker: middlewareMarker
-        };
       }
-    };
-    const result = await callRecursive();
-    if (!result) {
-      throw new TRPCError({
-        code: "INTERNAL_SERVER_ERROR",
-        message: "No result from middlewares - did you forget to `return next()`?"
-      });
-    }
-    if (!result.ok) {
-      throw result.error;
-    }
-    return result.data;
-  };
-  procedure._def = _def;
-  procedure.meta = _def.meta;
-  return procedure;
-}
-function mergeRouters(...routerList) {
-  var _a2;
-  const record = mergeWithoutOverrides({}, ...routerList.map((r) => r._def.record));
-  const errorFormatter = routerList.reduce((currentErrorFormatter, nextRouter) => {
-    if (nextRouter._def._config.errorFormatter && nextRouter._def._config.errorFormatter !== defaultFormatter) {
-      if (currentErrorFormatter !== defaultFormatter && currentErrorFormatter !== nextRouter._def._config.errorFormatter) {
-        throw new Error("You seem to have several error formatters");
-      }
-      return nextRouter._def._config.errorFormatter;
-    }
-    return currentErrorFormatter;
-  }, defaultFormatter);
-  const transformer = routerList.reduce((prev, current) => {
-    if (current._def._config.transformer && current._def._config.transformer !== defaultTransformer) {
-      if (prev !== defaultTransformer && prev !== current._def._config.transformer) {
-        throw new Error("You seem to have several transformers");
-      }
-      return current._def._config.transformer;
-    }
-    return prev;
-  }, defaultTransformer);
-  const router = createRouterFactory({
-    errorFormatter,
-    transformer,
-    isDev: routerList.some((r) => r._def._config.isDev),
-    allowOutsideOfServer: routerList.some((r) => r._def._config.allowOutsideOfServer),
-    isServer: routerList.some((r) => r._def._config.isServer),
-    $types: (_a2 = routerList[0]) == null ? void 0 : _a2._def._config.$types
-  })(record);
-  return router;
-}
-function mergeRoutersGeneric(...args) {
-  return mergeRouters(...args);
-}
-var TRPCBuilder = class {
-  context() {
-    return new TRPCBuilder();
-  }
-  meta() {
-    return new TRPCBuilder();
-  }
-  create(options) {
-    return createTRPCInner()(options);
-  }
-};
-var initTRPC = new TRPCBuilder();
-function createTRPCInner() {
-  return function initTRPCInner(runtime) {
-    var _a2, _b2;
-    const errorFormatter = (runtime == null ? void 0 : runtime.errorFormatter) ?? defaultFormatter;
-    const transformer = getDataTransformer((runtime == null ? void 0 : runtime.transformer) ?? defaultTransformer);
-    const config = {
-      transformer,
-      isDev: (runtime == null ? void 0 : runtime.isDev) ?? ((_b2 = (_a2 = globalThis.process) == null ? void 0 : _a2.env) == null ? void 0 : _b2.NODE_ENV) !== "production",
-      allowOutsideOfServer: (runtime == null ? void 0 : runtime.allowOutsideOfServer) ?? false,
-      errorFormatter,
-      isServer: (runtime == null ? void 0 : runtime.isServer) ?? isServerDefault,
-      /**
-      * @internal
-      */
-      $types: createFlatProxy((key) => {
-        throw new Error(`Tried to access "$types.${key}" which is not available at runtime`);
-      })
-    };
-    {
-      const isServer = (runtime == null ? void 0 : runtime.isServer) ?? isServerDefault;
-      if (!isServer && (runtime == null ? void 0 : runtime.allowOutsideOfServer) !== true) {
-        throw new Error(`You're trying to use @trpc/server in a non-server environment. This is not supported by default.`);
-      }
-    }
-    return {
-      /**
-      * These are just types, they can't be used
-      * @internal
-      */
-      _config: config,
-      /**
-      * Builder object for creating procedures
-      */
-      procedure: createBuilder(),
-      /**
-      * Create reusable middlewares
-      */
-      middleware: createMiddlewareFactory(),
-      /**
-      * Create a router
-      */
-      router: createRouterFactory(config),
-      /**
-      * Merge Routers
-      */
-      mergeRouters: mergeRoutersGeneric
-    };
+    });
+    return tRPCOutputToAPIGatewayOutput(event, response);
   };
 }
 
@@ -4353,22 +4377,451 @@ var z = /* @__PURE__ */ Object.freeze({
 
 // src/schema.ts
 var contactSchema = z.object({
-  email: z.string(),
+  email: z.string().email(),
   subject: z.string(),
   message: z.string()
-}).required();
+});
 
-// src/app.ts
-var t = initTRPC.create();
-var appRouter = t.router({
-  getUser: t.procedure.input(z.string()).query((opts) => {
-    opts.input;
-    return { id: opts.input, name: "Bilbo" };
-  }),
-  contact: t.procedure.input(contactSchema).mutation(async ({ input }) => {
-    return { message: input };
+// src/slack/createBlocks.ts
+function createBlocks(text, payload) {
+  return [
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text,
+        emoji: true
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: "Payload:",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "```" + JSON.stringify(payload, null, 4) + "```"
+      }
+    }
+  ];
+}
+
+// src/slack/sendSlackMessage.ts
+import { WebClient } from "@slack/web-api";
+async function sendInternalSlackMessage(blocks, text) {
+  const token = process.env.SLACK_INTERNAL_TOKEN;
+  const web = new WebClient(token);
+  throw new Error("boo I am an error!");
+  return await web.chat.postMessage({
+    channel: "contact-submissions",
+    blocks,
+    text
+  });
+}
+
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/index.mjs
+function getParseFn(procedureParser) {
+  const parser = procedureParser;
+  if (typeof parser === "function") {
+    return parser;
+  }
+  if (typeof parser.parseAsync === "function") {
+    return parser.parseAsync.bind(parser);
+  }
+  if (typeof parser.parse === "function") {
+    return parser.parse.bind(parser);
+  }
+  if (typeof parser.validateSync === "function") {
+    return parser.validateSync.bind(parser);
+  }
+  if (typeof parser.create === "function") {
+    return parser.create.bind(parser);
+  }
+  throw new Error("Could not find a validator fn");
+}
+function mergeWithoutOverrides(obj1, ...objs) {
+  const newObj = Object.assign(/* @__PURE__ */ Object.create(null), obj1);
+  for (const overrides of objs) {
+    for (const key in overrides) {
+      if (key in newObj && newObj[key] !== overrides[key]) {
+        throw new Error(`Duplicate key ${key}`);
+      }
+      newObj[key] = overrides[key];
+    }
+  }
+  return newObj;
+}
+function createMiddlewareFactory() {
+  function createMiddlewareInner(middlewares) {
+    return {
+      _middlewares: middlewares,
+      unstable_pipe(middlewareBuilderOrFn) {
+        const pipedMiddleware = "_middlewares" in middlewareBuilderOrFn ? middlewareBuilderOrFn._middlewares : [
+          middlewareBuilderOrFn
+        ];
+        return createMiddlewareInner([
+          ...middlewares,
+          ...pipedMiddleware
+        ]);
+      }
+    };
+  }
+  function createMiddleware(fn) {
+    return createMiddlewareInner([
+      fn
+    ]);
+  }
+  return createMiddleware;
+}
+function isPlainObject(obj) {
+  return obj && typeof obj === "object" && !Array.isArray(obj);
+}
+function createInputMiddleware(parse) {
+  const inputMiddleware = async ({ next, rawInput, input }) => {
+    let parsedInput;
+    try {
+      parsedInput = await parse(rawInput);
+    } catch (cause) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        cause: getCauseFromUnknown(cause)
+      });
+    }
+    const combinedInput = isPlainObject(input) && isPlainObject(parsedInput) ? {
+      ...input,
+      ...parsedInput
+    } : parsedInput;
+    return next({
+      input: combinedInput
+    });
+  };
+  inputMiddleware._type = "input";
+  return inputMiddleware;
+}
+function createOutputMiddleware(parse) {
+  const outputMiddleware = async ({ next }) => {
+    const result = await next();
+    if (!result.ok) {
+      return result;
+    }
+    try {
+      const data = await parse(result.data);
+      return {
+        ...result,
+        data
+      };
+    } catch (cause) {
+      throw new TRPCError({
+        message: "Output validation failed",
+        code: "INTERNAL_SERVER_ERROR",
+        cause: getCauseFromUnknown(cause)
+      });
+    }
+  };
+  outputMiddleware._type = "output";
+  return outputMiddleware;
+}
+var middlewareMarker = "middlewareMarker";
+function createNewBuilder(def1, def2) {
+  const { middlewares = [], inputs, ...rest } = def2;
+  return createBuilder({
+    ...mergeWithoutOverrides(def1, rest),
+    inputs: [
+      ...def1.inputs,
+      ...inputs ?? []
+    ],
+    middlewares: [
+      ...def1.middlewares,
+      ...middlewares
+    ]
+  });
+}
+function createBuilder(initDef) {
+  const _def = initDef || {
+    inputs: [],
+    middlewares: []
+  };
+  return {
+    _def,
+    input(input) {
+      const parser = getParseFn(input);
+      return createNewBuilder(_def, {
+        inputs: [
+          input
+        ],
+        middlewares: [
+          createInputMiddleware(parser)
+        ]
+      });
+    },
+    output(output) {
+      const parseOutput = getParseFn(output);
+      return createNewBuilder(_def, {
+        output,
+        middlewares: [
+          createOutputMiddleware(parseOutput)
+        ]
+      });
+    },
+    meta(meta) {
+      return createNewBuilder(_def, {
+        meta
+      });
+    },
+    /**
+    * @deprecated
+    * This functionality is deprecated and will be removed in the next major version.
+    */
+    unstable_concat(builder) {
+      return createNewBuilder(_def, builder._def);
+    },
+    use(middlewareBuilderOrFn) {
+      const middlewares = "_middlewares" in middlewareBuilderOrFn ? middlewareBuilderOrFn._middlewares : [
+        middlewareBuilderOrFn
+      ];
+      return createNewBuilder(_def, {
+        middlewares
+      });
+    },
+    query(resolver) {
+      return createResolver({
+        ..._def,
+        query: true
+      }, resolver);
+    },
+    mutation(resolver) {
+      return createResolver({
+        ..._def,
+        mutation: true
+      }, resolver);
+    },
+    subscription(resolver) {
+      return createResolver({
+        ..._def,
+        subscription: true
+      }, resolver);
+    }
+  };
+}
+function createResolver(_def, resolver) {
+  const finalBuilder = createNewBuilder(_def, {
+    resolver,
+    middlewares: [
+      async function resolveMiddleware(opts) {
+        const data = await resolver(opts);
+        return {
+          marker: middlewareMarker,
+          ok: true,
+          data,
+          ctx: opts.ctx
+        };
+      }
+    ]
+  });
+  return createProcedureCaller(finalBuilder._def);
+}
+var codeblock = `
+If you want to call this function on the server, you do the following:
+This is a client-only function.
+
+const caller = appRouter.createCaller({
+  /* ... your context */
+});
+
+const result = await caller.call('myProcedure', input);
+`.trim();
+function createProcedureCaller(_def) {
+  const procedure = async function resolve(opts) {
+    if (!opts || !("rawInput" in opts)) {
+      throw new Error(codeblock);
+    }
+    const callRecursive = async (callOpts = {
+      index: 0,
+      ctx: opts.ctx
+    }) => {
+      try {
+        const middleware2 = _def.middlewares[callOpts.index];
+        const result2 = await middleware2({
+          ctx: callOpts.ctx,
+          type: opts.type,
+          path: opts.path,
+          rawInput: opts.rawInput,
+          meta: _def.meta,
+          input: callOpts.input,
+          next: async (nextOpts) => {
+            return await callRecursive({
+              index: callOpts.index + 1,
+              ctx: nextOpts && "ctx" in nextOpts ? {
+                ...callOpts.ctx,
+                ...nextOpts.ctx
+              } : callOpts.ctx,
+              input: nextOpts && "input" in nextOpts ? nextOpts.input : callOpts.input
+            });
+          }
+        });
+        return result2;
+      } catch (cause) {
+        return {
+          ok: false,
+          error: getTRPCErrorFromUnknown(cause),
+          marker: middlewareMarker
+        };
+      }
+    };
+    const result = await callRecursive();
+    if (!result) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "No result from middlewares - did you forget to `return next()`?"
+      });
+    }
+    if (!result.ok) {
+      throw result.error;
+    }
+    return result.data;
+  };
+  procedure._def = _def;
+  procedure.meta = _def.meta;
+  return procedure;
+}
+function mergeRouters(...routerList) {
+  var _a2;
+  const record = mergeWithoutOverrides({}, ...routerList.map((r) => r._def.record));
+  const errorFormatter = routerList.reduce((currentErrorFormatter, nextRouter) => {
+    if (nextRouter._def._config.errorFormatter && nextRouter._def._config.errorFormatter !== defaultFormatter) {
+      if (currentErrorFormatter !== defaultFormatter && currentErrorFormatter !== nextRouter._def._config.errorFormatter) {
+        throw new Error("You seem to have several error formatters");
+      }
+      return nextRouter._def._config.errorFormatter;
+    }
+    return currentErrorFormatter;
+  }, defaultFormatter);
+  const transformer = routerList.reduce((prev, current) => {
+    if (current._def._config.transformer && current._def._config.transformer !== defaultTransformer) {
+      if (prev !== defaultTransformer && prev !== current._def._config.transformer) {
+        throw new Error("You seem to have several transformers");
+      }
+      return current._def._config.transformer;
+    }
+    return prev;
+  }, defaultTransformer);
+  const router2 = createRouterFactory({
+    errorFormatter,
+    transformer,
+    isDev: routerList.some((r) => r._def._config.isDev),
+    allowOutsideOfServer: routerList.some((r) => r._def._config.allowOutsideOfServer),
+    isServer: routerList.some((r) => r._def._config.isServer),
+    $types: (_a2 = routerList[0]) == null ? void 0 : _a2._def._config.$types
+  })(record);
+  return router2;
+}
+function mergeRoutersGeneric(...args) {
+  return mergeRouters(...args);
+}
+var TRPCBuilder = class {
+  context() {
+    return new TRPCBuilder();
+  }
+  meta() {
+    return new TRPCBuilder();
+  }
+  create(options) {
+    return createTRPCInner()(options);
+  }
+};
+var initTRPC = new TRPCBuilder();
+function createTRPCInner() {
+  return function initTRPCInner(runtime) {
+    var _a2, _b2;
+    const errorFormatter = (runtime == null ? void 0 : runtime.errorFormatter) ?? defaultFormatter;
+    const transformer = getDataTransformer((runtime == null ? void 0 : runtime.transformer) ?? defaultTransformer);
+    const config = {
+      transformer,
+      isDev: (runtime == null ? void 0 : runtime.isDev) ?? ((_b2 = (_a2 = globalThis.process) == null ? void 0 : _a2.env) == null ? void 0 : _b2.NODE_ENV) !== "production",
+      allowOutsideOfServer: (runtime == null ? void 0 : runtime.allowOutsideOfServer) ?? false,
+      errorFormatter,
+      isServer: (runtime == null ? void 0 : runtime.isServer) ?? isServerDefault,
+      /**
+      * @internal
+      */
+      $types: createFlatProxy((key) => {
+        throw new Error(`Tried to access "$types.${key}" which is not available at runtime`);
+      })
+    };
+    {
+      const isServer = (runtime == null ? void 0 : runtime.isServer) ?? isServerDefault;
+      if (!isServer && (runtime == null ? void 0 : runtime.allowOutsideOfServer) !== true) {
+        throw new Error(`You're trying to use @trpc/server in a non-server environment. This is not supported by default.`);
+      }
+    }
+    return {
+      /**
+      * These are just types, they can't be used
+      * @internal
+      */
+      _config: config,
+      /**
+      * Builder object for creating procedures
+      */
+      procedure: createBuilder(),
+      /**
+      * Create reusable middlewares
+      */
+      middleware: createMiddlewareFactory(),
+      /**
+      * Create a router
+      */
+      router: createRouterFactory(config),
+      /**
+      * Merge Routers
+      */
+      mergeRouters: mergeRoutersGeneric
+    };
+  };
+}
+
+// src/trpc.ts
+var t = initTRPC.context().create();
+var middleware = t.middleware;
+var router = t.router;
+var publicProcedure = t.procedure;
+
+// src/routes/contactRoutes.ts
+var contactRoutes = router({
+  submit: publicProcedure.input(contactSchema).mutation(async ({ input }) => {
+    const subject = "New contact request";
+    const blocks = createBlocks(subject, input);
+    const res = await sendInternalSlackMessage(blocks, subject);
+    if (res.ok) {
+      return { success: true };
+    }
+    throw new Error("Unable to process request. Please email me at menno.c.jager@gmail.com");
   })
 });
+
+// src/app.ts
+function createContext({ event }) {
+  return {
+    event,
+    apiVersion: event.version ?? "1.0",
+    user: event.headers["x-user"]
+  };
+}
+var appRouter = router({
+  contact: contactRoutes
+});
+var handler = awsLambdaRequestHandler({
+  router: appRouter,
+  createContext
+});
 export {
-  t
+  handler
 };
