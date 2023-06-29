@@ -1,1 +1,1 @@
-export * from './technologies/NextJs';
+export * from './ProfilePicture';

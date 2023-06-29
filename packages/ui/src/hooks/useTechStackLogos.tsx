@@ -1,9 +1,9 @@
 import { useTheme } from '../context/ColorModeProvider';
-import { NextJs } from '../illustrations';
 import { Aws } from '../illustrations/technologies/Aws';
 import { Docker } from '../illustrations/technologies/Docker';
 import { Javascript } from '../illustrations/technologies/Javascript';
 import { MongoDb } from '../illustrations/technologies/MongoDb';
+import { NextJs } from '../illustrations/technologies/NextJs';
 import { NodeJs } from '../illustrations/technologies/NodeJs';
 import { OpenAi } from '../illustrations/technologies/OpenAi';
 import { Python } from '../illustrations/technologies/Python';

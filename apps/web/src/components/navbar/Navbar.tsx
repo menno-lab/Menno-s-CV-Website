@@ -1,15 +1,19 @@
 import React from 'react';
-import { useTranslation } from '../../i18n';
 import { Box, Button, Container, Flex, ThemeSelector, Stack, Text, Link } from 'ui';
 import { MobileNav } from './MobileNav';
 import { NavItem } from '../../utils/types';
 
-export async function Navbar() {
-    const { t } = await useTranslation('en');
-    const navItems = t('navItems') as unknown as NavItem[];
+interface NavbarProps {
+    navItems: NavItem[];
+}
+
+export function Navbar({ navItems }: NavbarProps) {
+    if (!Array.isArray(navItems)) {
+        return null;
+    }
 
     return (
-        <Box bg='background' position='fixed' width='100vw' zIndex={2} top={0} borderBottom={1} borderStyle={'solid'}>
+        <Box bg='background' position='fixed' width='100vw' zIndex={2} top={0} boxShadow={'md'}>
             <Container maxW={'7xl'} py={2} px={4}>
                 <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
                     <MobileNav navItems={navItems} />

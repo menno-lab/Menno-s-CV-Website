@@ -38,8 +38,8 @@ export function MobileNav({ navItems }: MobileNavProps) {
                     <DrawerCloseButton />
                     <DrawerBody>
                         <Flex flexDirection={'column'} justifyContent={'center'} height='100%' gap={12}>
-                            {navItems.map((navItem) => (
-                                <Text fontWeight={600} textAlign={'center'}>
+                            {navItems.map((navItem, i) => (
+                                <Text key={i} fontWeight={600} textAlign={'center'}>
                                     {navItem.label}
                                 </Text>
                             ))}
