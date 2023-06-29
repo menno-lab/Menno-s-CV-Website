@@ -1,3 +1,4 @@
+import { AbsoluteCenter as ChakraAbsoluteCenter, AbsoluteCenterProps } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import {
     BoxProps,
@@ -56,4 +57,8 @@ export function Circle({ children, ...props }: PropsWithChildren<CustomBoxProps>
 
 export function Stack({ children, ...props }: PropsWithChildren<CustomStackProps>) {
     return <ChakraStack {...props}>{children}</ChakraStack>;
+}
+
+export function AbsoluteCenter({ children, ...props }: PropsWithChildren<AbsoluteCenterProps>) {
+    return <ChakraAbsoluteCenter {...props}>{children}</ChakraAbsoluteCenter>;
 }
