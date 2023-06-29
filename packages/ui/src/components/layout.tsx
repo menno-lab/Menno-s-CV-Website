@@ -9,7 +9,7 @@ import {
     Stack as ChakraStack,
     StackProps,
 } from '@chakra-ui/react';
-import { useTheme } from '../context/ColorModeProvider';
+import { useTheme } from '../context/ThemeProvider';
 
 interface CustomBoxProps extends BoxProps {
     bg?: SemanticColor;

@@ -8,7 +8,7 @@ interface SlideInFadeProps {
 export function SlideInFade({ children, from }: PropsWithChildren<SlideInFadeProps>) {
     const offSetX = from === 'right' ? '50vw' : '-50vw';
     return (
-        <SlideFade in unmountOnExit offsetX={offSetX} transition={{ enter: { duration: 0.2 } }}>
+        <SlideFade in unmountOnExit offsetX={offSetX} transition={{ enter: { duration: 0.1 } }}>
             {children}
         </SlideFade>
     );

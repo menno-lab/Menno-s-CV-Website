@@ -1,4 +1,4 @@
-import { useTheme } from '../context/ColorModeProvider';
+import { useTheme } from '../context/ThemeProvider';
 import { Aws } from '../illustrations/technologies/Aws';
 import { Docker } from '../illustrations/technologies/Docker';
 import { Javascript } from '../illustrations/technologies/Javascript';

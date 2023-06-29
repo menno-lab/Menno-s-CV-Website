@@ -24,6 +24,13 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
         semanticTokens: {
             colors: theme,
         },
+        styles: {
+            global: {
+                body: {
+                    overflowX: 'hidden',
+                },
+            },
+        },
         components: {
             Button: {
                 baseStyle: {
@@ -58,6 +65,11 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
                 },
             },
             Heading: {
+                baseStyle: {
+                    color: theme.text,
+                },
+            },
+            FormLabel: {
                 baseStyle: {
                     color: theme.text,
                 },

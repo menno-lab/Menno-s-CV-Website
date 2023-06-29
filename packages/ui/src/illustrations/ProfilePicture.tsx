@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../context/ColorModeProvider';
+import { useTheme } from '../context/ThemeProvider';
 import { Box, useBreakpoint } from '@chakra-ui/react';
 
 export function ProfilePicture() {

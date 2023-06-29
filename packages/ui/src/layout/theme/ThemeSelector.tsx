@@ -1,6 +1,6 @@
 import { Menu, MenuButton, Button, MenuList, Text, Kbd, MenuOptionGroup, MenuItemOption, Flex, MenuDivider } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { useTheme } from '../../context/ColorModeProvider';
+import { useTheme } from '../../context/ThemeProvider';
 import { COLOR_SCHEME_NAMES } from '../../utils/colorSchemes';
 import { makeColorDarker, makeColorBrighter } from '../../utils/modifyColor';
 

@@ -12,9 +12,9 @@ import {
     IconButton,
     Text,
     ThemeSelectorMobile,
-    useDisclosure,
 } from 'ui';
 import { NavItem } from '../../utils/types';
+import { useDisclosure } from '@chakra-ui/react';
 
 interface MobileNavProps {
     navItems: NavItem[];

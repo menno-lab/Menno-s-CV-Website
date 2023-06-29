@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Button as ChakraButton, ButtonProps , IconButton as ChakraIconButton, IconButtonProps} from '@chakra-ui/react';
-import { useTheme } from '../context/ColorModeProvider';
+import { Button as ChakraButton, ButtonProps, IconButton as ChakraIconButton, IconButtonProps } from '@chakra-ui/react';
+import { useTheme } from '../context/ThemeProvider';
 import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
 
 interface CustomButtonProps extends ButtonProps {

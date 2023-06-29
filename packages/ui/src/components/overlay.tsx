@@ -11,7 +11,7 @@ import {
     ModalOverlayProps,
 } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
-import { useTheme } from '../context/ColorModeProvider';
+import { useTheme } from '../context/ThemeProvider';
 
 export function Collapse({ children, ...props }: PropsWithChildren<CollapseProps>) {
     return <ChakraCollapse {...props}>{children}</ChakraCollapse>;

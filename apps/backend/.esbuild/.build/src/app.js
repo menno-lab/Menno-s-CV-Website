@@ -1,15 +1,32 @@
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/TRPCError-2b10c8d2.mjs
-function isObject(value) {
-  return !!value && !Array.isArray(value) && typeof value === "object";
-}
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/TRPCError-7de0a793.mjs
 function getMessageFromUnknownError(err, fallback) {
   if (typeof err === "string") {
     return err;
   }
-  if (isObject(err) && typeof err.message === "string") {
+  if (err instanceof Error && typeof err.message === "string") {
     return err.message;
   }
   return fallback;
+}
+function getErrorFromUnknown(cause) {
+  if (cause instanceof Error) {
+    return cause;
+  }
+  const message = getMessageFromUnknownError(cause, "Unknown error");
+  return new Error(message);
+}
+function getTRPCErrorFromUnknown(cause) {
+  const error = getErrorFromUnknown(cause);
+  if (error.name === "TRPCError") {
+    return cause;
+  }
+  const trpcError = new TRPCError({
+    code: "INTERNAL_SERVER_ERROR",
+    cause: error,
+    message: error.message
+  });
+  trpcError.stack = error.stack;
+  return trpcError;
 }
 function getCauseFromUnknown(cause) {
   if (cause instanceof Error) {
@@ -17,31 +34,22 @@ function getCauseFromUnknown(cause) {
   }
   return void 0;
 }
-function getTRPCErrorFromUnknown(cause) {
-  if (cause instanceof TRPCError) {
-    return cause;
-  }
-  const trpcError = new TRPCError({
-    code: "INTERNAL_SERVER_ERROR",
-    cause
-  });
-  if (cause instanceof Error && cause.stack) {
-    trpcError.stack = cause.stack;
-  }
-  return trpcError;
-}
 var TRPCError = class extends Error {
   constructor(opts) {
-    const message = opts.message ?? getMessageFromUnknownError(opts.cause, opts.code);
+    const code = opts.code;
+    const message = opts.message ?? getMessageFromUnknownError(opts.cause, code);
+    const cause = opts.cause !== void 0 ? getErrorFromUnknown(opts.cause) : void 0;
     super(message, {
-      cause: opts.cause
+      cause
     });
-    this.code = opts.code;
-    this.name = this.constructor.name;
+    this.code = code;
+    this.cause = cause;
+    this.name = "TRPCError";
+    Object.setPrototypeOf(this, new.target.prototype);
   }
 };
 
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/codes-24aa1ce1.mjs
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/codes-52c11119.mjs
 function invert(obj) {
   const newObj = /* @__PURE__ */ Object.create(null);
   for (const key in obj) {
@@ -73,58 +81,12 @@ var TRPC_ERROR_CODES_BY_KEY = {
   CONFLICT: -32009,
   PRECONDITION_FAILED: -32012,
   PAYLOAD_TOO_LARGE: -32013,
-  UNPROCESSABLE_CONTENT: -32022,
   TOO_MANY_REQUESTS: -32029,
   CLIENT_CLOSED_REQUEST: -32099
 };
 var TRPC_ERROR_CODES_BY_NUMBER = invert(TRPC_ERROR_CODES_BY_KEY);
 
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/index-044a193b.mjs
-var TRPC_ERROR_CODES_BY_NUMBER2 = invert(TRPC_ERROR_CODES_BY_KEY);
-var JSONRPC2_TO_HTTP_CODE = {
-  PARSE_ERROR: 400,
-  BAD_REQUEST: 400,
-  NOT_FOUND: 404,
-  INTERNAL_SERVER_ERROR: 500,
-  UNAUTHORIZED: 401,
-  FORBIDDEN: 403,
-  TIMEOUT: 408,
-  CONFLICT: 409,
-  CLIENT_CLOSED_REQUEST: 499,
-  PRECONDITION_FAILED: 412,
-  PAYLOAD_TOO_LARGE: 413,
-  METHOD_NOT_SUPPORTED: 405,
-  UNPROCESSABLE_CONTENT: 422,
-  TOO_MANY_REQUESTS: 429
-};
-function getStatusCodeFromKey(code) {
-  return JSONRPC2_TO_HTTP_CODE[code] ?? 500;
-}
-function getHTTPStatusCode(json) {
-  const arr = Array.isArray(json) ? json : [
-    json
-  ];
-  const httpStatuses = new Set(arr.map((res) => {
-    if ("error" in res) {
-      const data = res.error.data;
-      if (typeof data.httpStatus === "number") {
-        return data.httpStatus;
-      }
-      const code = TRPC_ERROR_CODES_BY_NUMBER2[res.error.code];
-      return getStatusCodeFromKey(code);
-    }
-    return 200;
-  }));
-  if (httpStatuses.size !== 1) {
-    return 207;
-  }
-  const httpStatus = httpStatuses.values().next().value;
-  return httpStatus;
-}
-function getHTTPStatusCodeFromError(error) {
-  const { code } = error;
-  return getStatusCodeFromKey(code);
-}
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/index-972002da.mjs
 var noop = () => {
 };
 function createInnerProxy(callback, path) {
@@ -139,10 +101,9 @@ function createInnerProxy(callback, path) {
       ]);
     },
     apply(_1, _2, args) {
-      const isApply = path[path.length - 1] === "apply";
       return callback({
-        args: isApply ? args.length >= 2 ? args[1] : [] : args,
-        path: isApply ? path.slice(0, -1) : path
+        args,
+        path
       });
     }
   });
@@ -160,7 +121,7 @@ var createFlatProxy = (callback) => {
   });
 };
 
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/config-65c5b6d1.mjs
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/config-4ca0221b.mjs
 function getDataTransformer(transformer) {
   if ("input" in transformer) {
     return transformer;
@@ -184,6 +145,29 @@ var defaultTransformer = {
 var defaultFormatter = ({ shape }) => {
   return shape;
 };
+var TRPC_ERROR_CODES_BY_NUMBER2 = invert(TRPC_ERROR_CODES_BY_KEY);
+var JSONRPC2_TO_HTTP_CODE = {
+  PARSE_ERROR: 400,
+  BAD_REQUEST: 400,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  TIMEOUT: 408,
+  CONFLICT: 409,
+  CLIENT_CLOSED_REQUEST: 499,
+  PRECONDITION_FAILED: 412,
+  PAYLOAD_TOO_LARGE: 413,
+  METHOD_NOT_SUPPORTED: 405,
+  TOO_MANY_REQUESTS: 429
+};
+function getStatusCodeFromKey(code) {
+  return JSONRPC2_TO_HTTP_CODE[code] ?? 500;
+}
+function getHTTPStatusCodeFromError(error) {
+  const { code } = error;
+  return getStatusCodeFromKey(code);
+}
 function omitPrototype(obj) {
   return Object.assign(/* @__PURE__ */ Object.create(null), obj);
 }
@@ -252,7 +236,7 @@ function createRouterFactory(config) {
         [key]: val
       }), {})
     };
-    const router2 = {
+    const router = {
       ...procedures,
       _def,
       createCaller(ctx) {
@@ -306,7 +290,7 @@ function createRouterFactory(config) {
         });
       }
     };
-    return router2;
+    return router;
   };
 }
 function callProcedure(opts) {
@@ -321,10 +305,10 @@ function callProcedure(opts) {
   const procedure = opts.procedures[path];
   return procedure(opts);
 }
-var _a, _b, _c, _d, _e, _f;
-var isServerDefault = typeof window === "undefined" || "Deno" in window || ((_b = (_a = globalThis.process) == null ? void 0 : _a.env) == null ? void 0 : _b.NODE_ENV) === "test" || !!((_d = (_c = globalThis.process) == null ? void 0 : _c.env) == null ? void 0 : _d.JEST_WORKER_ID) || !!((_f = (_e = globalThis.process) == null ? void 0 : _e.env) == null ? void 0 : _f.VITEST_WORKER_ID);
+var _a, _b, _c, _d;
+var isServerDefault = typeof window === "undefined" || "Deno" in window || ((_b = (_a = globalThis.process) == null ? void 0 : _a.env) == null ? void 0 : _b.NODE_ENV) === "test" || !!((_d = (_c = globalThis.process) == null ? void 0 : _c.env) == null ? void 0 : _d.JEST_WORKER_ID);
 
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/index.mjs
+// ../../node_modules/.pnpm/@trpc+server@10.10.0/node_modules/@trpc/server/dist/index.mjs
 function getParseFn(procedureParser) {
   const parser = procedureParser;
   if (typeof parser === "function") {
@@ -341,12 +325,6 @@ function getParseFn(procedureParser) {
   }
   if (typeof parser.create === "function") {
     return parser.create.bind(parser);
-  }
-  if (typeof parser.assert === "function") {
-    return (value) => {
-      parser.assert(value);
-      return value;
-    };
   }
   throw new Error("Could not find a validator fn");
 }
@@ -434,7 +412,7 @@ function createOutputMiddleware(parse) {
 }
 var middlewareMarker = "middlewareMarker";
 function createNewBuilder(def1, def2) {
-  const { middlewares = [], inputs, meta, ...rest } = def2;
+  const { middlewares = [], inputs, ...rest } = def2;
   return createBuilder({
     ...mergeWithoutOverrides(def1, rest),
     inputs: [
@@ -444,18 +422,13 @@ function createNewBuilder(def1, def2) {
     middlewares: [
       ...def1.middlewares,
       ...middlewares
-    ],
-    meta: def1.meta && meta ? {
-      ...def1.meta,
-      ...meta
-    } : meta ?? def1.meta
+    ]
   });
 }
-function createBuilder(initDef = {}) {
-  const _def = {
+function createBuilder(initDef) {
+  const _def = initDef || {
     inputs: [],
-    middlewares: [],
-    ...initDef
+    middlewares: []
   };
   return {
     _def,
@@ -561,19 +534,17 @@ function createProcedureCaller(_def) {
           ctx: callOpts.ctx,
           type: opts.type,
           path: opts.path,
-          rawInput: callOpts.rawInput ?? opts.rawInput,
+          rawInput: opts.rawInput,
           meta: _def.meta,
           input: callOpts.input,
-          next(_nextOpts) {
-            const nextOpts = _nextOpts;
-            return callRecursive({
+          next: async (nextOpts) => {
+            return await callRecursive({
               index: callOpts.index + 1,
               ctx: nextOpts && "ctx" in nextOpts ? {
                 ...callOpts.ctx,
                 ...nextOpts.ctx
               } : callOpts.ctx,
-              input: nextOpts && "input" in nextOpts ? nextOpts.input : callOpts.input,
-              rawInput: nextOpts && "rawInput" in nextOpts ? nextOpts.rawInput : callOpts.rawInput
+              input: nextOpts && "input" in nextOpts ? nextOpts.input : callOpts.input
             });
           }
         });
@@ -623,7 +594,7 @@ function mergeRouters(...routerList) {
     }
     return prev;
   }, defaultTransformer);
-  const router2 = createRouterFactory({
+  const router = createRouterFactory({
     errorFormatter,
     transformer,
     isDev: routerList.some((r) => r._def._config.isDev),
@@ -631,7 +602,10 @@ function mergeRouters(...routerList) {
     isServer: routerList.some((r) => r._def._config.isServer),
     $types: (_a2 = routerList[0]) == null ? void 0 : _a2._def._config.$types
   })(record);
-  return router2;
+  return router;
+}
+function mergeRoutersGeneric(...args) {
+  return mergeRouters(...args);
 }
 var TRPCBuilder = class {
   context() {
@@ -678,9 +652,7 @@ function createTRPCInner() {
       /**
       * Builder object for creating procedures
       */
-      procedure: createBuilder({
-        meta: runtime == null ? void 0 : runtime.defaultMeta
-      }),
+      procedure: createBuilder(),
       /**
       * Create reusable middlewares
       */
@@ -692,507 +664,8 @@ function createTRPCInner() {
       /**
       * Merge Routers
       */
-      mergeRouters
+      mergeRouters: mergeRoutersGeneric
     };
-  };
-}
-
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/transformTRPCResponse-3dca0b20.mjs
-function getErrorShape(opts) {
-  const { path, error, config } = opts;
-  const { code } = opts.error;
-  const shape = {
-    message: error.message,
-    code: TRPC_ERROR_CODES_BY_KEY[code],
-    data: {
-      code,
-      httpStatus: getHTTPStatusCodeFromError(error)
-    }
-  };
-  if (config.isDev && typeof opts.error.stack === "string") {
-    shape.data.stack = opts.error.stack;
-  }
-  if (typeof path === "string") {
-    shape.data.path = path;
-  }
-  return config.errorFormatter({
-    ...opts,
-    shape
-  });
-}
-function transformTRPCResponseItem(config, item) {
-  if ("error" in item) {
-    return {
-      ...item,
-      error: config.transformer.output.serialize(item.error)
-    };
-  }
-  if ("data" in item.result) {
-    return {
-      ...item,
-      result: {
-        ...item.result,
-        data: config.transformer.output.serialize(item.result.data)
-      }
-    };
-  }
-  return item;
-}
-function transformTRPCResponse(config, itemOrItems) {
-  return Array.isArray(itemOrItems) ? itemOrItems.map((item) => transformTRPCResponseItem(config, item)) : transformTRPCResponseItem(config, itemOrItems);
-}
-
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/contentType-acc3be52.mjs
-function getRawProcedureInputOrThrow(opts) {
-  const { req } = opts;
-  try {
-    if (req.method === "GET") {
-      if (!req.query.has("input")) {
-        return void 0;
-      }
-      const raw = req.query.get("input");
-      return JSON.parse(raw);
-    }
-    if (!opts.preprocessedBody && typeof req.body === "string") {
-      return req.body.length === 0 ? void 0 : JSON.parse(req.body);
-    }
-    return req.body;
-  } catch (err) {
-    throw new TRPCError({
-      code: "PARSE_ERROR",
-      cause: getCauseFromUnknown(err)
-    });
-  }
-}
-var deserializeInputValue = (rawValue, transformer) => {
-  return typeof rawValue !== "undefined" ? transformer.input.deserialize(rawValue) : rawValue;
-};
-var getJsonContentTypeInputs = (opts) => {
-  const rawInput = getRawProcedureInputOrThrow(opts);
-  const transformer = opts.router._def._config.transformer;
-  if (!opts.isBatchCall) {
-    return {
-      0: deserializeInputValue(rawInput, transformer)
-    };
-  }
-  if (rawInput == null || typeof rawInput !== "object" || Array.isArray(rawInput)) {
-    throw new TRPCError({
-      code: "BAD_REQUEST",
-      message: '"input" needs to be an object when doing a batch call'
-    });
-  }
-  const input = {};
-  for (const key in rawInput) {
-    const k = key;
-    const rawValue = rawInput[k];
-    const value = deserializeInputValue(rawValue, transformer);
-    input[k] = value;
-  }
-  return input;
-};
-
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/resolveHTTPResponse-dd3677b3.mjs
-var HTTP_METHOD_PROCEDURE_TYPE_MAP = {
-  GET: "query",
-  POST: "mutation"
-};
-var fallbackContentTypeHandler = {
-  getInputs: getJsonContentTypeInputs
-};
-function initResponse(initOpts) {
-  const { ctx, paths, type, responseMeta, untransformedJSON, errors = [] } = initOpts;
-  let status = untransformedJSON ? getHTTPStatusCode(untransformedJSON) : 200;
-  const headers = {
-    "Content-Type": "application/json"
-  };
-  const eagerGeneration = !untransformedJSON;
-  const data = eagerGeneration ? [] : Array.isArray(untransformedJSON) ? untransformedJSON : [
-    untransformedJSON
-  ];
-  const meta = (responseMeta == null ? void 0 : responseMeta({
-    ctx,
-    paths,
-    type,
-    data,
-    errors,
-    eagerGeneration
-  })) ?? {};
-  for (const [key, value] of Object.entries(meta.headers ?? {})) {
-    headers[key] = value;
-  }
-  if (meta.status) {
-    status = meta.status;
-  }
-  return {
-    status,
-    headers
-  };
-}
-async function inputToProcedureCall(procedureOpts) {
-  var _a2;
-  const { opts, ctx, type, input, path } = procedureOpts;
-  try {
-    const data = await callProcedure({
-      procedures: opts.router._def.procedures,
-      path,
-      rawInput: input,
-      ctx,
-      type
-    });
-    return {
-      result: {
-        data
-      }
-    };
-  } catch (cause) {
-    const error = getTRPCErrorFromUnknown(cause);
-    (_a2 = opts.onError) == null ? void 0 : _a2.call(opts, {
-      error,
-      path,
-      input,
-      ctx,
-      type,
-      req: opts.req
-    });
-    return {
-      error: getErrorShape({
-        config: opts.router._def._config,
-        error,
-        type,
-        path,
-        input,
-        ctx
-      })
-    };
-  }
-}
-function caughtErrorToData(cause, errorOpts) {
-  const { router: router2, req, onError } = errorOpts.opts;
-  const error = getTRPCErrorFromUnknown(cause);
-  onError == null ? void 0 : onError({
-    error,
-    path: errorOpts.path,
-    input: errorOpts.input,
-    ctx: errorOpts.ctx,
-    type: errorOpts.type,
-    req
-  });
-  const untransformedJSON = {
-    error: getErrorShape({
-      config: router2._def._config,
-      error,
-      type: errorOpts.type,
-      path: errorOpts.path,
-      input: errorOpts.input,
-      ctx: errorOpts.ctx
-    })
-  };
-  const transformedJSON = transformTRPCResponse(router2._def._config, untransformedJSON);
-  const body = JSON.stringify(transformedJSON);
-  return {
-    error,
-    untransformedJSON,
-    body
-  };
-}
-async function resolveHTTPResponse(opts) {
-  var _a2;
-  const { router: router2, req, unstable_onHead, unstable_onChunk } = opts;
-  if (req.method === "HEAD") {
-    const headResponse = {
-      status: 204
-    };
-    unstable_onHead == null ? void 0 : unstable_onHead(headResponse, false);
-    unstable_onChunk == null ? void 0 : unstable_onChunk([
-      -1,
-      ""
-    ]);
-    return headResponse;
-  }
-  const contentTypeHandler = opts.contentTypeHandler ?? fallbackContentTypeHandler;
-  const batchingEnabled = ((_a2 = opts.batching) == null ? void 0 : _a2.enabled) ?? true;
-  const type = HTTP_METHOD_PROCEDURE_TYPE_MAP[req.method] ?? "unknown";
-  let ctx = void 0;
-  let paths;
-  const isBatchCall = !!req.query.get("batch");
-  const isStreamCall = isBatchCall && unstable_onHead && unstable_onChunk && req.headers["trpc-batch-mode"] === "stream";
-  try {
-    if (opts.error) {
-      throw opts.error;
-    }
-    if (isBatchCall && !batchingEnabled) {
-      throw new Error(`Batching is not enabled on the server`);
-    }
-    if (type === "subscription") {
-      throw new TRPCError({
-        message: "Subscriptions should use wsLink",
-        code: "METHOD_NOT_SUPPORTED"
-      });
-    }
-    if (type === "unknown") {
-      throw new TRPCError({
-        message: `Unexpected request method ${req.method}`,
-        code: "METHOD_NOT_SUPPORTED"
-      });
-    }
-    const inputs = await contentTypeHandler.getInputs({
-      isBatchCall,
-      req,
-      router: router2,
-      preprocessedBody: opts.preprocessedBody ?? false
-    });
-    paths = isBatchCall ? opts.path.split(",") : [
-      opts.path
-    ];
-    ctx = await opts.createContext();
-    const promises = paths.map((path, index) => inputToProcedureCall({
-      opts,
-      ctx,
-      type,
-      input: inputs[index],
-      path
-    }));
-    if (!isStreamCall) {
-      const untransformedJSON = await Promise.all(promises);
-      const errors = untransformedJSON.flatMap((response) => "error" in response ? [
-        response.error
-      ] : []);
-      const headResponse1 = initResponse({
-        ctx,
-        paths,
-        type,
-        responseMeta: opts.responseMeta,
-        untransformedJSON,
-        errors
-      });
-      unstable_onHead == null ? void 0 : unstable_onHead(headResponse1, false);
-      const result = isBatchCall ? untransformedJSON : untransformedJSON[0];
-      const transformedJSON = transformTRPCResponse(router2._def._config, result);
-      const body = JSON.stringify(transformedJSON);
-      unstable_onChunk == null ? void 0 : unstable_onChunk([
-        -1,
-        body
-      ]);
-      return {
-        status: headResponse1.status,
-        headers: headResponse1.headers,
-        body
-      };
-    }
-    const headResponse2 = initResponse({
-      ctx,
-      paths,
-      type,
-      responseMeta: opts.responseMeta
-    });
-    unstable_onHead(headResponse2, true);
-    const indexedPromises = new Map(promises.map((promise, index) => [
-      index,
-      promise.then((r) => [
-        index,
-        r
-      ])
-    ]));
-    for (let i = 0; i < paths.length; i++) {
-      const [index, untransformedJSON1] = await Promise.race(indexedPromises.values());
-      indexedPromises.delete(index);
-      try {
-        const transformedJSON1 = transformTRPCResponse(router2._def._config, untransformedJSON1);
-        const body1 = JSON.stringify(transformedJSON1);
-        unstable_onChunk([
-          index,
-          body1
-        ]);
-      } catch (cause) {
-        const path = paths[index];
-        const input = inputs[index];
-        const { body: body2 } = caughtErrorToData(cause, {
-          opts,
-          ctx,
-          type,
-          path,
-          input
-        });
-        unstable_onChunk([
-          index,
-          body2
-        ]);
-      }
-    }
-    return;
-  } catch (cause1) {
-    const { error, untransformedJSON: untransformedJSON2, body: body3 } = caughtErrorToData(cause1, {
-      opts,
-      ctx,
-      type
-    });
-    const headResponse3 = initResponse({
-      ctx,
-      paths,
-      type,
-      responseMeta: opts.responseMeta,
-      untransformedJSON: untransformedJSON2,
-      errors: [
-        error
-      ]
-    });
-    unstable_onHead == null ? void 0 : unstable_onHead(headResponse3, false);
-    unstable_onChunk == null ? void 0 : unstable_onChunk([
-      -1,
-      body3
-    ]);
-    return {
-      status: headResponse3.status,
-      headers: headResponse3.headers,
-      body: body3
-    };
-  }
-}
-
-// ../../node_modules/.pnpm/@trpc+server@10.29.1/node_modules/@trpc/server/dist/adapters/aws-lambda/index.mjs
-function isPayloadV1(event) {
-  return determinePayloadFormat(event) == "1.0";
-}
-function isPayloadV2(event) {
-  return determinePayloadFormat(event) == "2.0";
-}
-function determinePayloadFormat(event) {
-  const unknownEvent = event;
-  if (typeof unknownEvent.version === "undefined") {
-    return "1.0";
-  } else {
-    if ([
-      "1.0",
-      "2.0"
-    ].includes(unknownEvent.version)) {
-      return unknownEvent.version;
-    } else {
-      return "custom";
-    }
-  }
-}
-function getHTTPMethod(event) {
-  if (isPayloadV1(event)) {
-    return event.httpMethod;
-  }
-  if (isPayloadV2(event)) {
-    return event.requestContext.http.method;
-  }
-  throw new TRPCError({
-    code: "INTERNAL_SERVER_ERROR",
-    message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
-  });
-}
-function getPath(event) {
-  if (isPayloadV1(event)) {
-    if (!event.pathParameters) {
-      return event.path.split("/").pop() || "";
-    }
-    const matches = event.resource.matchAll(/\{(.*?)\}/g);
-    for (const match of matches) {
-      const group = match[1];
-      if (group.includes("+") && event.pathParameters) {
-        return event.pathParameters[group.replace("+", "")] || "";
-      }
-    }
-    return event.path.slice(1);
-  }
-  if (isPayloadV2(event)) {
-    const matches1 = event.routeKey.matchAll(/\{(.*?)\}/g);
-    for (const match1 of matches1) {
-      const group1 = match1[1];
-      if (group1.includes("+") && event.pathParameters) {
-        return event.pathParameters[group1.replace("+", "")] || "";
-      }
-    }
-    return event.rawPath.slice(1);
-  }
-  throw new TRPCError({
-    code: "INTERNAL_SERVER_ERROR",
-    message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
-  });
-}
-function transformHeaders(headers) {
-  const obj = {};
-  for (const [key, value] of Object.entries(headers)) {
-    if (typeof value === "undefined") {
-      continue;
-    }
-    obj[key] = Array.isArray(value) ? value.join(",") : value;
-  }
-  return obj;
-}
-var UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE = "Custom payload format version not handled by this adapter. Please use either 1.0 or 2.0. More information herehttps://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html";
-function lambdaEventToHTTPRequest(event) {
-  const query = new URLSearchParams();
-  for (const [key, value] of Object.entries(event.queryStringParameters ?? {})) {
-    if (typeof value !== "undefined") {
-      query.append(key, value);
-    }
-  }
-  let body;
-  if (event.body && event.isBase64Encoded) {
-    body = Buffer.from(event.body, "base64").toString("utf8");
-  } else {
-    body = event.body;
-  }
-  return {
-    method: getHTTPMethod(event),
-    query,
-    headers: event.headers,
-    body
-  };
-}
-function tRPCOutputToAPIGatewayOutput(event, response) {
-  if (isPayloadV1(event)) {
-    const resp = {
-      statusCode: response.status,
-      body: response.body ?? "",
-      headers: transformHeaders(response.headers ?? {})
-    };
-    return resp;
-  } else if (isPayloadV2(event)) {
-    const resp1 = {
-      statusCode: response.status,
-      body: response.body ?? void 0,
-      headers: transformHeaders(response.headers ?? {})
-    };
-    return resp1;
-  } else {
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: UNKNOWN_PAYLOAD_FORMAT_VERSION_ERROR_MESSAGE
-    });
-  }
-}
-function awsLambdaRequestHandler(opts) {
-  return async (event, context) => {
-    const req = lambdaEventToHTTPRequest(event);
-    const path = getPath(event);
-    const createContext2 = async function _createContext() {
-      var _a2;
-      return await ((_a2 = opts.createContext) == null ? void 0 : _a2.call(opts, {
-        event,
-        context
-      }));
-    };
-    const response = await resolveHTTPResponse({
-      router: opts.router,
-      batching: opts.batching,
-      responseMeta: opts == null ? void 0 : opts.responseMeta,
-      createContext: createContext2,
-      req,
-      path,
-      error: null,
-      onError(o) {
-        var _a2;
-        (_a2 = opts == null ? void 0 : opts.onError) == null ? void 0 : _a2.call(opts, {
-          ...o,
-          req: event
-        });
-      }
-    });
-    return tRPCOutputToAPIGatewayOutput(event, response);
   };
 }
 
@@ -4878,33 +4351,24 @@ var z = /* @__PURE__ */ Object.freeze({
   ZodError
 });
 
+// src/schema.ts
+var contactSchema = z.object({
+  email: z.string(),
+  subject: z.string(),
+  message: z.string()
+}).required();
+
 // src/app.ts
-function createContext({
-  event
-}) {
-  return {
-    event,
-    apiVersion: event.version || "1.0",
-    user: event.headers["x-user"]
-  };
-}
-var t = initTRPC.context().create();
-var publicProcedure = t.procedure;
-var router = t.router;
-var appRouter = router({
-  greet: publicProcedure.input(z.object({ name: z.string() })).query(({ input, ctx }) => {
-    return `Greetings, ${input.name}. x-user?: ${ctx.user}.`;
+var t = initTRPC.create();
+var appRouter = t.router({
+  getUser: t.procedure.input(z.string()).query((opts) => {
+    opts.input;
+    return { id: opts.input, name: "Bilbo" };
+  }),
+  contact: t.procedure.input(contactSchema).mutation(async ({ input }) => {
+    return { message: input };
   })
 });
-var handler = awsLambdaRequestHandler({
-  router: appRouter,
-  createContext
-});
 export {
-  handler
+  t
 };
-/*! Bundled license information:
-
-@trpc/server/dist/resolveHTTPResponse-dd3677b3.mjs:
-  (* istanbul ignore if -- @preserve *)
-*/

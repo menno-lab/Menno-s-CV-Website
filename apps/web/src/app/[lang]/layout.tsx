@@ -4,6 +4,7 @@ import { ThemeProvider } from 'ui';
 import { NavItem, RouteWithChildren } from '../../utils/types';
 import { Navbar } from '../../components/navbar/Navbar';
 import { useTranslation } from '../../i18n';
+import { ReactQueryProvider } from '../../utils/ReactQuery';
 
 export const metadata = {
     title: "Menno's CV Website",
@@ -20,10 +21,12 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
     return (
         <html lang={lang} dir={dir(lang)}>
             <body>
-                <ThemeProvider>
-                    <Navbar navItems={navItems} />
-                    {children}
-                </ThemeProvider>
+                <ReactQueryProvider>
+                    <ThemeProvider>
+                        <Navbar navItems={navItems} />
+                        {children}
+                    </ThemeProvider>
+                </ReactQueryProvider>
             </body>
         </html>
     );
