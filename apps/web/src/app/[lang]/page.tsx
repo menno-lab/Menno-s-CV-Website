@@ -9,7 +9,7 @@ export default async function Page({ params: { lang } }: RouteWithChildren) {
 
     return (
         <VStack spacing={6}>
-            <HeroSection translations={t('hero') as unknown as Record<string, string>} />
+            <HeroSection translations={t('hero') as unknown as Record<string, any>} />
             <ProjectsSection />
         </VStack>
     );

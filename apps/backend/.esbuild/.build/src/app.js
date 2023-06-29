@@ -4419,7 +4419,6 @@ import { WebClient } from "@slack/web-api";
 async function sendInternalSlackMessage(blocks, text) {
   const token = process.env.SLACK_INTERNAL_TOKEN;
   const web = new WebClient(token);
-  throw new Error("boo I am an error!");
   return await web.chat.postMessage({
     channel: "contact-submissions",
     blocks,

@@ -8,7 +8,6 @@ import {
     VStack,
     Input,
     Textarea,
-    AbsoluteCenter,
     useToast,
     Alert,
     AlertDescription,
@@ -17,11 +16,15 @@ import {
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { RouterInput, trpc } from '../../../utils/trpc';
-import { Box, Button, Square1, useTheme } from 'ui';
+import { Box, Button, useTheme } from 'ui';
 
 type FormSubmitValues = RouterInput['contact']['submit'];
 
-export function ContactForm() {
+interface ContactFormProps {
+    translations: Record<string, any>;
+}
+
+export function ContactForm({ translations }: ContactFormProps) {
     const { theme } = useTheme();
     const toast = useToast();
     const {
@@ -34,8 +37,8 @@ export function ContactForm() {
     const { mutate, isLoading, error } = trpc.contact.submit.useMutation({
         onSuccess: () => {
             toast({
-                title: 'Message sent',
-                description: 'We will get back to you shortly!',
+                title: translations.success.title,
+                description: translations.success.message,
                 status: 'success',
                 duration: 9000,
                 isClosable: true,
@@ -46,74 +49,71 @@ export function ContactForm() {
     });
 
     return (
-        <>
-            <AbsoluteCenter height='90vh' width='100vw' display='flex' justifyContent='flex-end' alignItems='flex-end' opacity={0.2}>
-                <Square1 size='33vw' color={theme.accent} />
-            </AbsoluteCenter>
-            <Box width='100%'>
-                <form
-                    onSubmit={handleSubmit((values) => {
-                        mutate(values);
-                    })}
-                >
-                    <VStack spacing={8}>
-                        <FormControl isRequired isInvalid={!!errors.email}>
-                            <FormLabel>Email</FormLabel>
-                            <Input
-                                {...register('email', {
-                                    pattern: {
-                                        value: /\S+@\S+\.\S+/,
-                                        message: 'Entered value does not match email format',
-                                    },
-                                })}
-                                autoComplete='off'
-                                placeholder='email'
-                                type='email'
-                                focusBorderColor={theme.accent}
-                                color={theme.text}
-                                backgroundColor={theme.background}
-                            />
-                            <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-                        </FormControl>
-                        <FormControl isRequired isInvalid={!!errors.subject}>
-                            <FormLabel>subject</FormLabel>
-                            <Input
-                                {...register('subject', {
-                                    minLength: { value: 4, message: 'Subject too short' },
-                                })}
-                                autoComplete='off'
-                                placeholder='subject'
-                                focusBorderColor={theme.accent}
-                                color={theme.text}
-                                backgroundColor={theme.background}
-                            />
-                            <FormErrorMessage>{errors.subject?.message}</FormErrorMessage>
-                        </FormControl>
-                        <FormControl isRequired isInvalid={!!errors.message}>
-                            <FormLabel>message</FormLabel>
-                            <Textarea
-                                {...register('message', { minLength: { value: 10, message: 'Message too short' } })}
-                                placeholder='message'
-                                autoComplete='off'
-                                focusBorderColor={theme.accent}
-                                color={theme.text}
-                                backgroundColor={theme.background}
-                            />
-                            <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
-                        </FormControl>
-                        <Button type='submit' variant='primary' width='100%' isLoading={isLoading}>
-                            submit
-                        </Button>
-                        {error && (
-                            <Alert status='error'>
-                                <AlertIcon />
-                                <AlertTitle>Error</AlertTitle>
-                                <AlertDescription>{error.message}</AlertDescription>
-                            </Alert>
-                        )}
-                    </VStack>
-                </form>
-            </Box>
-        </>
+        <Box width='100%' display={{ base: 'flex', md: 'block' }} justifyContent='center'>
+            <form
+                onSubmit={handleSubmit((values) => {
+                    mutate(values);
+                })}
+            >
+                <VStack width={{ base: '80vw', md: '100%' }} spacing={8}>
+                    <FormControl isRequired isInvalid={!!errors.email}>
+                        <FormLabel>{translations.email}</FormLabel>
+                        <Input
+                            {...register('email', {
+                                pattern: {
+                                    value: /\S+@\S+\.\S+/,
+                                    message: translations.formErrors.emailValidation,
+                                },
+                            })}
+                            autoComplete='off'
+                            type='email'
+                            focusBorderColor={theme.accent}
+                            color={theme.text}
+                            backgroundColor={theme.background}
+                            borderColor='gray.400'
+                        />
+                        <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl isRequired isInvalid={!!errors.subject}>
+                        <FormLabel>{translations.subject}</FormLabel>
+                        <Input
+                            {...register('subject', {
+                                minLength: { value: 4, message: translations.formErrors.subjectLenght },
+                            })}
+                            autoComplete='off'
+                            focusBorderColor={theme.accent}
+                            color={theme.text}
+                            backgroundColor={theme.background}
+                            borderColor='gray.400'
+                        />
+                        <FormErrorMessage>{errors.subject?.message}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl isRequired isInvalid={!!errors.message}>
+                        <FormLabel>{translations.message}</FormLabel>
+                        <Textarea
+                            {...register('message', { minLength: { value: 10, message: translations.formErrors.messageLength } })}
+                            autoComplete='off'
+                            resize='vertical'
+                            focusBorderColor={theme.accent}
+                            color={theme.text}
+                            backgroundColor={theme.background}
+                            borderColor='gray.400'
+                            minHeight='200px'
+                        />
+                        <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
+                    </FormControl>
+                    <Button type='submit' variant='primary' width='100%' isLoading={isLoading}>
+                        {translations.submit}
+                    </Button>
+                    {error && (
+                        <Alert status='error'>
+                            <AlertIcon />
+                            <AlertTitle>Error</AlertTitle>
+                            <AlertDescription>{error.message}</AlertDescription>
+                        </Alert>
+                    )}
+                </VStack>
+            </form>
+        </Box>
     );
 }

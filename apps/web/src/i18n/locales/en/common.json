@@ -10,5 +10,21 @@
         "subtitle": "I'm a fullstack developer from the picturesque country of the Netherlands, known for its tulip fields, windmills, and innovative technology. I'm passionate about building beautiful, scalable, and maintainable web applications.",
         "primaryCta": "Contact me",
         "secondaryCta": "View my work"
+    },
+    "contact": {
+        "contactMenno": "Contact Menno",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Submit",
+        "formErrors": {
+            "emailValidation": "Please enter a valid email address",
+            "subjectLenght": "Subject too short",
+            "messageLength": "Message too short"
+        },
+        "success": {
+            "title": "Message sent",
+            "message": "Thank you for your message! I will get back to you as soon as possible."
+        }
     }
 }

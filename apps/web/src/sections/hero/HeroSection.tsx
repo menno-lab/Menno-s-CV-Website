@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture } from 'ui';
 import { ClearHashAnchor } from './clearHashAnchor';
+import { TFunction } from 'i18next';
 
 interface HeroSectionProps {
     translations: Record<string, string>;
