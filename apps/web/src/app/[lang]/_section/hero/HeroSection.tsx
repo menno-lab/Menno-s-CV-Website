@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container } from 'ui';
 import ProfileImage from '../../../../../public/images/profile.png';
+import { ClearHashAnchor } from './clearHashAnchor';
 
 export function HeroSection() {
     return (
@@ -40,6 +41,7 @@ export function HeroSection() {
                                 >
                                     Get started
                                 </Button>
+                                <ClearHashAnchor />
                                 <Button size={'lg'} fontWeight={'normal'} px={6} variant='secondary'>
                                     How It Works
                                 </Button>

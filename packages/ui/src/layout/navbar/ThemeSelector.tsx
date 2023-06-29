@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ColorModeProvider';
 import { COLOR_SCHEME_NAMES } from '../../utils/colorSchemes';
 import { makeColorDarker, makeColorBrighter } from '../../utils/modifyColor';
 
-interface ThemeSelectorProps {
+export interface ThemeSelectorProps {
     themeCopy: string;
 }
 

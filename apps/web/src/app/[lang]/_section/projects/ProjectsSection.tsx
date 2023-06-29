@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageSection } from '../PageSection';
 import { Text } from 'ui';
+import { PageSection } from '../components/PageSection';
 
 export function ProjectsSection() {
     return (

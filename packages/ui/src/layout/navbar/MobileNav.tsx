@@ -1,7 +1,7 @@
 import { Link } from '@chakra-ui/next-js';
 import { Flex, Stack, useColorModeValue, Text } from '@chakra-ui/react';
-import { NavItem } from './Navbar';
 import { useTheme } from '../../context/ColorModeProvider';
+import { NavItem } from '.';
 
 interface MobileNavProps {
     navItems: NavItem[];

@@ -11,10 +11,8 @@ interface ColorModeState {
 
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
-const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: prefersDarkMode ? 'dark' : 'light' });
+    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: 'light' });
 
     function changeTheme(newTheme: ColorTheme) {
         setThemeConfig(newTheme);
@@ -28,6 +26,12 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
         },
         components: {
             Button: {
+                baseStyle: {
+                    _focus: {
+                        bg: theme.accent,
+                        color: '#FFFFFF',
+                    },
+                },
                 variants: {
                     primary: {
                         bg: theme.primary,

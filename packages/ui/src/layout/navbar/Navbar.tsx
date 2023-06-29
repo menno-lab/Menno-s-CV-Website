@@ -1,14 +1,8 @@
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
-import { Link } from '@chakra-ui/next-js';
-import { Box, Text, useDisclosure, Flex, IconButton, useBreakpointValue, Stack, Button, Collapse, Container } from '@chakra-ui/react';
+import { Box, Text, useDisclosure, Flex, IconButton, useBreakpointValue, Stack, Button, Collapse, Container, Link } from '@chakra-ui/react';
 import { MobileNav } from './MobileNav';
 import { ThemeSelector } from './ThemeSelector';
 import { useTheme } from '../../context/ColorModeProvider';
-
-export interface NavItem {
-    label: string;
-    href: string;
-}
 
 interface NavbarProps {
     navItems: NavItem[];
@@ -17,6 +11,10 @@ interface NavbarProps {
 export function Navbar({ navItems }: NavbarProps) {
     const { isOpen, onToggle } = useDisclosure();
     const { theme } = useTheme();
+
+    if (!navItems.length) {
+        return null;
+    }
 
     return (
         <Box bg={theme.background} position='fixed' width='100vw' zIndex={2} top={0} borderBottom={1} borderStyle={'solid'}>
