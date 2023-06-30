@@ -1,5 +1,5 @@
 import { useTheme } from '../../context/ThemeProvider';
-import { COLOR_SCHEME_NAMES } from '../../utils/colorSchemes';
+import { ColorMode, THEME_NAMES } from '../../types';
 import { ThemeSelectorProps } from './ThemeSelector';
 import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Button, Divider, VStack, Text } from '@chakra-ui/react';
 
@@ -14,7 +14,7 @@ export function ThemeSelectorMobile({ themeCopy }: ThemeSelectorProps) {
                 <AccordionPanel pb={4}>
                     <VStack>
                         <Divider />
-                        {COLOR_SCHEME_NAMES.map((themeName) => (
+                        {THEME_NAMES.map((themeName) => (
                             <Button
                                 onClick={() => changeTheme({ themeName, mode: themeConfig.mode })}
                                 key={themeName}

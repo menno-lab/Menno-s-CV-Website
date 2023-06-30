@@ -1,4 +1,6 @@
-export const COLOR_SCHEMES: Record<string, ThemeItem> = {
+import { BaseThemeConfig } from '../types';
+
+export const COLOR_SCHEMES: BaseThemeConfig = {
     space: {
         light: {
             background: '#DAFFFB',
@@ -64,5 +66,3 @@ export const COLOR_SCHEMES: Record<string, ThemeItem> = {
         },
     },
 };
-
-export const COLOR_SCHEME_NAMES = Object.keys(COLOR_SCHEMES);

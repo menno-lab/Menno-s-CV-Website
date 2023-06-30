@@ -2,23 +2,35 @@ import { CacheProvider } from '@chakra-ui/next-js';
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { COLOR_SCHEMES } from '../utils/colorSchemes';
+import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
+import { ThemeConfig, ThemeParams } from '../types';
 
 interface ColorModeState {
     theme: ThemeParams;
-    themeConfig: ColorTheme;
-    changeTheme: (newTheme: ColorTheme) => void;
+    themeConfig: ThemeConfig;
+    changeTheme: (newTheme: ThemeConfig) => void;
 }
 
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ColorTheme>({ themeName: 'space', mode: 'dark' });
+    const [themeConfig, setThemeConfig] = useState<ThemeConfig>({ themeName: 'space', mode: 'light' });
 
-    function changeTheme(newTheme: ColorTheme) {
+    function changeTheme(newTheme: ThemeConfig) {
         setThemeConfig(newTheme);
     }
 
-    const theme: ThemeParams = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
+    const baseTheme = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
+
+    const isDarkMode = themeConfig.mode === 'dark';
+    const backgroundSecondary = isDarkMode ? makeColorBrighter(baseTheme.background, 0.2) : makeColorDarker(baseTheme.background, 0.2);
+    const hover = isDarkMode ? makeColorBrighter(baseTheme.background, 0.1) : makeColorDarker(baseTheme.background, 0.1);
+
+    const theme: ThemeParams = {
+        ...baseTheme,
+        backgroundSecondary,
+        hover,
+    };
 
     const chakraTheme = extendTheme({
         semanticTokens: {
@@ -79,13 +91,18 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
                     color: 'black',
                 },
             },
+            Divider: {
+                baseStyle: {
+                    borderColor: isDarkMode ? 'gray.200' : 'gray.400',
+                },
+            },
         },
     });
 
     return (
         <CacheProvider>
             <ColorThemeContext.Provider value={{ theme, changeTheme, themeConfig }}>
-                <ChakraProvider theme={chakraTheme}>
+                <ChakraProvider theme={chakraTheme} resetCSS>
                     <Box bg={theme.background} width='100vw'>
                         {children}
                     </Box>

@@ -1,8 +1,7 @@
 import { Menu, MenuButton, Button, MenuList, Text, Kbd, MenuOptionGroup, MenuItemOption, Flex, MenuDivider } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useTheme } from '../../context/ThemeProvider';
-import { COLOR_SCHEME_NAMES } from '../../utils/colorSchemes';
-import { makeColorDarker, makeColorBrighter } from '../../utils/modifyColor';
+import { ColorMode, THEME_NAMES, ThemeName } from '../../types';
 
 export interface ThemeSelectorProps {
     themeCopy: string;
@@ -10,30 +9,26 @@ export interface ThemeSelectorProps {
 
 export function ThemeSelector({ themeCopy }: ThemeSelectorProps) {
     const { themeConfig, changeTheme, theme } = useTheme();
-    const isDarkMode = themeConfig.mode === 'dark';
-
-    const bg = isDarkMode ? makeColorBrighter(theme.background, 0.1) : makeColorDarker(theme.background, 0.1);
-    const hover = isDarkMode ? makeColorBrighter(theme.background, 0.2) : makeColorDarker(theme.background, 0.2);
 
     return (
         <Menu>
             <MenuButton as={Button} variant='link' rightIcon={<ChevronDownIcon />} color={theme.text} _active={{ color: 'gray' }}>
-                {themeCopy}
+                <Text>{themeCopy}</Text>
             </MenuButton>
-            <MenuList bg={bg} borderColor={hover}>
+            <MenuList bg={theme.backgroundSecondary} borderColor={theme.hover}>
                 <MenuOptionGroup
                     type='radio'
                     value={themeConfig.themeName}
-                    onChange={(value) => changeTheme({ themeName: value as string, mode: themeConfig.mode })}
+                    onChange={(value) => changeTheme({ themeName: value as ThemeName, mode: themeConfig.mode })}
                 >
-                    {COLOR_SCHEME_NAMES.map((colorScheme) => (
+                    {THEME_NAMES.map((colorScheme) => (
                         <MenuItemOption
                             key={colorScheme}
                             value={colorScheme}
-                            bg={bg}
-                            _hover={{ bg: hover }}
-                            _focus={{ bg: hover }}
+                            _hover={{ bg: theme.hover }}
+                            _focus={{ bg: theme.hover }}
                             color={theme.text}
+                            bg={theme.backgroundSecondary}
                         >
                             <Flex justifyContent='space-between'>
                                 <Text textTransform='capitalize'>{colorScheme}</Text>
@@ -49,7 +44,14 @@ export function ThemeSelector({ themeCopy }: ThemeSelectorProps) {
                     onChange={(mode) => changeTheme({ themeName: themeConfig.themeName, mode: mode as ColorMode })}
                 >
                     {['dark', 'light'].map((mode) => (
-                        <MenuItemOption key={mode} value={mode} bg={bg} _hover={{ bg: hover }} _focus={{ bg: hover }} color={theme.text}>
+                        <MenuItemOption
+                            key={mode}
+                            value={mode}
+                            _hover={{ bg: theme.hover }}
+                            _focus={{ bg: theme.hover }}
+                            color={theme.text}
+                            bg={theme.backgroundSecondary}
+                        >
                             <Flex justifyContent='space-between'>
                                 <Text textTransform='capitalize'>{mode}</Text>
                                 <Kbd>{mode[0]}</Kbd>
