@@ -1,7 +1,7 @@
 import React from 'react';
-import { Ticker } from '../ticker';
 import { useTechStackLogos } from '../../hooks/useTechStackLogos';
 import { Box, VStack } from '@chakra-ui/react';
+import { Ticker } from '../../components';
 
 function splitArrayInHalf(arr: any[]) {
     const midIndex = Math.ceil(arr.length / 2);

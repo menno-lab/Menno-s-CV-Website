@@ -15,7 +15,7 @@ export function ScrollToView({ hash, children }: PropsWithChildren<ScrollToViewP
         }
         const isActive = window.location.hash === hash;
         if (isActive) {
-            ref.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+            ref.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
 

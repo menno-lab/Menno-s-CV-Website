@@ -8,7 +8,7 @@ interface PageSectionProps {
 
 export function PageSection({ title, children }: PropsWithChildren<PageSectionProps>) {
     return (
-        <Container as='section' px={4} maxW={'7xl'} paddingTop={'80px'} height='100vh'>
+        <Container as='section' px={4} maxW={'7xl'} background='red'>
             <ScrollToView hash='#projects'>
                 <Stack>
                     <Heading as='h2'>{title}</Heading>

@@ -86,7 +86,7 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
         <CacheProvider>
             <ColorThemeContext.Provider value={{ theme, changeTheme, themeConfig }}>
                 <ChakraProvider theme={chakraTheme}>
-                    <Box bg={theme.background} zIndex={-5} minHeight={'100vh'}>
+                    <Box bg={theme.background} width='100vw'>
                         {children}
                     </Box>
                 </ChakraProvider>

@@ -11,7 +11,7 @@ export function Button({ children, variant, ...props }: PropsWithChildren<Custom
     const { theme, themeConfig } = useTheme();
     const isDarkMode = themeConfig.mode === 'dark';
     const bg = isDarkMode ? makeColorBrighter(theme[variant], 0.1) : makeColorDarker(theme[variant], 0.1);
-    const hover = isDarkMode ? makeColorBrighter(theme[variant], 0.2) : makeColorDarker(theme[variant], 0.2);
+    const hover = isDarkMode ? makeColorBrighter(theme[variant], 0.2) : makeColorDarker(theme[variant], 0.4);
 
     return (
         <ChakraButton {...props} bg={bg} _hover={{ bg: hover }} color={'#FFFFFF'} boxShadow='md'>
@@ -20,6 +20,6 @@ export function Button({ children, variant, ...props }: PropsWithChildren<Custom
     );
 }
 
-export function IconButton({ children, ...props }: PropsWithChildren<IconButtonProps>) {
-    return <ChakraIconButton {...props}>{children}</ChakraIconButton>;
+export function IconButton({ ...props }: IconButtonProps) {
+    return <ChakraIconButton {...props} />;
 }

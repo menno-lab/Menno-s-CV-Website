@@ -1,3 +1,4 @@
+export * from './animations';
 export * from './blob';
 export * from './button';
 export * from './form';

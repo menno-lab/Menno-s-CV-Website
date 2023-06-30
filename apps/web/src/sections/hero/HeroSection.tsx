@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture } from 'ui';
+import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture, Link } from 'ui';
 import { ClearHashAnchor } from './clearHashAnchor';
 import { TFunction } from 'i18next';
 
@@ -27,13 +27,15 @@ export function HeroSection({ translations }: HeroSectionProps) {
                             </Heading>
                             <Text>{subtitle}</Text>
                             <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
-                                <Button size={'lg'} fontWeight={'normal'} px={6} _hover={{ bg: 'red.500' }} variant='secondary'>
+                                <Button size={'lg'} fontWeight={'normal'} px={6} _hover={{ bg: 'red.500' }} variant='primary'>
                                     {primaryCta}
                                 </Button>
                                 <ClearHashAnchor />
-                                <Button size={'lg'} fontWeight={'normal'} px={6} variant='accent'>
-                                    {secondaryCta}
-                                </Button>
+                                <Link href='#projects'>
+                                    <Button size={'lg'} fontWeight={'normal'} px={6} variant='secondary'>
+                                        {secondaryCta}
+                                    </Button>
+                                </Link>
                             </Stack>
                         </Stack>
                         <Flex flex={1} justifyContent={'center'} alignItems={'center'} w={'full'}>
