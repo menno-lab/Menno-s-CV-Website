@@ -4,7 +4,7 @@ import { GITHUB_PROFILE_URL, GITHUB_REPO_URL, LINKEDIN_PROFILE_URL } from '../..
 
 export function Footer() {
     return (
-        <Box bg='background' width='100vw' borderTop='1px' borderColor='accent'>
+        <Box bg='background' width='100vw' borderTop='1px' borderColor='gray.600'>
             <Container maxW={'7xl'} px={4}>
                 <Stack
                     py={4}
