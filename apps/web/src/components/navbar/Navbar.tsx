@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Button, Container, Flex, ThemeSelector, Stack, Text, Link as ChakraLink, NavbarController } from 'ui';
+import { Box, Button, Container, Flex, ThemeSelector, Stack, Text, Link as ChakraLink } from 'ui';
 import { MobileNav } from './MobileNav';
 import Link from 'next/link';
 import { NavbarTranslations } from './schema';
+import { NavbarController } from './NavbarController';
 
 interface NavbarProps {
     translations: NavbarTranslations;

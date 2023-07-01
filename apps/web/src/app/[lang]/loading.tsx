@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function loading() {
-    return <div>helloo i am your loading page!</div>;
+    return <div style={{ width: '100vh', height: '100vh', backgroundColor: 'red' }}>helloo i am your loading page!</div>;
 }

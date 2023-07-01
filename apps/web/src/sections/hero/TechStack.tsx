@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTechStackLogos } from '../hooks/useTechStackLogos';
 import { Ticker, VStack, Box } from 'ui';
 
@@ -12,8 +12,20 @@ function splitArrayInHalf(arr: any[]) {
 }
 
 export function TechStack() {
+    const [isReady, setIsReady] = useState(false);
     const logos = useTechStackLogos();
     const [firstHalf, secondHalf] = splitArrayInHalf(logos.sort((a, b) => a.name.localeCompare(b.name)));
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setIsReady(true);
+        }
+    }, []);
+
+    if (!isReady) {
+        return null;
+    }
+
     return (
         <VStack spacing={6}>
             <Ticker direction='left'>
