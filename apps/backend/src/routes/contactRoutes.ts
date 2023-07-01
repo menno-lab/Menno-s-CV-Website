@@ -17,4 +17,3 @@ export const contactRoutes = router({
         return { success: true };
     }),
 });
-// tests
