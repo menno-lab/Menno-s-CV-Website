@@ -5,7 +5,7 @@ import { publicProcedure, router } from '../trpc';
 
 export const contactRoutes = router({
     submit: publicProcedure.input(contactSchema).mutation(async ({ input }) => {
-        const subject = 'New contact request';
+        const subject = 'New contact submission';
         const blocks = createBlocks(subject, input);
         const res = await sendInternalSlackMessage(blocks, subject);
         if (res.ok) {
