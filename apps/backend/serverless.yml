@@ -13,8 +13,9 @@ functions:
     http-api:
         handler: dist/server.handler
         events:
-            - httpApi: '*'
-                cors: true
+            - httpApi:
+                  path: '*'
+                  cors: true
 
 plugins:
     - serverless-offline
