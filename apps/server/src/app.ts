@@ -2,7 +2,6 @@ import { inferAsyncReturnType, initTRPC } from '@trpc/server';
 import { awsLambdaRequestHandler } from '@trpc/server/adapters/aws-lambda';
 import type { CreateAWSLambdaContextOptions } from '@trpc/server/adapters/aws-lambda';
 import type { APIGatewayProxyEvent } from 'aws-lambda';
-import { z } from 'zod';
 
 function createContext({ event, context }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
     return {
