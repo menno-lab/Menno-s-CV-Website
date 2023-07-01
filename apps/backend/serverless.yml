@@ -1,4 +1,4 @@
-service: trpc-hello-world
+service: trpc-menno-cv
 frameworkVersion: '3'
 
 provider:
