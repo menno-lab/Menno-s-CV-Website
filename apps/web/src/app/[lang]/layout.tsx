@@ -1,3 +1,4 @@
+import '../../app.css';
 import { dir } from 'i18next';
 import { languages } from '../../i18n/settings';
 import { ThemeProvider } from 'ui';

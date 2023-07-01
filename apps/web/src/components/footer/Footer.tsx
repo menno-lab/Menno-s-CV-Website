@@ -16,6 +16,9 @@ export function Footer() {
                     <Heading size='md' color='accent'>
                         MJ
                     </Heading>
+                    <a href='https://storyset.com/' target='_blank'>
+                        Illustrations by Storyset
+                    </a>
                     <Text>© 2023 Menno Jager</Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
                         <Stack direction='row' spacing={6}>

@@ -1,7 +1,8 @@
+'use client';
+
 import React from 'react';
-import { useTechStackLogos } from '../../hooks/useTechStackLogos';
-import { Box, VStack } from '@chakra-ui/react';
-import { Ticker } from '../../components';
+import { useTechStackLogos } from '../hooks/useTechStackLogos';
+import { Ticker, VStack, Box } from 'ui';
 
 function splitArrayInHalf(arr: any[]) {
     const midIndex = Math.ceil(arr.length / 2);

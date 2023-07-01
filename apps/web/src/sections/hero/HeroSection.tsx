@@ -1,7 +1,8 @@
 import React from 'react';
-import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture, Link, SlideInFade } from 'ui';
+import { Stack, Heading, Button, Flex, Box, Text, Container, ProfilePicture, Link, SlideInFade } from 'ui';
 import { ClearHashAnchor } from './clearHashAnchor';
 import { HeroTranslations } from './schema';
+import { TechStack } from './TechStack';
 
 interface HeroSectionProps {
     translations: HeroTranslations;

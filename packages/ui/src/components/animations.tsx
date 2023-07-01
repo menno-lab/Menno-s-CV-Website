@@ -63,11 +63,3 @@ export function NavbarController({ children }: PropsWithChildren<{}>) {
         </motion.div>
     );
 }
-
-export function CardController({ children }: PropsWithChildren) {
-    return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            {children}
-        </motion.div>
-    );
-}

@@ -34,16 +34,19 @@
         "subtitle": "Here are some of the projects I've worked on. Click on a project to learn more about it.",
         "items": [
             {
-                "name": "Textpanda",
+                "key": "textpanda",
+                "title": "Textpanda",
                 "description": "Textpanda is an AI communication toolkit, designed to help businesses revolutionize customer experiences",
                 "href": "https://textpanda.io/"
             },
             {
-                "name": "Infinitale",
+                "key": "infinitale",
+                "title": "Infinitale",
                 "description": "A web application that allows parents to build a unique story for their children, by combining different story elements using AI"
             },
             {
-                "name": "Storyscape",
+                "key": "storyscape",
+                "title": "Storyscape",
                 "description": "A mobile application that let's users play a text based interactive story game, where they can make choices that impact the story"
             }
         ]

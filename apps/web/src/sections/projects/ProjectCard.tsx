@@ -1,28 +1,33 @@
-'use client';
-
-import { CardBody, Divider, CardFooter, Image, Stack, Heading, ButtonGroup, Button } from '@chakra-ui/react';
+import { CardBody, Stack, Heading } from '@chakra-ui/react';
 import React from 'react';
-import { Card, CardController, Text } from 'ui';
+import { Card, Text, Box } from 'ui';
+import { ProjectsTranslations } from './schema';
+import { useProjectIllustrations } from '../hooks/useProjectIllustrations';
+import { motion } from 'framer-motion';
 
-export function ProjectCard() {
+interface ProjectCardProps {
+    item: ProjectsTranslations['items'][number];
+}
+
+export function ProjectCard({ item }: ProjectCardProps) {
+    const illustrationMap = useProjectIllustrations();
     return (
-        <CardController>
-            <Card maxW='sm' boxShadow='2xl'>
+        <motion.div
+            whileHover={{
+                scale: 1.1,
+            }}
+        >
+            <Card maxW='sm' boxShadow='2xl' cursor='pointer' size='sm' pb={4}>
                 <CardBody>
-                    <Image
-                        src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                        alt='Green double couch with wooden legs'
-                        borderRadius='lg'
-                    />
+                    <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                        <Box boxSize={'xs'}>{illustrationMap[item.key]}</Box>
+                    </Box>
                     <Stack mt='6' spacing='3'>
-                        <Heading size='md'>Living room Sofa</Heading>
-                        <Text>
-                            This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who
-                            love a chic design with a sprinkle of vintage design.
-                        </Text>
+                        <Heading size='md'>{item.title}</Heading>
+                        <Text>{item.description}</Text>
                     </Stack>
                 </CardBody>
             </Card>
-        </CardController>
+        </motion.div>
     );
 }

@@ -1,17 +1,6 @@
-import { useTheme } from '../context/ThemeProvider';
-import { Aws } from '../illustrations/technologies/Aws';
-import { Docker } from '../illustrations/technologies/Docker';
-import { Javascript } from '../illustrations/technologies/Javascript';
-import { MongoDb } from '../illustrations/technologies/MongoDb';
-import { NextJs } from '../illustrations/technologies/NextJs';
-import { NodeJs } from '../illustrations/technologies/NodeJs';
-import { OpenAi } from '../illustrations/technologies/OpenAi';
-import { Python } from '../illustrations/technologies/Python';
-import { React } from '../illustrations/technologies/React';
-import { Redis } from '../illustrations/technologies/Redis';
-import { Trpc } from '../illustrations/technologies/Trpc';
-import { TypeScript } from '../illustrations/technologies/TypeScript';
-import { Vite } from '../illustrations/technologies/Vite';
+'use client';
+
+import { useTheme, Redis, Javascript, Vite, Python, Trpc, OpenAi, NodeJs, Docker, TypeScript, Aws, NextJs, MongoDb, React } from 'ui';
 
 export function useTechStackLogos() {
     const { theme } = useTheme();
