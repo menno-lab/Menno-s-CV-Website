@@ -42,7 +42,12 @@ export function Navbar({ translations }: NavbarProps) {
                         </Flex>
                         <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
                             <Link href='/contact'>
-                                <Button variant='accent' display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={600}>
+                                <Button
+                                    colorScheme='primary'
+                                    display={{ base: 'none', md: 'inline-flex' }}
+                                    fontSize={'sm'}
+                                    fontWeight={600}
+                                >
                                     Contact
                                 </Button>
                             </Link>

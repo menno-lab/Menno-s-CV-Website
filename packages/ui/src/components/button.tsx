@@ -4,14 +4,14 @@ import { useTheme } from '../context/ThemeProvider';
 import { SemanticColor } from '../types';
 
 interface CustomButtonProps extends ButtonProps {
-    variant: SemanticColor;
+    colorScheme: SemanticColor;
 }
 
-export function Button({ children, variant, ...props }: PropsWithChildren<CustomButtonProps>) {
-    const { theme, themeConfig } = useTheme();
-
+export function Button({ children, variant, colorScheme, ...props }: PropsWithChildren<CustomButtonProps>) {
+    const { theme } = useTheme();
+    const color = theme[colorScheme];
     return (
-        <ChakraButton {...props} bg={theme[variant]} color={'#FFFFFF'} boxShadow='md'>
+        <ChakraButton {...props} color={'#FFFFFF'} boxShadow='md' bg={color} _hover={{ opacity: 0.8 }}>
             {children}
         </ChakraButton>
     );

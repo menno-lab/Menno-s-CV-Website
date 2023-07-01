@@ -12,19 +12,8 @@ function splitArrayInHalf(arr: any[]) {
 }
 
 export function TechStack() {
-    const [isReady, setIsReady] = useState(false);
     const logos = useTechStackLogos();
     const [firstHalf, secondHalf] = splitArrayInHalf(logos.sort((a, b) => a.name.localeCompare(b.name)));
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setIsReady(true);
-        }
-    }, []);
-
-    if (!isReady) {
-        return null;
-    }
 
     return (
         <VStack spacing={6}>

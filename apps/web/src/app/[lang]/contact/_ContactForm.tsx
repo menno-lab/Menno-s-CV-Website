@@ -103,7 +103,7 @@ export function ContactForm({ translations }: ContactFormProps) {
                         />
                         <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
                     </FormControl>
-                    <Button type='submit' variant='primary' width='100%' isLoading={isLoading}>
+                    <Button type='submit' colorScheme='primary' width='100%' isLoading={isLoading}>
                         {translations.submit}
                     </Button>
                     {error && (

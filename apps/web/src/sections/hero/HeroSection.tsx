@@ -28,12 +28,12 @@ export function HeroSection({ translations }: HeroSectionProps) {
                             </Heading>
                             <Text>{subtitle}</Text>
                             <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
-                                <Button size={'lg'} fontWeight={'normal'} px={6} _hover={{ bg: 'red.500' }} variant='primary' width='100%'>
+                                <Button colorScheme='primary' size={'lg'} fontWeight={'normal'} px={6} width='100%'>
                                     {primaryCta}
                                 </Button>
                                 <ClearHashAnchor />
                                 <Link href='#projects'>
-                                    <Button size={'lg'} fontWeight={'normal'} px={6} variant='secondary' width='100%'>
+                                    <Button colorScheme='secondary' size={'lg'} fontWeight={'normal'} px={6} width='100%'>
                                         {secondaryCta}
                                     </Button>
                                 </Link>

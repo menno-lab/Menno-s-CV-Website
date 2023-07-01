@@ -1,9 +1,11 @@
 import { CacheProvider } from '@chakra-ui/next-js';
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { PropsWithChildren, createContext, useContext, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useEffect, useState } from 'react';
 import { COLOR_SCHEMES } from '../utils/colorSchemes';
 import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
 import { ThemeConfig, ThemeParams } from '../types';
+import { getThemeConfig } from '../utils/getThemeConfig';
+import { LoadingScreen } from '../components';
 
 interface ColorModeState {
     theme: ThemeParams;
@@ -14,14 +16,24 @@ interface ColorModeState {
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
-    const [themeConfig, setThemeConfig] = useState<ThemeConfig>({ themeName: 'space', mode: 'light' });
+    const [themeConfig, setThemeConfig] = useState<ThemeConfig | null>(null);
 
     function changeTheme(newTheme: ThemeConfig) {
         setThemeConfig(newTheme);
     }
 
-    const baseTheme = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setThemeConfig({ themeName: 'neon', mode: prefersDarkMode ? 'dark' : 'light' });
+        }
+    }, []);
 
+    if (!themeConfig) {
+        return <LoadingScreen />;
+    }
+
+    const baseTheme = COLOR_SCHEMES[themeConfig.themeName][themeConfig.mode];
     const isDarkMode = themeConfig.mode === 'dark';
     const backgroundSecondary = isDarkMode ? makeColorBrighter(baseTheme.background, 0.2) : makeColorDarker(baseTheme.background, 0.2);
     const hover = isDarkMode ? makeColorBrighter(baseTheme.background, 0.1) : makeColorDarker(baseTheme.background, 0.1);
@@ -32,72 +44,7 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
         hover,
     };
 
-    const chakraTheme = extendTheme({
-        semanticTokens: {
-            colors: theme,
-        },
-        styles: {
-            global: {
-                body: {
-                    overflowX: 'hidden',
-                },
-            },
-        },
-        components: {
-            Button: {
-                baseStyle: {
-                    _focus: {
-                        color: '#FFFFFF',
-                    },
-                },
-                variants: {
-                    primary: {
-                        bg: theme.primary,
-                        color: '#FFFFFF',
-                    },
-                    secondary: {
-                        bg: theme.secondary,
-                        color: '#FFFFFF',
-                    },
-                },
-            },
-            Text: {
-                baseStyle: {
-                    color: theme.text,
-                },
-            },
-            Icon: {
-                baseStyle: {
-                    color: theme.text,
-                },
-            },
-            Link: {
-                baseStyle: {
-                    color: theme.text,
-                },
-            },
-            Heading: {
-                baseStyle: {
-                    color: theme.text,
-                },
-            },
-            FormLabel: {
-                baseStyle: {
-                    color: theme.text,
-                },
-            },
-            Kbd: {
-                baseStyle: {
-                    color: 'black',
-                },
-            },
-            Divider: {
-                baseStyle: {
-                    borderColor: isDarkMode ? 'gray.200' : 'gray.400',
-                },
-            },
-        },
-    });
+    const chakraTheme = extendTheme(getThemeConfig(theme, isDarkMode));
 
     return (
         <CacheProvider>

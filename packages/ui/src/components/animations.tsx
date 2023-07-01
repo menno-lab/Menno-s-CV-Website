@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { PropsWithChildren, useEffect, useState } from 'react';
 
@@ -25,4 +25,8 @@ export function Ticker({ direction, children }: PropsWithChildren<TickerProps>) 
             </motion.div>
         </Box>
     );
+}
+
+export function LoadingScreen() {
+    return <div>Loading...</div>;
 }

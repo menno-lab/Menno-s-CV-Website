@@ -17,7 +17,7 @@ export function HeroBottomSection({ translations }: HeroBottomSectionProps) {
                     </Heading>
                     <Box width='md'>
                         <Link href='/contact'>
-                            <Button variant='accent' width='100%'>
+                            <Button colorScheme='accent' width='100%'>
                                 {translations.cta}
                             </Button>
                         </Link>
