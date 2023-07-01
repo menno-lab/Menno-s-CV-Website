@@ -15,12 +15,6 @@ functions:
         handler: src/app.handler
         events:
             - httpApi: '*'
-    rest-api:
-        handler: src/app.handler
-        events:
-            - http:
-                  path: /{proxy+}
-                  method: any
 
 plugins:
     - serverless-esbuild

@@ -1,29 +1,32 @@
-name: Deploy master branch
+name: Deploy to AWS Lambda
 
 on:
     push:
-        branches: [main]
-        paths:
-            - apps/backend/**
+        branches:
+            - main
+
 jobs:
     deploy:
-        name: deploy
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [18.x]
+
         steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
+            - name: Check out code
+              uses: actions/checkout@v2
+
+            - name: Use Node.js
+              uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node-version }}
-            - run: npm ci
-            - name: serverless deploy
-              uses: serverless/github-action@v3.2
-              with:
-                  args: -c "serverless plugin install --name <plugin-name> && serverless deploy"
-                  entrypoint: /bin/sh
+                  node-version: 16
+
+            - name: Install pnpm
+              run: npm install -g pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Deploy to AWS Lambda
+              working-directory: apps/backend
+              run: npx serverless deploy --stage production
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
