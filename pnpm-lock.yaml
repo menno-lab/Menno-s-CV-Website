@@ -44,6 +44,9 @@ importers:
       serverless:
         specifier: ^3.18.1
         version: 3.18.1
+      serverless-dotenv-plugin:
+        specifier: ^6.0.0
+        version: 6.0.0(serverless@3.18.1)
       serverless-esbuild:
         specifier: ^1.39.0
         version: 1.39.0(esbuild@0.17.19)
@@ -4453,6 +4456,11 @@ packages:
       no-case: 2.3.2
     dev: true
 
+  /dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: true
+
   /dotenv-expand@5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
     dev: true
@@ -4460,6 +4468,11 @@ packages:
   /dotenv@10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /duration@0.2.2:
@@ -7600,6 +7613,17 @@ packages:
     dependencies:
       no-case: 2.3.2
       upper-case-first: 1.1.2
+    dev: true
+
+  /serverless-dotenv-plugin@6.0.0(serverless@3.18.1):
+    resolution: {integrity: sha512-8tLVNwHfDO0sBz6+m+DLTZquRk0AZq9rzqk3kphm1iIWKfan9R7RKt4hdq3eQ0kmDoqzudjPYBEXAJ5bUNKeGQ==}
+    peerDependencies:
+      serverless: 1 || 2 || pre-3 || 3
+    dependencies:
+      chalk: 4.1.2
+      dotenv: 16.3.1
+      dotenv-expand: 10.0.0
+      serverless: 3.18.1
     dev: true
 
   /serverless-esbuild@1.39.0(esbuild@0.17.19):
