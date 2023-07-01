@@ -49,6 +49,9 @@ export function ContactForm({ translations }: ContactFormProps) {
         },
     });
 
+    const query = trpc.contact.test.useQuery();
+    console.log(query);
+
     return (
         <Box width='100%' display={{ base: 'flex', md: 'block' }} justifyContent='center'>
             <form

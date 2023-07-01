@@ -4,7 +4,7 @@ import type { CreateAWSLambdaContextOptions } from '@trpc/server/adapters/aws-la
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { contactRoutes } from './routes/contactRoutes';
 
-function createContext({ event, context }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
+function createContext({ event }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
     return {
         event: event,
         apiVersion: (event as { version?: string }).version ?? '1.0',
@@ -32,6 +32,7 @@ export const handler = awsLambdaRequestHandler({
     createContext,
     responseMeta() {
         return {
+            statusCode: 200,
             headers: {
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Allow-Origin': '*',
