@@ -32,7 +32,7 @@ export const handler = awsLambdaRequestHandler({
     createContext,
     responseMeta() {
         return {
-            statusCode: 200,
+            status: 200,
             headers: {
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Allow-Origin': '*',
