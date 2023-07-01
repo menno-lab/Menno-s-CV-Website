@@ -20,8 +20,8 @@ jobs:
 
             - name: serverless deploy
               uses: serverless/github-action@v3.2
-              working-directory: apps/backend
               with:
+                  working-directory: apps/backend
                   args: -c "serverless plugin install --name serverless-esbuild && serverless deploy"
                   entrypoint: /bin/sh
               env:
