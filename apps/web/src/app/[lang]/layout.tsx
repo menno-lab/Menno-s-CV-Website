@@ -20,6 +20,7 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({ children, params: { lang } }: RouteWithChildren) {
     const { t } = await useTranslation(lang);
+
     return (
         <html lang={lang} dir={dir(lang)}>
             <body>

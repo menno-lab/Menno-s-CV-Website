@@ -15,6 +15,7 @@ functions:
         events:
             - httpApi:
                   path: '*'
+                  method: '*'
                   cors: true
 
 plugins:
