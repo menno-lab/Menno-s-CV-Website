@@ -3,6 +3,7 @@ import { Flex, Heading, SlideInFade, Square1, VStack, AbsoluteCenter } from 'ui'
 import { ContactForm } from './_ContactForm';
 import { RouteWithChildren } from '../../../utils/types';
 import { useTranslation } from '../../../i18n';
+import { contactTranslationsSchema } from './schema';
 
 export default async function page({ params: { lang } }: RouteWithChildren) {
     const { t } = await useTranslation(lang);
@@ -12,11 +13,11 @@ export default async function page({ params: { lang } }: RouteWithChildren) {
                 <VStack spacing={8}>
                     <SlideInFade from={'right'}>
                         <Heading as='h2' size='2xl' textAlign='center'>
-                            {t('contact.contactMenno')}
+                            {t('contact.title')}
                         </Heading>
                     </SlideInFade>
                     <SlideInFade from={'left'}>
-                        <ContactForm translations={t('contact') as unknown as Record<string, string>} />
+                        <ContactForm translations={contactTranslationsSchema.parse(t('contact'))} />
                     </SlideInFade>
                 </VStack>
             </Flex>

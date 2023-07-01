@@ -17,14 +17,14 @@ export function TechStack() {
         <VStack spacing={6}>
             <Ticker direction='left'>
                 {firstHalf.map(({ logo }, index) => (
-                    <Box key={index} height={'40px'} px={6}>
+                    <Box key={index} height={'32px'} px={6}>
                         {logo}
                     </Box>
                 ))}
             </Ticker>
             <Ticker direction='right'>
                 {secondHalf.map(({ logo }, index) => (
-                    <Box key={index} height={'40px'} px={6}>
+                    <Box key={index} height={'32px'} px={6}>
                         {logo}
                     </Box>
                 ))}

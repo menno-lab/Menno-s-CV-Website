@@ -1,15 +1,16 @@
 import React from 'react';
-import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture, Link } from 'ui';
+import { Stack, Heading, Button, Flex, Box, TechStack, Text, Container, ProfilePicture, Link, SlideInFade } from 'ui';
 import { ClearHashAnchor } from './clearHashAnchor';
+import { HeroTranslations } from './schema';
 
 interface HeroSectionProps {
-    translations: Record<string, string>;
+    translations: HeroTranslations;
 }
 
 export function HeroSection({ translations }: HeroSectionProps) {
     const { title, subtitle, primaryCta, secondaryCta } = translations;
     return (
-        <Container as='section' maxW={'7xl'} px={4} paddingTop={'80px'} height='100vh'>
+        <Container as='section' maxW={'7xl'} px={4} height='100vh'>
             <Box>
                 <Stack spacing={6}>
                     <Stack
@@ -38,7 +39,9 @@ export function HeroSection({ translations }: HeroSectionProps) {
                             </Stack>
                         </Stack>
                         <Flex flex={1} justifyContent={'center'} alignItems={'center'} w={'full'}>
-                            <ProfilePicture />
+                            <SlideInFade from='right'>
+                                <ProfilePicture />
+                            </SlideInFade>
                         </Flex>
                     </Stack>
                     <Box>

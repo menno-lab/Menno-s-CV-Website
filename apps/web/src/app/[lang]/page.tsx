@@ -3,14 +3,16 @@ import { HeroSection } from '../../sections/hero/HeroSection';
 import { ProjectsSection } from '../../sections/projects/ProjectsSection';
 import { RouteWithChildren } from '../../utils/types';
 import { useTranslation } from '../../i18n';
+import { heroTranslationsSchema } from '../../sections/hero/schema';
+import { projectsTranslationsSchema } from '../../sections/projects/schema';
 
 export default async function Page({ params: { lang } }: RouteWithChildren) {
     const { t } = await useTranslation(lang);
 
     return (
         <VStack spacing={6}>
-            <HeroSection translations={t('hero') as unknown as Record<string, any>} />
-            <ProjectsSection />
+            <HeroSection translations={heroTranslationsSchema.parse(t('hero'))} />
+            <ProjectsSection translations={projectsTranslationsSchema.parse(t('projects'))} />
         </VStack>
     );
 }

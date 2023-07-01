@@ -17,7 +17,7 @@ import {
     StackProps,
 } from '@chakra-ui/react';
 import { useTheme } from '../context/ThemeProvider';
-import { makeColorBrighter } from '../utils/modifyColor';
+import { SemanticColor } from '../types';
 
 interface CustomBoxProps extends BoxProps {
     bg?: SemanticColor;
@@ -62,10 +62,6 @@ export function VStack({ children, ...props }: PropsWithChildren<CustomStackProp
     return <ChakraVStack {...props}>{children}</ChakraVStack>;
 }
 
-export function Circle({ children, ...props }: PropsWithChildren<CustomBoxProps>) {
-    return <ChakraCircle {...props}>{children}</ChakraCircle>;
-}
-
 export function Stack({ children, ...props }: PropsWithChildren<CustomStackProps>) {
     return <ChakraStack {...props}>{children}</ChakraStack>;
 }
@@ -76,9 +72,8 @@ export function AbsoluteCenter({ children, ...props }: PropsWithChildren<Absolut
 
 export function Card({ children, ...props }: PropsWithChildren<CardProps>) {
     const { theme } = useTheme();
-    const bg = makeColorBrighter(theme.background, 0.2);
     return (
-        <ChakraCard {...props} bg={bg}>
+        <ChakraCard {...props} bg={theme.backgroundSecondary}>
             {children}
         </ChakraCard>
     );
