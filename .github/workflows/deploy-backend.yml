@@ -21,7 +21,7 @@ jobs:
             - name: serverless deploy
               uses: serverless/github-action@v3.2
               with:
-                  args: -c "cd ./apps/backend && serverless plugin install --name serverless-esbuild && SLACK_INTERNAL_TOKEN=${{ secrets.SLACK_INTERNAL_TOKEN }} serverless deploy"
+                  args: -c "cd ./apps/backend && serverless plugin install --name serverless-esbuild && SLACK_INTERNAL_TOKEN=${{ secrets.SLACK_INTERNAL_TOKEN }} serverless deploy --stage production --region eu-central-1"
                   entrypoint: /bin/sh
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
