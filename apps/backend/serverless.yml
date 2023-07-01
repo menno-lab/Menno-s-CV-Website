@@ -1,26 +1,15 @@
-service: trpc-menno-cv
-frameworkVersion: '3'
+service: serverless-example
 
-useDotenv: true
+plugins:
+    - serverless-offline
+    - serverless-plugin-typescript
 
 provider:
     name: aws
-    region: eu-central-1
-    runtime: nodejs14.x
-    environment:
-        SLACK_INTERNAL_TOKEN: ${env:SLACK_INTERNAL_TOKEN}
+    runtime: nodejs16.x
 
 functions:
     http-api:
         handler: src/app.handler
         events:
             - httpApi: '*'
-
-plugins:
-    - serverless-offline
-    - serverless-plugin-typescript
-
-custom:
-    esbuild:
-        platform: neutral
-        external: '@slack/web-api'
