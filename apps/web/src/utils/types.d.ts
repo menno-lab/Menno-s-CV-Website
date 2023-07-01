@@ -5,6 +5,8 @@ export interface RouteWithChildren {
     };
 }
 
-export interface ComponentWithLang {
-    lang: Language;
+export interface RouteWithLang {
+    params: {
+        lang: Language;
+    };
 }

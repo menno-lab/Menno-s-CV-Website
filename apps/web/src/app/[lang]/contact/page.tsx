@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex, Heading, SlideInFade, Square1, VStack, AbsoluteCenter } from 'ui';
 import { ContactForm } from './_ContactForm';
-import { RouteWithChildren } from '../../../utils/types';
+import { RouteWithLang } from '../../../utils/types';
 import { useTranslation } from '../../../i18n';
 import { contactTranslationsSchema } from './schema';
 
-export default async function page({ params: { lang } }: RouteWithChildren) {
+export default async function page({ params: { lang } }: RouteWithLang) {
     const { t } = await useTranslation(lang);
     return (
         <>

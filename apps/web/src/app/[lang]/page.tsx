@@ -1,14 +1,14 @@
 import { VStack } from 'ui';
 import { HeroSection } from '../../sections/hero/HeroSection';
 import { ProjectsSection } from '../../sections/projects/ProjectsSection';
-import { RouteWithChildren } from '../../utils/types';
+import { RouteWithLang } from '../../utils/types';
 import { useTranslation } from '../../i18n';
 import { heroTranslationsSchema } from '../../sections/hero/schema';
 import { projectsTranslationsSchema } from '../../sections/projects/schema';
 import { HeroBottomSection } from '../../sections/hero-bottom/HeroBottomSection';
 import { heroBottomTranslationsSchema } from '../../sections/hero-bottom/schema';
 
-export default async function Page({ params: { lang } }: RouteWithChildren) {
+export default async function Page({ params: { lang } }: RouteWithLang) {
     const { t } = await useTranslation(lang);
 
     return (

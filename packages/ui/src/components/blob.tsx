@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../context';
+import { SemanticColor } from '../types';
 
 interface BlobProps {
     size: number | string;

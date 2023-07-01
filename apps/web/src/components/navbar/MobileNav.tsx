@@ -13,8 +13,8 @@ import {
     Text,
     ThemeSelectorMobile,
 } from 'ui';
-import { NavItem } from '../../utils/types';
 import { useDisclosure } from '@chakra-ui/react';
+import { NavItem } from './schema';
 
 interface MobileNavProps {
     navItems: NavItem[];

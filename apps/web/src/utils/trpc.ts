@@ -6,8 +6,4 @@ export type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
 export type RouterInput = inferRouterInputs<AppRouter>;
 export type RouterOutput = inferRouterOutputs<AppRouter>;
 
-type Temp = RouterInput['contact']['create'];
-
-type Test = RouterOutput['contact'];
-
 export const trpc = createTRPCReact<AppRouter>();
