@@ -1,21 +1,14 @@
 {
     "compilerOptions": {
-        "lib": ["esnext", "dom"],
-        "target": "esnext",
-        "noEmit": true,
-        "composite": false,
-        "declaration": true,
-        "declarationMap": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "inlineSources": false,
-        "isolatedModules": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "target": "es5",
+        "outDir": ".build",
         "moduleResolution": "node",
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "preserveWatchOutput": true,
-        "skipLibCheck": true,
-        "strict": true
+        "lib": ["es2015"],
+        "rootDir": "./"
     },
     "include": ["src"],
     "exclude": ["node_modules"]

@@ -5,6 +5,7 @@ useDotenv: true
 
 provider:
     name: aws
+    region: eu-central-1
     runtime: nodejs14.x
     environment:
         SLACK_INTERNAL_TOKEN: ${env:SLACK_INTERNAL_TOKEN}
@@ -16,8 +17,8 @@ functions:
             - httpApi: '*'
 
 plugins:
-    - serverless-esbuild
     - serverless-offline
+    - serverless-plugin-typescript
 
 custom:
     esbuild:

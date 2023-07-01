@@ -1,0 +1,15 @@
+service: serverless-example
+
+plugins:
+    - serverless-offline
+    - serverless-plugin-typescript
+
+provider:
+    name: aws
+    runtime: nodejs16.x
+
+functions:
+    http-api:
+        handler: src/app.handler
+        events:
+            - httpApi: '*'
