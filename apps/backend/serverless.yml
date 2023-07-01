@@ -1,6 +1,5 @@
 service: trpc-menno-cv
 frameworkVersion: '3'
-region: eu-north-1
 
 useDotenv: true
 

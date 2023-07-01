@@ -1,8 +1,10 @@
-name: Deploy master branch
+name: Deploy backend to AWS Lamda
 
 on:
     push:
         branches: [main]
+        paths:
+            - apps/backend/**
 
 jobs:
     deploy:

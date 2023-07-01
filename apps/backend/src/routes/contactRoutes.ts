@@ -13,5 +13,7 @@ export const contactRoutes = router({
         }
         throw new Error('Unable to process request. Please email me at menno.c.jager@gmail.com');
     }),
+    test: publicProcedure.query(() => {
+        return { success: true };
+    }),
 });
-// test
