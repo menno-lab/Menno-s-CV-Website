@@ -20,14 +20,11 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
-            - name: Install pnpm
-            run: npm install -g pnpm
-
             - name: Install Dependencies
-            run: pnpm install --frozen-lockfile
+              run: cd apps/backend && npm install
 
             - name: Build
-            run: pnpm build --filter backend
+              run: cd apps/backend && npm run build
 
             - name: serverless deploy
               uses: serverless/github-action@v3.2
