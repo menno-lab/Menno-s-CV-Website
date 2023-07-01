@@ -1,15 +1,15 @@
-service: serverless-example
-
-plugins:
-    - serverless-offline
-    - serverless-plugin-typescript
+service: trpc-hello-world
+frameworkVersion: '3'
 
 provider:
     name: aws
-    runtime: nodejs16.x
+    runtime: nodejs14.x
 
 functions:
     http-api:
-        handler: src/app.handler
+        handler: dist/server.handler
         events:
             - httpApi: '*'
+
+plugins:
+    - serverless-offline

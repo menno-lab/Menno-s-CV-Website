@@ -1,19 +1,26 @@
+import { inferAsyncReturnType, initTRPC } from '@trpc/server';
 import { awsLambdaRequestHandler } from '@trpc/server/adapters/aws-lambda';
 import type { CreateAWSLambdaContextOptions } from '@trpc/server/adapters/aws-lambda';
 import type { APIGatewayProxyEvent } from 'aws-lambda';
-import { contactRoutes } from './routes/contactRoutes';
-import { router } from './trpc';
 
-function createContext({ event }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
+function createContext({ event, context }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
     return {
         event: event,
         apiVersion: (event as { version?: string }).version ?? '1.0',
         user: event.headers['x-user'],
     };
 }
+type Context = inferAsyncReturnType<typeof createContext>;
+
+const t = initTRPC.context<Context>().create();
+
+const publicProcedure = t.procedure;
+const router = t.router;
 
 const appRouter = router({
-    contact: contactRoutes,
+    greet: publicProcedure.query(() => {
+        return `Greetings, user`;
+    }),
 });
 
 export type AppRouter = typeof appRouter;
