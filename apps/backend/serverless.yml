@@ -6,6 +6,8 @@ useDotenv: true
 provider:
     name: aws
     runtime: nodejs14.x
+    httpApi:
+        cors: true
     environment:
         SLACK_INTERNAL_TOKEN: ${env:SLACK_INTERNAL_TOKEN}
 
@@ -16,7 +18,6 @@ functions:
             - httpApi:
                   path: '*'
                   method: '*'
-                  cors: true
 
 plugins:
     - serverless-offline
