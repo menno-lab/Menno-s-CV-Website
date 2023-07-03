@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { ProjectsTranslations } from './schema';
 import { SimpleGrid } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useProjectIllustrations } from '../hooks/useProjectIllustrations';
 
 interface ProjectsSectionProps {
     translations: ProjectsTranslations;
@@ -14,6 +15,7 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ translations }: ProjectsSectionProps) {
     const { title, subtitle, items } = translations;
+    const illustrations = useProjectIllustrations();
     return (
         <PageSection title={title} subtitle={subtitle}>
             <SimpleGrid minChildWidth='240px' spacing='20px'>
@@ -30,7 +32,7 @@ export function ProjectsSection({ translations }: ProjectsSectionProps) {
                         }}
                     >
                         <Link href={item.href} target='_blank'>
-                            <ProjectCard item={item} />
+                            <ProjectCard item={item} illustration={illustrations[item.key]} />
                         </Link>
                     </motion.div>
                 ))}

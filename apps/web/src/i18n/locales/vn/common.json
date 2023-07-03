@@ -63,6 +63,86 @@
             }
         ]
     },
+    "experience": {
+        "title": "Kinh nghiệm",
+        "subtitle": "Đây là một số công ty mà tôi đã từng làm việc.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Nhà phát triển phần mềm Junior",
+                "location": "Helsinki, Phần Lan",
+                "date": "Tháng 4 năm 2022 - Hiện tại",
+                "tasks": [
+                    "Phát triển và duy trì các ứng dụng phần mềm bằng cách sử dụng React, TypeScript và các công nghệ frontend khác",
+                    "Hợp tác với các nhóm chéo chức năng để đảm bảo chất lượng và giao hàng kịp thời của các sản phẩm phần mềm",
+                    "Tham gia đánh giá mã và đóng góp vào việc cải thiện tổng thể của cơ sở mã",
+                    "Làm việc trong một môi trường agile với trọng tâm vào việc cải thiện liên tục và học hỏi"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Người sáng lập",
+                "location": "Từ xa",
+                "date": "Tháng 9 năm 2021 - Hiện tại",
+                "tasks": [
+                    "Thành lập và ra mắt một công ty SaaS đơn lẻ thành công, chịu trách nhiệm cho tất cả các khía cạnh của phát triển doanh nghiệp, hoạt động và tăng trưởng.",
+                    "Phát triển và duy trì các ứng dụng fullstack, sử dụng công nghệ như React, NodeJs, TypeScript, Python, MongoDB, Redis và AWS",
+                    "Thiết kế và phát triển sản phẩm SaaS từ ý tưởng đến ra mắt, giám sát toàn bộ vòng đời phát triển phần mềm.",
+                    "Triển khai thực hành tự động hóa và DevOps, bao gồm tích hợp liên tục và triển khai (CI/CD), để tối ưu hóa quy trình phát triển và triển khai phần mềm"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Chuyên viên hỗ trợ kỹ thuật",
+                "location": "Helsinki, Phần Lan",
+                "date": "Tháng 11 năm 2020 - Tháng 4 năm 2022",
+                "tasks": [
+                    "Cung cấp hỗ trợ kỹ thuật nhanh chóng và hiệu quả cho khách hàng, xử lý và khắc phục các vấn đề liên quan đến phần mềm và hệ thống.",
+                    "Phản hồi các yêu cầu và vé hỗ trợ của khách hàng qua các kênh khác nhau, bao gồm email, trò chuyện và điện thoại, đảm bảo mức độ hài lòng của khách hàng cao.",
+                    "Trình bày kiến thức sản phẩm mạnh mẽ và chuyên môn trong các sản phẩm của chúng tôi, hướng dẫn khách hàng thông qua các tính năng sản phẩm, chức năng và thực hành tốt nhất.",
+                    "Hợp tác chặt chẽ với các nhóm chéo chức năng, bao gồm kỹ thuật và quản lý sản phẩm, để nâng cao và giải quyết các vấn đề kỹ thuật phức tạp được báo cáo bởi khách hàng."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Tư vấn giải pháp tiếp thị",
+                "location": "Dublin, Ireland",
+                "date": "Tháng 8 năm 2019 - Tháng 11 năm 2020",
+                "tasks": [
+                    "Tư vấn cho khách hàng về cách sử dụng hiệu quả nền tảng quảng cáo của LinkedIn để đạt được mục tiêu tiếp thị của họ",
+                    "Tạo và thực hiện các chiến dịch quảng cáo cho khách hàng, sử dụng một loạt các định dạng quảng cáo",
+                    "Theo dõi các chiến dịch quảng cáo và cung cấp các đề xuất để tối ưu hóa"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (thông qua Accenture)"
+                },
+                "role": "Trưởng nhóm Workflow / Chuyên viên quảng cáo",
+                "location": "Dublin, Ireland",
+                "date": "Tháng 9 năm 2018 - Tháng 8 năm 2019",
+                "tasks": [
+                    "Điều phối hoạt động hỗ trợ qua nhiều kênh và địa điểm",
+                    "Tối ưu hóa quy trình và hoạt động để tăng hiệu quả và giảm chi phí",
+                    "Tiến hành phân tích dữ liệu và báo cáo và giảm bớt với các bên liên quan",
+                    "Cung cấp hỗ trợ Google Ads và Analytics thay mặt Google cho thị trường doanh nghiệp Benelux"
+                ]
+            }
+        ]
+    },
     "heroBottom": {
         "title": "Quan tâm đến việc cộng tác?",
         "cta": "Liên hệ với tôi"

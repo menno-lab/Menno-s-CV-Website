@@ -11,7 +11,7 @@ export function PageSection({ title, subtitle, children }: PropsWithChildren<Pag
     return (
         <Container as='section' maxW={'7xl'}>
             <ScrollToView hash='#projects'>
-                <Stack py='20'>
+                <Stack py='10'>
                     <Heading as='h2'>{title}</Heading>
                     <Text>{subtitle}</Text>
                     <Box py={6}>{children}</Box>

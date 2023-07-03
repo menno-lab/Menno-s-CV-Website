@@ -35,7 +35,7 @@
     },
     "projects": {
         "title": "Projecten",
-        "subtitle": "Hier zijn enkele van de projecten waar ik in mijn vrije tijd aan heb gewerkt.",
+        "subtitle": "Hier zijn enkele van de projecten waar ik momenteel aan werk of aan heb gewerkt.",
         "items": [
             {
                 "key": "textpanda",
@@ -60,6 +60,86 @@
                 "title": "Textpanda x Hubspot",
                 "description": "Een Hubspot-integratie die gebruikers in staat stelt om vanuit Hubspot interactie te hebben met Textpanda. Gebruik AI om ondersteuningstickets samen te vatten, automatisch reacties te genereren en meer.",
                 "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "Ervaring",
+        "subtitle": "Hier zijn enkele van de bedrijven waarmee ik heb gewerkt.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsinki, Finland",
+                "date": "April 2022 - Present",
+                "tasks": [
+                    "Ontwikkelen en onderhouden van web applicaties met React, TypeScript en andere frontend technologieën",
+                    "Samenwerken met cross-functionele teams om de kwaliteit en tijdige levering van softwareproducten te waarborgen",
+                    "Deelnemen aan code reviews en bijdragen aan de algehele verbetering van de codebase",
+                    "Werken in een agile omgeving met een focus op continue verbetering en leren"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Oprichter",
+                "location": "Remote",
+                "date": "September 2021 - Present",
+                "tasks": [
+                    "Een solo SaaS-bedrijf opgericht en gelanceerd, verantwoordelijk voor alle aspecten van bedrijfsontwikkeling, operaties en groei.",
+                    "Ontwikkelen en onderhouden van fullstack applicaties, gebruikmakend van technologieën zoals React, NodeJs, TypeScript, Python, MongoDB, Redis en AWS",
+                    "Ontwerpen en ontwikkelen van het de software van idee tot lancering, met toezicht op de gehele softwareontwikkelingscyclus.",
+                    "Geïmplementeerde automatisering en DevOps-praktijken, waaronder continue integratie en implementatie (CI/CD), om de softwareontwikkeling en implementatieprocessen te stroomlijnen"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "Helsinki, Finland",
+                "date": "November 2020 - April 2022",
+                "tasks": [
+                    "Verstrekte prompte en efficiënte technische ondersteuning aan klanten, het oplossen en troubleshooten van software en systeem gerelateerde problemen.",
+                    "Gereageerd op klantvragen en ondersteuningstickets via diverse kanalen, waaronder e-mail, chat en telefoon, zorgend voor een hoge klanttevredenheid.",
+                    "Getoond sterke productkennis en expertise in onze producten, efficiënt guidend klanten door product features, functionaliteit, en best practices.",
+                    "Samengewerkt met cross-functionele teams, inclusief engineering en productmanagement, om complexe technische problemen gemeld door klanten te escaleren en op te lossen."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Ierland",
+                "date": "August 2019 - November 2020",
+                "tasks": [
+                    "Geadviseerd klanten over hoe effectief gebruik te maken van LinkedIn's advertentieplatform om hun marketingdoelen te bereiken",
+                    "Gecreëerd en uitgevoerd reclamecampagnes voor klanten, gebruikmakend van een verscheidenheid aan advertentieformaten",
+                    "Gemonitord reclamecampagnes en aanbevelingen voor optimalisatie voorzien"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "Dublin, Ierland",
+                "date": "September 2018 - August 2019",
+                "tasks": [
+                    "Gecoördineerde ondersteuningsoperaties over meerdere kanalen en locaties",
+                    "Geoptimaliseerd processen en operaties om efficiëntie te verhogen en kosten te verminderen",
+                    "Uitgevoerd data analyse en rapporteren en gematigd met belanghebbenden",
+                    "Verstrekte Google Ads en Analytics ondersteuning namens Google voor de enterprise Benelux markt"
+                ]
             }
         ]
     },

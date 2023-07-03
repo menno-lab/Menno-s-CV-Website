@@ -2,15 +2,14 @@ import { CardBody, Stack, Heading } from '@chakra-ui/react';
 import React from 'react';
 import { Card, Text, Box } from 'ui';
 import { ProjectsTranslations } from './schema';
-import { useProjectIllustrations } from '../hooks/useProjectIllustrations';
 import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
     item: ProjectsTranslations['items'][number];
+    illustration: JSX.Element;
 }
 
-export function ProjectCard({ item }: ProjectCardProps) {
-    const illustrationMap = useProjectIllustrations();
+export function ProjectCard({ item, illustration }: ProjectCardProps) {
     return (
         <motion.div
             whileHover={{
@@ -20,7 +19,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
             <Card boxShadow='2xl' cursor='pointer' height={{ base: '100%', sm: '300px' }}>
                 <CardBody>
                     <Stack spacing={4}>
-                        <Box height='36px'>{illustrationMap[item.key]}</Box>
+                        <Box height='36px'>{illustration}</Box>
                         <Heading size='md'>{item.title}</Heading>
                         <Text>{item.description}</Text>
                     </Stack>

@@ -63,6 +63,86 @@
             }
         ]
     },
+    "experience": {
+        "title": "Experience",
+        "subtitle": "Here are some of the companies I've worked with.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsinki, Finland",
+                "date": "April 2022 - Present",
+                "tasks": [
+                    "Developing and maintaining software applications using React, TypeScript, and other frontend technologies",
+                    "Collaborating with cross-functional teams to ensure quality and timely delivery of software products",
+                    "Participating in code reviews and contributing to the overall improvement of the codebase",
+                    "Working in an agile environment with a focus on continuous improvement and learning"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Founder",
+                "location": "Remote",
+                "date": "September 2021 - Present",
+                "tasks": [
+                    "Established and launched a solo SaaS company, responsible for all aspects of business development, operations, and growth.",
+                    "Developed and maintained fullstack applications, using technologies such as React, NodeJs, TypeScript, Python, MongoDB, Redis and AWS",
+                    "Designed and developed the SaaS product from idea to launch, overseeing the entire software development lifecycle.",
+                    "Implemented automation and DevOps practices, including continuous integration and deployment (CI/CD), to streamline the software development and deployment processes"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "Helsinki, Finland",
+                "date": "November 2020 - April 2022",
+                "tasks": [
+                    "Provided prompt and efficient technical support to customers, troubleshooting and resolving software and system-related issues.",
+                    "Responded to customer inquiries and support tickets via various channels, including email, chat, and phone, ensuring a high level of customer satisfaction.",
+                    "Demonstrated strong product knowledge and expertise in our products, effectively guiding customers through product features, functionality, and best practices.",
+                    "Collaborated closely with cross-functional teams, including engineering and product management, to escalate and resolve complex technical issues reported by customers."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Ireland",
+                "date": "August 2019 - November 2020",
+                "tasks": [
+                    "Consulted clients on how to effectively use LinkedIn's advertising platform to achieve their marketing goals",
+                    "Created and executed advertising campaigns for clients, using a variety of advertising formats",
+                    "Monitored advertising campaigns and provided recommendations for optimization"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "Dublin, Ireland",
+                "date": "September 2018 - August 2019",
+                "tasks": [
+                    "Coordinated support operations across multiple channels and locations",
+                    "Optimized processes and operations to increase efficiency and reduce costs",
+                    "Conducted data analysis and reporting and mitigated with stakeholders",
+                    "Provided Google Ads and Analytics support on behalf of Google for the enterprise Benelux market"
+                ]
+            }
+        ]
+    },
     "heroBottom": {
         "title": "Interested in working together?",
         "cta": "Contact me"
