@@ -6,7 +6,6 @@ export * from './Figma';
 export * from './Git';
 export * from './Html';
 export * from './Javascript';
-export * from './Jira';
 export * from './MongoDb';
 export * from './MySql';
 export * from './NextJs';
