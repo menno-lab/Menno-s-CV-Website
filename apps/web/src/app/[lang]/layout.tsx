@@ -8,6 +8,7 @@ import { useTranslation } from '../../i18n';
 import { ReactQueryProvider } from '../../utils/ReactQuery';
 import { Footer } from '../../components/footer/Footer';
 import { navbarTranslationsSchema } from '../../components/navbar/schema';
+import { footerTranslationSchema } from '../../components/footer/schema';
 
 export const metadata = {
     title: "Menno's CV Website",
@@ -28,7 +29,7 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
                     <ThemeProvider>
                         <Navbar translations={navbarTranslationsSchema.parse(t('nav'))} />
                         {children}
-                        <Footer />
+                        <Footer translations={footerTranslationSchema.parse(t('footer'))} />
                     </ThemeProvider>
                 </ReactQueryProvider>
             </body>

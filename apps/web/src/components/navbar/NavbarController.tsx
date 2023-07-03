@@ -30,7 +30,10 @@ export function NavbarController({ children }: PropsWithChildren<{}>) {
         };
 
         window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
     }, []);
 
     return (

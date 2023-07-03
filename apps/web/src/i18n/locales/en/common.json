@@ -1,5 +1,8 @@
 {
     "nav": {
+        "theme": "Theme",
+        "language": "Language",
+        "contact": "Contact",
         "navItems": [
             {
                 "label": "Projects",
@@ -63,5 +66,8 @@
     "heroBottom": {
         "title": "Interested in working together?",
         "cta": "Contact me"
+    },
+    "footer": {
+        "sourceCode": "Source code"
     }
 }

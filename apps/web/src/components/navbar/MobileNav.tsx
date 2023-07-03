@@ -1,26 +1,17 @@
 'use client';
 
-import {
-    CloseIcon,
-    Drawer,
-    DrawerBody,
-    DrawerCloseButton,
-    DrawerContent,
-    DrawerOverlay,
-    Flex,
-    HamburgerIcon,
-    IconButton,
-    Text,
-    ThemeSelectorMobile,
-} from 'ui';
+import { CloseIcon, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, HamburgerIcon, IconButton, Text } from 'ui';
 import { useDisclosure } from '@chakra-ui/react';
-import { NavItem } from './schema';
+import { NavbarTranslations } from './schema';
+import { LanguageSelectorMobile } from './navbar-dropdown/LanguageSelector';
+import { ThemeSelectorMobile } from './navbar-dropdown/ThemeSelector';
 
 interface MobileNavProps {
-    navItems: NavItem[];
+    translations: NavbarTranslations;
 }
 
-export function MobileNav({ navItems }: MobileNavProps) {
+export function MobileNav({ translations }: MobileNavProps) {
+    const { theme, language, navItems } = translations;
     const { isOpen, onToggle, onClose } = useDisclosure();
     return (
         <>
@@ -43,7 +34,8 @@ export function MobileNav({ navItems }: MobileNavProps) {
                                     {navItem.label}
                                 </Text>
                             ))}
-                            <ThemeSelectorMobile themeCopy={'Theme'} />
+                            <ThemeSelectorMobile cta={theme} />
+                            <LanguageSelectorMobile cta={language} />
                         </Flex>
                     </DrawerBody>
                 </DrawerContent>

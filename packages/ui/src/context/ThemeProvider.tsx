@@ -16,16 +16,22 @@ interface ColorModeState {
 const ColorThemeContext = createContext<ColorModeState>({} as ColorModeState);
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
+    const localStorageTheme = localStorage.getItem('theme');
     const [themeConfig, setThemeConfig] = useState<ThemeConfig | null>(null);
 
     function changeTheme(newTheme: ThemeConfig) {
+        localStorage.setItem('theme', JSON.stringify(newTheme));
         setThemeConfig(newTheme);
     }
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setThemeConfig({ themeName: 'neon', mode: prefersDarkMode ? 'dark' : 'light' });
+            localStorageTheme ? JSON.parse(localStorageTheme) : null;
+            const theme = localStorageTheme
+                ? JSON.parse(localStorageTheme)
+                : { themeName: 'neon', mode: prefersDarkMode ? 'dark' : 'light' };
+            setThemeConfig(theme);
         }
     }, []);
 

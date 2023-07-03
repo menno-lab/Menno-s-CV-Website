@@ -17,5 +17,4 @@ export * from './Redis';
 export * from './Serverless';
 export * from './Trpc';
 export * from './TypeScript';
-export * from './Redis';
 export * from './Vite';

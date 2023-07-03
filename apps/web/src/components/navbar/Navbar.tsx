@@ -1,26 +1,25 @@
 import React from 'react';
-import { Box, Button, Container, Flex, ThemeSelector, Stack, Text, Link as ChakraLink } from 'ui';
+import { Box, Button, Container, Flex, Stack, Text, Link as ChakraLink } from 'ui';
 import { MobileNav } from './MobileNav';
 import Link from 'next/link';
 import { NavbarTranslations } from './schema';
 import { NavbarController } from './NavbarController';
+import { LanguageSelector } from './navbar-dropdown/LanguageSelector';
+import { ThemeSelector } from './navbar-dropdown/ThemeSelector';
 
 interface NavbarProps {
     translations: NavbarTranslations;
 }
 
 export function Navbar({ translations }: NavbarProps) {
-    const { navItems } = translations;
-    if (!Array.isArray(navItems)) {
-        return null;
-    }
+    const { theme, language, contact, navItems } = translations;
 
     return (
         <NavbarController>
             <Box bg='background' position='fixed' width='100vw' zIndex={2} top={0} boxShadow={'md'}>
                 <Container maxW={'7xl'} py={2} px={4}>
                     <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
-                        <MobileNav navItems={navItems} />
+                        <MobileNav translations={translations} />
                         <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }}>
                             <Link href='/'>
                                 <Text fontFamily={'heading'} fontWeight={600}>
@@ -36,7 +35,8 @@ export function Navbar({ translations }: NavbarProps) {
                                             </ChakraLink>
                                         </Box>
                                     ))}
-                                    <ThemeSelector themeCopy={'Theme'} />
+                                    <ThemeSelector cta={theme} />
+                                    <LanguageSelector cta={language} />
                                 </Stack>
                             </Flex>
                         </Flex>
@@ -48,7 +48,7 @@ export function Navbar({ translations }: NavbarProps) {
                                     fontSize={'sm'}
                                     fontWeight={600}
                                 >
-                                    Contact
+                                    {contact}
                                 </Button>
                             </Link>
                         </Stack>

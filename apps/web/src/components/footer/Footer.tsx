@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button } from 'ui';
 import { GITHUB_PROFILE_URL, GITHUB_REPO_URL, LINKEDIN_PROFILE_URL } from '../../utils/constants';
+import { FooterTranslation } from './schema';
 
-export function Footer() {
+interface FooterProps {
+    translations: FooterTranslation;
+}
+
+export function Footer({ translations }: FooterProps) {
     return (
         <Box bg='background' width='100vw' borderTop='1px' borderColor='gray.600'>
             <Container maxW={'7xl'} px={4}>
@@ -48,7 +53,7 @@ export function Footer() {
                         </Stack>
                         <Link href={GITHUB_REPO_URL} target='_blank'>
                             <Button colorScheme='secondary' rightIcon={<FaExternalLinkAlt />} _hover={{ bg: 'accent' }}>
-                                Source code
+                                {translations.sourceCode}
                             </Button>
                         </Link>
                     </Stack>
