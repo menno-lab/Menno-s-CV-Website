@@ -43,11 +43,6 @@
                 "key": "infinitale",
                 "title": "Infinitale",
                 "description": "A web application that allows parents to build a unique story for their children, by combining different story elements using AI."
-            },
-            {
-                "key": "storyscape",
-                "title": "Storyscape",
-                "description": "A mobile application that let's users play a text based interactive story game, where they can make choices that impact the story."
             }
         ]
     },

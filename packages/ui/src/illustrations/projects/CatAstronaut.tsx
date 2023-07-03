@@ -3,7 +3,7 @@ import { IllustrationProps } from '../technologies/types';
 
 export function CatAstronaut({ color, alt }: IllustrationProps) {
     return (
-        <svg aria-label={alt} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'>
+        <svg aria-label={alt} xmlns='http://www.w3.org/2000/svg' height='100%' viewBox='0 0 400 400'>
             <g id='freepik--Stars--inject-28'>
                 <polygon
                     points='425.57 77.06 425.66 70.29 430.15 75.32 435 73.81 432.63 78.12 434.91 80.51 431.38 80.87 431.32 85.44 427.44 82.22 424.29 84.84 424.64 80.98 420.04 78.85 425.57 77.06'

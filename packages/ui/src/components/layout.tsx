@@ -4,6 +4,7 @@ import {
     ContainerProps,
     Card as ChakraCard,
     CardProps,
+    useBreakpoint,
 } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import {
@@ -42,6 +43,7 @@ export function Box({ children, bg, ...props }: PropsWithChildren<CustomBoxProps
 
 export function Flex({ children, bg, ...props }: PropsWithChildren<CustomBoxProps>) {
     const { theme } = useTheme();
+
     return (
         <ChakraFlex {...props} backgroundColor={bg ? theme[bg] : undefined}>
             {children}

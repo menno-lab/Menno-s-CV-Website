@@ -11,7 +11,8 @@
         "title": "Hi, I'm Menno",
         "subtitle": "I'm a fullstack developer from the picturesque country of the Netherlands, known for its tulip fields, windmills, and innovative technology. I'm passionate about building beautiful, scalable, and maintainable web applications.",
         "primaryCta": "Contact me",
-        "secondaryCta": "View my projects"
+        "secondaryCta": "My projects",
+        "socialProof": "Trusted with These Technologies"
     },
     "contact": {
         "title": "Contact Menno",
@@ -31,7 +32,7 @@
     },
     "projects": {
         "title": "Projects",
-        "subtitle": "Here are some of the projects I've worked on.",
+        "subtitle": "Here are some of the side projects I've worked on in my free time.",
         "items": [
             {
                 "key": "textpanda",
@@ -40,14 +41,22 @@
                 "href": "https://textpanda.io/"
             },
             {
-                "key": "infinitale",
-                "title": "Infinitale",
-                "description": "A web application that allows parents to build a unique story for their children, by combining different story elements using AI."
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "A powerful browser extension that lets users interact with Textpanda from anywhere on the web.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
             },
             {
-                "key": "storyscape",
-                "title": "Storyscape",
-                "description": "A mobile application that let's users play a text based interactive story game, where they can make choices that impact the story."
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "A Slack integration that allows users to interact with Textpanda from within Slack.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "A Hubspot integration that allows users to interact with Textpanda from within Hubspot. Use AI to summarize support tickets, automatically generate responses and more.",
+                "href": "https://textpanda.io/integrations/hubspot"
             }
         ]
     },

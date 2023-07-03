@@ -1,64 +1,117 @@
 'use client';
 
-import { useTheme, Redis, Javascript, Vite, Python, Trpc, OpenAi, NodeJs, Docker, TypeScript, Aws, NextJs, MongoDb, React } from 'ui';
+import {
+    useTheme,
+    Redis,
+    Javascript,
+    Vite,
+    Python,
+    Trpc,
+    OpenAi,
+    NodeJs,
+    Docker,
+    TypeScript,
+    Aws,
+    NextJs,
+    MongoDb,
+    React,
+    Django,
+    Html,
+    Css,
+    Serverless,
+    Figma,
+    MySql,
+    Git,
+    Jira,
+} from 'ui';
 
 export function useTechStackLogos() {
     const { theme } = useTheme();
-    const color = theme.secondary;
-    const secondaryColor = theme.accent;
-    const textColor = theme.text;
+    const colorScheme = { color: theme.secondary, secondaryColor: theme.accent, textColor: theme.text };
     return [
         {
             name: 'Redis',
-            logo: <Redis color={color} textColor={textColor} alt='Redis logo' />,
+            logo: <Redis {...colorScheme} alt='Redis logo' />,
         },
         {
             name: 'Javascript',
-            logo: <Javascript color={color} secondaryColor={secondaryColor} alt='Javascript logo' />,
+            logo: <Javascript {...colorScheme} alt='Javascript logo' />,
         },
         {
             name: 'Vite',
-            logo: <Vite color={color} secondaryColor={secondaryColor} alt='Vite logo' />,
+            logo: <Vite {...colorScheme} alt='Vite logo' />,
         },
         {
             name: 'Python',
-            logo: <Python color={color} secondaryColor={secondaryColor} textColor={textColor} alt='Python logo' />,
+            logo: <Python {...colorScheme} alt='Python logo' />,
         },
         {
             name: 'Trpc',
-            logo: <Trpc color={color} alt='Trpc logo' />,
+            logo: <Trpc {...colorScheme} alt='Trpc logo' />,
         },
         {
             name: 'OpenAi',
-            logo: <OpenAi color={color} alt='OpenAi logo' />,
+            logo: <OpenAi {...colorScheme} alt='OpenAi logo' />,
         },
         {
             name: 'NodeJs',
-            logo: <NodeJs color={color} textColor={textColor} alt='NodeJs logo' />,
+            logo: <NodeJs {...colorScheme} alt='NodeJs logo' />,
         },
         {
             name: 'Docker',
-            logo: <Docker color={color} alt='Docker logo' />,
+            logo: <Docker {...colorScheme} alt='Docker logo' />,
         },
         {
             name: 'TypeScript',
-            logo: <TypeScript color={color} alt='TypeScript logo' />,
+            logo: <TypeScript {...colorScheme} alt='TypeScript logo' />,
         },
         {
             name: 'AWS',
-            logo: <Aws color={color} textColor={textColor} alt='Aws logo' />,
+            logo: <Aws {...colorScheme} alt='Aws logo' />,
         },
         {
             name: 'Next.js',
-            logo: <NextJs color={color} alt='Next.js logo' />,
+            logo: <NextJs {...colorScheme} alt='Next.js logo' />,
         },
         {
             name: 'MongoDb',
-            logo: <MongoDb color={color} alt='MongoDb logo' />,
+            logo: <MongoDb {...colorScheme} alt='MongoDb logo' />,
         },
         {
             name: 'React',
-            logo: <React color={color} alt='React logo' />,
+            logo: <React {...colorScheme} alt='React logo' />,
+        },
+        {
+            name: 'Django',
+            logo: <Django {...colorScheme} alt='Django logo' />,
+        },
+        {
+            name: 'Html',
+            logo: <Html {...colorScheme} alt='Html logo' />,
+        },
+        {
+            name: 'Css',
+            logo: <Css {...colorScheme} alt='Css logo' />,
+        },
+        {
+            name: 'Serverless',
+            logo: <Serverless {...colorScheme} alt='Serverless logo' />,
+        },
+        {
+            name: 'Figma',
+            logo: <Figma {...colorScheme} alt='Figma logo' />,
+        },
+        {
+            name: 'MySql',
+            logo: <MySql {...colorScheme} alt='MySql logo' />,
+        },
+        {
+            name: 'Git',
+            logo: <Git {...colorScheme} alt='Git logo' />,
+        },
+        {
+            name: 'Jira',
+            logo: <Jira {...colorScheme} alt='Jira logo' />,
         },
     ];
 }

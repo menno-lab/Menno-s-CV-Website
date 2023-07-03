@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTechStackLogos } from '../hooks/useTechStackLogos';
 import { Ticker, VStack, Box } from 'ui';
 
@@ -15,18 +15,21 @@ export function TechStack() {
     const logos = useTechStackLogos();
     const [firstHalf, secondHalf] = splitArrayInHalf(logos.sort((a, b) => a.name.localeCompare(b.name)));
 
+    const logoSize = '28px';
+    const duration = 18;
+
     return (
-        <VStack spacing={6}>
-            <Ticker direction='left'>
+        <VStack spacing={12}>
+            <Ticker direction='left' duration={duration}>
                 {firstHalf.map(({ logo }, index) => (
-                    <Box key={index} height={'32px'} px={6}>
+                    <Box key={index} height={logoSize} px={6}>
                         {logo}
                     </Box>
                 ))}
             </Ticker>
-            <Ticker direction='right'>
+            <Ticker direction='right' duration={duration}>
                 {secondHalf.map(({ logo }, index) => (
-                    <Box key={index} height={'32px'} px={6}>
+                    <Box key={index} height={logoSize} px={6}>
                         {logo}
                     </Box>
                 ))}

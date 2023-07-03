@@ -3,7 +3,7 @@ import { IllustrationProps } from './types';
 
 export function NextJs({ color, alt }: IllustrationProps) {
     return (
-        <svg aria-label={alt} role='img' viewBox='0 0 394 79' height='100%' width='100%'>
+        <svg aria-label={alt} role='img' viewBox='0 0 394 79' height='100%'>
             <path d='M261.919 0.0330722H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.0330722Z' fill={color}></path>
             <path
                 d='M149.052 0.0330722V12.7H94.0421V33.0772H138.281V45.7441H94.0421V66.6721H149.052V79.339H80.43V12.7H80.4243V0.0330722H149.052Z'

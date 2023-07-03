@@ -14,15 +14,13 @@ export function ProjectCard({ item }: ProjectCardProps) {
     return (
         <motion.div
             whileHover={{
-                scale: 1.1,
+                scale: 1.05,
             }}
         >
-            <Card maxW='sm' boxShadow='2xl' cursor='pointer' size='sm' pb={4}>
+            <Card boxShadow='2xl' cursor='pointer' height={{ base: '100%', sm: '300px' }}>
                 <CardBody>
-                    <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
-                        <Box boxSize={'xs'}>{illustrationMap[item.key]}</Box>
-                    </Box>
-                    <Stack mt='6' spacing='3'>
+                    <Stack spacing={4}>
+                        <Box height='36px'>{illustrationMap[item.key]}</Box>
                         <Heading size='md'>{item.title}</Heading>
                         <Text>{item.description}</Text>
                     </Stack>

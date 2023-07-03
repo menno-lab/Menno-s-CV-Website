@@ -16,7 +16,7 @@ export function ProjectsSection({ translations }: ProjectsSectionProps) {
     const { title, subtitle, items } = translations;
     return (
         <PageSection title={title} subtitle={subtitle}>
-            <SimpleGrid minChildWidth='400px' spacing='20px'>
+            <SimpleGrid minChildWidth='240px' spacing='20px'>
                 {items.map((item, i) => (
                     <motion.div
                         key={item.key}
@@ -29,13 +29,9 @@ export function ProjectsSection({ translations }: ProjectsSectionProps) {
                             hidden: { opacity: 0, scale: 0 },
                         }}
                     >
-                        {item.href ? (
-                            <Link href={item.href} target='_blank'>
-                                <ProjectCard item={item} />
-                            </Link>
-                        ) : (
+                        <Link href={item.href} target='_blank'>
                             <ProjectCard item={item} />
-                        )}
+                        </Link>
                     </motion.div>
                 ))}
             </SimpleGrid>

@@ -3,7 +3,7 @@ import { IllustrationProps } from './types';
 
 export function TypeScript({ color, alt }: IllustrationProps) {
     return (
-        <svg fill='none' viewBox='0 0 512 512' height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
+        <svg aria-label={alt} fill='none' viewBox='0 0 512 512' height='100%' xmlns='http://www.w3.org/2000/svg'>
             <rect fill={color} height='100%' rx='50' width='100%' />
             <rect fill={color} height='100%' rx='50' width='100%' />
             <path

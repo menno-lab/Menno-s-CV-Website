@@ -1,19 +1,20 @@
 import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren } from 'react';
 
 interface TickerProps {
     direction: 'left' | 'right';
+    duration: number;
 }
 
-export function Ticker({ direction, children }: PropsWithChildren<TickerProps>) {
+export function Ticker({ direction, duration, children }: PropsWithChildren<TickerProps>) {
     const scrollAnimation = {
         x: direction === 'left' ? ['100%', '-100%'] : ['-100%', '100%'],
         transition: {
             x: {
                 repeat: Infinity,
                 repeatType: 'loop',
-                duration: 24,
+                duration,
                 ease: 'linear',
             },
         },

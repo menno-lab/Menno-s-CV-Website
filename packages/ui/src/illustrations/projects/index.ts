@@ -1,3 +1,5 @@
 export * from './CatAstronaut';
-export * from './Dragon';
-export * from './Panda';
+export * from './Chrome';
+export * from './Hubspot';
+export * from './Slack';
+export * from './Textpanda';

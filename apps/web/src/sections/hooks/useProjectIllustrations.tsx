@@ -1,14 +1,17 @@
 'use client';
 
-import { CatAstronaut, Dragon, Panda, useTheme } from 'ui';
+import { CatAstronaut, Chrome, Hubspot, Slack, Textpanda, useTheme } from 'ui';
 import { ProjectKey } from '../projects/schema';
 
 export function useProjectIllustrations(): Record<ProjectKey, JSX.Element> {
     const { theme } = useTheme();
-    const color = theme.accent;
+    const colorScheme = { color: theme.accent, secondaryColor: theme.secondary };
+
     return {
-        textpanda: <Panda color={color} alt='Textpanda illustration' />,
-        infinitale: <CatAstronaut color={color} alt='Infinitale illustration' />,
-        storyscape: <Dragon color={color} alt='Storyscape illustration' />,
+        textpanda: <Textpanda {...colorScheme} alt='Textpanda illustration' />,
+        tp_chrome: <Chrome {...colorScheme} alt='Chrome illustration' />,
+        tp_slack: <Slack {...colorScheme} alt='Slack illustration' />,
+        tp_hubspot: <Hubspot {...colorScheme} alt='Hubspot illustration' />,
+        infinitale: <CatAstronaut {...colorScheme} alt='Infinitale illustration' />,
     };
 }

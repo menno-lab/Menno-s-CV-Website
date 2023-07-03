@@ -1,55 +1,73 @@
 import React from 'react';
-import { Stack, Heading, Button, Flex, Box, Text, Container, ProfilePicture, Link, SlideInFade } from 'ui';
+import { Stack, Heading, Button, Flex, Text, Container, ProfilePicture, Link as ChakraLink, SlideInFade } from 'ui';
 import { ClearHashAnchor } from './clearHashAnchor';
 import { HeroTranslations } from './schema';
 import { TechStack } from './TechStack';
+import Link from 'next/link';
+import { ButtonProps } from '@chakra-ui/react';
 
 interface HeroSectionProps {
     translations: HeroTranslations;
 }
 
 export function HeroSection({ translations }: HeroSectionProps) {
-    const { title, subtitle, primaryCta, secondaryCta } = translations;
+    const { title, subtitle, primaryCta, secondaryCta, socialProof } = translations;
+
+    const ctaProps: Partial<ButtonProps> = {
+        size: 'lg',
+        fontWeight: 600,
+        px: 6,
+        width: '100%',
+    };
+
     return (
-        <Container as='section' maxW={'7xl'} px={4} height='100vh'>
-            <Box>
-                <Stack spacing={6}>
-                    <Stack
-                        align={'center'}
-                        spacing={{ base: 8, md: 10 }}
-                        py={{ base: 2, md: 28 }}
-                        direction={{ base: 'column-reverse', md: 'row' }}
-                    >
-                        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-                            <Heading lineHeight={1.1} fontWeight={600} fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
-                                <Text as={'span'} position={'relative'}>
-                                    {title}
-                                </Text>
-                            </Heading>
-                            <Text>{subtitle}</Text>
-                            <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
-                                <Button colorScheme='primary' size={'lg'} fontWeight={'normal'} px={6} width='100%'>
+        <Container as='section' maxW={'7xl'} px={4} height='100vh' pt={{ base: '80px', md: 0 }}>
+            <Stack spacing={6}>
+                <Stack
+                    align={'center'}
+                    spacing={{ base: 8, md: 10 }}
+                    py={{ base: 2, md: 28 }}
+                    direction={{ base: 'column-reverse', md: 'row' }}
+                >
+                    <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+                        <Heading
+                            lineHeight={1.1}
+                            fontWeight={600}
+                            fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+                            textAlign={{ base: 'center', md: 'left' }}
+                        >
+                            <Text as={'span'} position={'relative'}>
+                                {title}
+                            </Text>
+                        </Heading>
+                        <Text lineHeight='28px'>{subtitle}</Text>
+                        <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
+                            <Link href='/contact'>
+                                <Button {...ctaProps} colorScheme='primary'>
                                     {primaryCta}
                                 </Button>
-                                <ClearHashAnchor />
-                                <Link href='#projects'>
-                                    <Button colorScheme='secondary' size={'lg'} fontWeight={'normal'} px={6} width='100%'>
-                                        {secondaryCta}
-                                    </Button>
-                                </Link>
-                            </Stack>
+                            </Link>
+                            <ClearHashAnchor />
+                            <ChakraLink href='#projects'>
+                                <Button {...ctaProps} colorScheme='secondary'>
+                                    {secondaryCta}
+                                </Button>
+                            </ChakraLink>
                         </Stack>
-                        <Flex flex={1} justifyContent={'center'} alignItems={'center'} w={'full'}>
-                            <SlideInFade from='right'>
-                                <ProfilePicture />
-                            </SlideInFade>
-                        </Flex>
                     </Stack>
-                    <Box>
-                        <TechStack />
-                    </Box>
+                    <Flex flex={1} justifyContent={'center'} alignItems={'center'} w={{ base: '60vw', md: 'full' }}>
+                        <SlideInFade from='right'>
+                            <ProfilePicture />
+                        </SlideInFade>
+                    </Flex>
                 </Stack>
-            </Box>
+                <Stack spacing={8}>
+                    <Heading as='h3' fontSize='2xl' textAlign='center'>
+                        {socialProof}
+                    </Heading>
+                    <TechStack />
+                </Stack>
+            </Stack>
         </Container>
     );
 }
