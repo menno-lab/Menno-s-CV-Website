@@ -22,7 +22,6 @@ import {
     Figma,
     MySql,
     Git,
-    Jira,
 } from 'ui';
 
 export function useTechStackLogos() {
@@ -108,10 +107,6 @@ export function useTechStackLogos() {
         {
             name: 'Git',
             logo: <Git {...colorScheme} alt='Git logo' />,
-        },
-        {
-            name: 'Jira',
-            logo: <Jira {...colorScheme} alt='Jira logo' />,
         },
     ];
 }
