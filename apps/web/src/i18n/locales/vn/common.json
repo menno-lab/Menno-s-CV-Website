@@ -1,0 +1,73 @@
+{
+    "nav": {
+        "theme": "Chủ đề",
+        "language": "Ngôn ngữ",
+        "contact": "Liên hệ",
+        "navItems": [
+            {
+                "label": "Dự án",
+                "href": "projects"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Xin chào, tôi là Menno",
+        "subtitle": "Tôi là một nhà phát triển fullstack đến từ đất nước tươi đẹp Hà Lan, nổi tiếng với các đồng cỏ tulip, cối xay gió và công nghệ đổi mới. Tôi đam mê xây dựng các ứng dụng web đẹp, có thể mở rộng và dễ bảo dưỡng.",
+        "primaryCta": "Liên hệ với tôi",
+        "secondaryCta": "Dự án của tôi",
+        "socialProof": "Được tin tưởng với những công nghệ này"
+    },
+    "contact": {
+        "title": "Liên hệ với Menno",
+        "email": "Email",
+        "subject": "Chủ đề",
+        "message": "Tin nhắn",
+        "submit": "Gửi",
+        "formErrors": {
+            "emailValidation": "Vui lòng nhập một địa chỉ email hợp lệ",
+            "subjectLenght": "Chủ đề quá ngắn",
+            "messageLength": "Tin nhắn quá ngắn"
+        },
+        "formSuccess": {
+            "title": "Tin nhắn đã được gửi",
+            "message": "Cảm ơn bạn đã gửi tin nhắn! Tôi sẽ phản hồi bạn sớm nhất có thể."
+        }
+    },
+    "projects": {
+        "title": "Dự án",
+        "subtitle": "Dưới đây là một số dự án phụ mà tôi đã làm.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda là một bộ công cụ truyền thông AI, được thiết kế để giúp các doanh nghiệp cải tiến trải nghiệm khách hàng.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Một tiện ích mở rộng trình duyệt mạnh mẽ cho phép người dùng tương tác với Textpanda từ bất kỳ nơi nào trên web.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "Một tích hợp Slack cho phép người dùng tương tác với Textpanda từ bên trong Slack.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Một tích hợp Hubspot cho phép người dùng tương tác với Textpanda từ bên trong Hubspot. Sử dụng AI để tóm tắt vé hỗ trợ, tự động tạo phản hồi và nhiều hơn nữa.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Quan tâm đến việc cộng tác?",
+        "cta": "Liên hệ với tôi"
+    },
+    "footer": {
+        "sourceCode": "Mã nguồn"
+    }
+}

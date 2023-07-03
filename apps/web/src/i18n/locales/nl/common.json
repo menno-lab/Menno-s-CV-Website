@@ -1,0 +1,73 @@
+{
+    "nav": {
+        "theme": "Thema",
+        "language": "Taal",
+        "contact": "Contact",
+        "navItems": [
+            {
+                "label": "Projecten",
+                "href": "projects"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Hoi, ik ben Menno",
+        "subtitle": "Ik ben een fullstack ontwikkelaar uit het pittoreske Leeuwarden. Ik heb een passie voor het bouwen van mooie, schaalbare en onderhoudbare web applicaties.",
+        "primaryCta": "Neem contact met me op",
+        "secondaryCta": "Mijn projecten",
+        "socialProof": "Vertrouwd met deze technologieën"
+    },
+    "contact": {
+        "title": "Contact opnemen met Menno",
+        "email": "E-mail",
+        "subject": "Onderwerp",
+        "message": "Bericht",
+        "submit": "Versturen",
+        "formErrors": {
+            "emailValidation": "Voer een geldig e-mailadres in",
+            "subjectLenght": "Onderwerp te kort",
+            "messageLength": "Bericht te kort"
+        },
+        "formSuccess": {
+            "title": "Bericht verzonden",
+            "message": "Bedankt voor je bericht! Ik zal zo snel mogelijk reageren."
+        }
+    },
+    "projects": {
+        "title": "Projecten",
+        "subtitle": "Hier zijn enkele van de projecten waar ik in mijn vrije tijd aan heb gewerkt.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda is een AI communicatie toolkit, ontworpen om bedrijven te helpen klantbelevingen te revolutioneren.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Een krachtige browserextensie waarmee gebruikers overal op het web interactie kunnen hebben met Textpanda.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "Een Slack-integratie die gebruikers in staat stelt om vanuit Slack interactie te hebben met Textpanda.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Een Hubspot-integratie die gebruikers in staat stelt om vanuit Hubspot interactie te hebben met Textpanda. Gebruik AI om ondersteuningstickets samen te vatten, automatisch reacties te genereren en meer.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Geïnteresseerd in samenwerken?",
+        "cta": "Neem contact met me op"
+    },
+    "footer": {
+        "sourceCode": "Broncode"
+    }
+}
