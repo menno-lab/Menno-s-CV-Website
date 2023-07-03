@@ -18,5 +18,5 @@ export function Button({ children, variant, colorScheme, ...props }: PropsWithCh
 }
 
 export function IconButton({ ...props }: IconButtonProps) {
-    return <ChakraIconButton {...props} />;
+    return <ChakraIconButton {...props} _hover={{ opacity: 0.8 }} />;
 }
