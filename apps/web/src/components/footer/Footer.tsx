@@ -36,6 +36,7 @@ export function Footer({ translations }: FooterProps) {
                                     icon={<FaLinkedin />}
                                     color='text'
                                     _hover={{ bg: 'accent' }}
+                                    colorScheme='secondary'
                                 />
                             </Link>
 
@@ -48,6 +49,7 @@ export function Footer({ translations }: FooterProps) {
                                     icon={<FaGithub />}
                                     color='text'
                                     _hover={{ bg: 'accent' }}
+                                    colorScheme='secondary'
                                 />
                             </Link>
                         </Stack>

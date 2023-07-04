@@ -9,6 +9,8 @@ import { ReactQueryProvider } from '../../utils/ReactQuery';
 import { Footer } from '../../components/footer/Footer';
 import { navbarTranslationsSchema } from '../../components/navbar/schema';
 import { footerTranslationSchema } from '../../components/footer/schema';
+import { ChatMenu } from '../../components/chat/ChatMenu';
+import { chatTranslationsSchema } from '../../components/chat/schema';
 
 export const metadata = {
     title: "Menno's CV Website",
@@ -27,9 +29,10 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
             <body>
                 <ReactQueryProvider>
                     <ThemeProvider>
-                        <Navbar translations={navbarTranslationsSchema.parse(t('nav'))} />
+                        <Navbar lang={lang} translations={navbarTranslationsSchema.parse(t('nav'))} />
                         {children}
                         <Footer translations={footerTranslationSchema.parse(t('footer'))} />
+                        <ChatMenu translations={chatTranslationsSchema.parse(t('chat'))} />
                     </ThemeProvider>
                 </ReactQueryProvider>
             </body>

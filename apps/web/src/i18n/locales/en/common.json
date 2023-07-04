@@ -149,5 +149,17 @@
     },
     "footer": {
         "sourceCode": "Source code"
+    },
+    "chat": {
+        "title": "Chat with Menno",
+        "placeholder": "Enter your message...",
+        "firstMessageOptions": [
+            "Menno is offline right now, probably off somewhere turning coffee into code. His AI twin is here though, and it's fully caffeinated and ready for your questions! Go ahead, ask anything!",
+            "Menno is offline, probably somewhere deep in a Git merge. But while he's facing that epic battle, his AI alter ego is here, armed with answers to your queries. So shoot your questions, because unlike Menno, I don't need a coffee break!",
+            "Menno's away, probably refactoring a legacy codebase into something even Da Vinci would be proud of. But his AI version, fluent in the art and science of code, is here and ready to chat. Say 'hello', ask a question, and let's get this conversation compiling!",
+            "Menno's out, probably arguing with a misbehaving API. I'm his AI twin, who's much better at small talk anyway. Fire away!",
+            "Menno's MIA, probably out being the Mozart of JavaScript. But don't worry, his AI, who's way less cool and doesn't even play drums, is here to chat. Ask anything!",
+            "Menno's offline, likely lost in Stackoverflow. But his AI is here, and I've got answers faster than Menno can say 'null pointer exception'. What's on your mind?"
+        ]
     }
 }

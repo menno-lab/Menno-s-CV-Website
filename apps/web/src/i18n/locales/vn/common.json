@@ -149,5 +149,17 @@
     },
     "footer": {
         "sourceCode": "Mã nguồn"
+    },
+    "chat": {
+        "title": "Chat với Menno",
+        "placeholder": "Nhập tin nhắn của bạn...",
+        "firstMessageOptions": [
+            "Menno đang ngoại tuyến ngay bây giờ, có lẽ đang ở đâu đó biến cà phê thành mã. Tuy nhiên, người anh em song sinh AI của anh ấy đang ở đây, đã được cung cấp đầy đủ cafein và sẵn lòng trả lời câu hỏi của bạn! Hãy tiếp tục, hỏi bất cứ điều gì!",
+            "Menno đang ngoại tuyến, có lẽ đang ở đâu đó sâu trong một quá trình merge Git. Nhưng trong khi anh ấy đang đối mặt với trận chiến hào hùng đó, bản alter ego AI của anh ấy đang ở đây, sẵn sàng trả lời cho câu hỏi của bạn. Vậy hãy bắn câu hỏi của bạn đi, bởi vì không giống Menno, tôi không cần tạm nghỉ uống cà phê!",
+            "Menno đang vắng, có lẽ đang tái cấu trúc một codebase cũ thành thứ mà ngay cả Da Vinci cũng sẽ tự hào. Nhưng phiên bản AI của anh ấy, thông thạo ngôn ngữ và khoa học của mã, đang ở đây và sẵn lòng trò chuyện. Hãy nói 'xin chào', đặt một câu hỏi, và hãy để cuộc trò chuyện này được biên dịch!",
+            "Menno không ở đây, có lẽ đang tranh cãi với một API không biết xử lý. Tôi là người anh em song sinh AI của anh ấy, người giỏi hơn nhiều trong việc trò chuyện nhỏ. Hãy bắt đầu!",
+            "Menno đang MIA, có lẽ đang là Mozart của JavaScript. Nhưng đừng lo, AI của anh ấy, kẻ kém hơn nhiều và thậm chí không biết chơi trống, đang ở đây để trò chuyện. Hãy hỏi bất cứ điều gì!",
+            "Menno đang ngoại tuyến, có thể đã bị lạc trong Stackoverflow. Nhưng AI của anh ấy đang ở đây, và tôi có câu trả lời nhanh hơn Menno có thể nói 'null pointer exception'. Bạn đang nghĩ gì?"
+        ]
     }
 }

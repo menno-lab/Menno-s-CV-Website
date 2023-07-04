@@ -4,10 +4,10 @@ body {
     overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 0.3em;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: rgb(35, 36, 36);
 }
