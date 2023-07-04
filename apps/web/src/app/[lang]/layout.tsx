@@ -29,7 +29,7 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
             <body>
                 <ReactQueryProvider>
                     <ThemeProvider>
-                        <Navbar translations={navbarTranslationsSchema.parse(t('nav'))} />
+                        <Navbar lang={lang} translations={navbarTranslationsSchema.parse(t('nav'))} />
                         {children}
                         <Footer translations={footerTranslationSchema.parse(t('footer'))} />
                         <ChatMenu translations={chatTranslationsSchema.parse(t('chat'))} />

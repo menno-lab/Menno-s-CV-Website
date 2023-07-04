@@ -6,12 +6,14 @@ import { NavbarTranslations } from './schema';
 import { NavbarController } from './NavbarController';
 import { LanguageSelector } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelector } from './navbar-dropdown/ThemeSelector';
+import { Language } from '../../i18n/types';
 
 interface NavbarProps {
+    lang: Language;
     translations: NavbarTranslations;
 }
 
-export function Navbar({ translations }: NavbarProps) {
+export function Navbar({ lang, translations }: NavbarProps) {
     const { theme, language, contact, navItems } = translations;
 
     return (
@@ -21,7 +23,7 @@ export function Navbar({ translations }: NavbarProps) {
                     <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
                         <MobileNav translations={translations} />
                         <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }}>
-                            <Link href='/'>
+                            <Link href={`/${lang}`}>
                                 <Text fontFamily={'heading'} fontWeight={600}>
                                     Menno Jager
                                 </Text>
@@ -41,7 +43,7 @@ export function Navbar({ translations }: NavbarProps) {
                             </Flex>
                         </Flex>
                         <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-                            <Link href='/contact'>
+                            <Link href={`/${lang}/contact`}>
                                 <Button
                                     colorScheme='primary'
                                     display={{ base: 'none', md: 'inline-flex' }}

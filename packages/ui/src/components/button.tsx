@@ -18,11 +18,11 @@ export function Button({ children, colorScheme, ...props }: PropsWithChildren<Cu
 }
 
 interface CustomIconButtonProps extends IconButtonProps {
-    colorScheme: SemanticColor;
+    colorScheme?: SemanticColor;
 }
 
 export function IconButton({ colorScheme, ...props }: CustomIconButtonProps) {
     const { theme } = useTheme();
-    const color = theme[colorScheme];
+    const color = colorScheme ? theme[colorScheme] : undefined;
     return <ChakraIconButton {...props} bg={color} _hover={{ opacity: 0.8 }} />;
 }

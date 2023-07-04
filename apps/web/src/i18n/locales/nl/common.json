@@ -13,12 +13,12 @@
     "hero": {
         "title": "Hoi, ik ben Menno",
         "subtitle": "Ik ben een fullstack ontwikkelaar uit het pittoreske Leeuwarden. Ik heb een passie voor het bouwen van mooie, schaalbare en onderhoudbare web applicaties.",
-        "primaryCta": "Neem contact met me op",
+        "primaryCta": "Neem contact met mij op",
         "secondaryCta": "Mijn projecten",
         "socialProof": "Vertrouwd met deze technologieën"
     },
     "contact": {
-        "title": "Contact opnemen met Menno",
+        "title": "Neem contact op met Menno",
         "email": "E-mail",
         "subject": "Onderwerp",
         "message": "Bericht",
@@ -149,5 +149,17 @@
     },
     "footer": {
         "sourceCode": "Broncode"
+    },
+    "chat": {
+        "title": "Chat met Menno",
+        "placeholder": "Typ je bericht...",
+        "firstMessageOptions": [
+            "Menno is op dit moment offline, waarschijnlijk ergens druk bezig om koffie om te zetten in code. Maar zijn AI-tweeling is hier wel, en die is volledig opgepept en klaar voor je vragen! Kom maar op, vraag maar raak!",
+            "Menno is offline, waarschijnlijk ergens verdiept in een Git-merge. Maar terwijl hij die epische strijd voert, is zijn AI dubbelganger hier, gewapend met antwoorden op jouw vragen. Dus vuur je vragen af, want in tegenstelling tot Menno, heb ik geen koffiepauze nodig!",
+            "Menno is er even niet, waarschijnlijk bezig om een verouderde codebase te refactoren tot iets waar zelfs Da Vinci trots op zou zijn. Maar zijn AI-versie, vloeiend in de kunst en wetenschap van code, is hier en klaar om te chatten. Zeg 'hallo', stel een vraag!",
+            "Menno is weg, waarschijnlijk in discussie met een dwarse API. Ik ben zijn AI-tweeling, die sowieso veel beter is in over koetjes en kalfjes praten. Vuur maar los!",
+            "Menno is offline, waarschijnlijk ergens de Mozart van JavaScript aan het uithangen. Maar maak je geen zorgen, zijn AI, die veel minder cool is en zelfs niet kan drummer, is hier om te chatten. Vraag maar raak!",
+            "Menno is offline, waarschijnlijk verdwaald in Stackoverflow. Maar zijn AI is hier, en ik heb antwoorden sneller dan Menno 'null pointer exception' kan zeggen. Wat houdt je bezig?"
+        ]
     }
 }
