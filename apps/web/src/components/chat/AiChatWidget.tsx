@@ -1,15 +1,16 @@
-import { Box, Text, VStack, Divider, Flex, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Box, VStack, Divider, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { useChat } from 'ai/react';
 import React, { useEffect, useRef } from 'react';
 import { ArrowForwardIcon, IconButton, useTheme } from 'ui';
 import { ChatBubble } from './ChatBubble';
-import { ChatLoadingBubble } from './ChatLoadingBubble';
+import { ChatBubbleLoading } from './ChatBubbleLoading';
 
-interface ChatMenuProps {
+interface AiChatWidgetProps {
     firstMessage: string;
+    inputPlaceholder: string;
 }
 
-export function AiChatWidget({ firstMessage }: ChatMenuProps) {
+export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetProps) {
     const { theme } = useTheme();
     const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
     const ref = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ export function AiChatWidget({ firstMessage }: ChatMenuProps) {
                 {messages.map((message) => (
                     <ChatBubble key={message.id} message={message} />
                 ))}
-                {isLoading && <ChatLoadingBubble />}
+                {isLoading && <ChatBubbleLoading />}
                 <div ref={ref} />
             </VStack>
             <Divider />
@@ -41,16 +42,20 @@ export function AiChatWidget({ firstMessage }: ChatMenuProps) {
                         <Input
                             value={input}
                             onChange={handleInputChange}
-                            autoFocus
-                            size='lg'
-                            placeholder='Enter message'
+                            size='md'
+                            placeholder={inputPlaceholder}
                             color={theme.text}
                             focusBorderColor={theme.primary}
                             _placeholder={{ color: theme.text, opacity: 0.6 }}
-                            zIndex={2}
+                            zIndex={4}
                         />
                         <InputRightElement height='100%'>
-                            <IconButton type='submit' colorScheme='primary' height='100%' aria-label='Submit' icon={<ArrowForwardIcon />} />
+                            <IconButton
+                                type='submit'
+                                colorScheme='primary'
+                                aria-label='Submit'
+                                icon={<ArrowForwardIcon textColor='white' />}
+                            />
                         </InputRightElement>
                     </InputGroup>
                 </form>

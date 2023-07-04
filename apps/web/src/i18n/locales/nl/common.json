@@ -145,14 +145,15 @@
     },
     "heroBottom": {
         "title": "Geïnteresseerd in samenwerken?",
-        "cta": "Neem contact met me op"
+        "cta": "Neem contact met mij op"
     },
     "footer": {
         "sourceCode": "Broncode"
     },
     "chat": {
         "title": "Chat met Menno",
-        "placeholder": "Typ je bericht...",
+        "inputPlaceholder": "Typ je bericht...",
+        "legalNotice": "In het gebruik van deze chat stemt u ermee in dat uw berichten worden opgeslagen en gelezen door Menno.",
         "firstMessageOptions": [
             "Menno is op dit moment offline, waarschijnlijk ergens druk bezig om koffie om te zetten in code. Maar zijn AI-tweeling is hier wel, en die is volledig opgepept en klaar voor je vragen! Kom maar op, vraag maar raak!",
             "Menno is offline, waarschijnlijk ergens verdiept in een Git-merge. Maar terwijl hij die epische strijd voert, is zijn AI dubbelganger hier, gewapend met antwoorden op jouw vragen. Dus vuur je vragen af, want in tegenstelling tot Menno, heb ik geen koffiepauze nodig!",

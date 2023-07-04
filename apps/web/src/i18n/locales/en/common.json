@@ -152,7 +152,8 @@
     },
     "chat": {
         "title": "Chat with Menno",
-        "placeholder": "Enter your message...",
+        "inputPlaceholder": "Enter your message...",
+        "legalNotice": "By using this chat, you agree that your messages will be stored and read by Menno.",
         "firstMessageOptions": [
             "Menno is offline right now, probably off somewhere turning coffee into code. His AI twin is here though, and it's fully caffeinated and ready for your questions! Go ahead, ask anything!",
             "Menno is offline, probably somewhere deep in a Git merge. But while he's facing that epic battle, his AI alter ego is here, armed with answers to your queries. So shoot your questions, because unlike Menno, I don't need a coffee break!",

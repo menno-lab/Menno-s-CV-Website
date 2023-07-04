@@ -24,18 +24,21 @@ import { ChatTranslations } from './schema';
 import { getRandomItemFromArray } from '../../utils/arrayUtils';
 import { motion } from 'framer-motion';
 import { AiChatWidget } from './AiChatWidget';
-import { AssistantAvatar } from './AssistantAvatar';
 
-interface ChatMenuProps {
+const src = 'https://esseemot.sirv.com/Images/square.png';
+
+interface FloatingActionButtonProps {
     translations: ChatTranslations;
 }
 
-export function ChatMenu({ translations }: ChatMenuProps) {
-    const { theme } = useTheme();
+export function FloatingActionButton({ translations }: FloatingActionButtonProps) {
+    const { theme, themeConfig } = useTheme();
+    const { title, inputPlaceholder, firstMessageOptions, legalNotice } = translations;
     const { isOpen, onToggle, onClose } = useDisclosure();
     const breakPoint = useBreakpoint();
     const isMobile = breakPoint === 'base';
-    const firstMessage = getRandomItemFromArray(translations.firstMessageOptions);
+    const firstMessage = getRandomItemFromArray(firstMessageOptions);
+    const isDarkMode = themeConfig.mode === 'dark';
 
     return (
         <Box position='fixed' right={10} bottom={10}>
@@ -46,15 +49,22 @@ export function ChatMenu({ translations }: ChatMenuProps) {
                         <DrawerContent color='white' bg={theme.backgroundSecondary}>
                             <DrawerCloseButton />
                             <DrawerBody pt='32px'>
-                                <VStack height='95vh'>
-                                    <HStack width='100%'>
-                                        <AssistantAvatar />
-                                        <Text fontSize='lg' fontWeight='bold'>
-                                            Chat with Menno
-                                        </Text>
+                                <VStack height='100%' pb='28px'>
+                                    <HStack>
+                                        <Avatar name='Menno Jager' src={src} size='md'>
+                                            <AvatarBadge bg='green' boxSize='14px' borderWidth='2px' />
+                                        </Avatar>
+                                        <VStack spacing={0}>
+                                            <Text width='100%' fontSize='lg' fontWeight='bold' textAlign='left'>
+                                                {title}
+                                            </Text>
+                                            <Text fontSize='2xs' color={isDarkMode ? 'gray.400' : 'gray.800'}>
+                                                {legalNotice}
+                                            </Text>
+                                        </VStack>
                                     </HStack>
                                     <Divider />
-                                    <AiChatWidget firstMessage={firstMessage} />
+                                    <AiChatWidget firstMessage={firstMessage} inputPlaceholder={inputPlaceholder} />
                                 </VStack>
                             </DrawerBody>
                         </DrawerContent>
@@ -63,19 +73,25 @@ export function ChatMenu({ translations }: ChatMenuProps) {
                     <SlideFade in={isOpen} offsetX='200px'>
                         <Container p={4} color='white' bg={theme.backgroundSecondary} rounded='md' shadow='2xl' width='lg'>
                             <VStack height='60vh'>
-                                <HStack width='100%'>
-                                    <AssistantAvatar />
-                                    <Text fontSize='lg' fontWeight='bold'>
-                                        Chat with Menno
-                                    </Text>
+                                <HStack>
+                                    <Avatar name='Menno Jager' src={src} size='md'>
+                                        <AvatarBadge bg='green' boxSize='14px' borderWidth='2px' />
+                                    </Avatar>
+                                    <VStack spacing={0}>
+                                        <Text width='100%' fontSize='lg' fontWeight='bold'>
+                                            {title}
+                                        </Text>
+                                        <Text fontSize='xs' color={isDarkMode ? 'gray.400' : 'gray.800'}>
+                                            {legalNotice}
+                                        </Text>
+                                    </VStack>
                                 </HStack>
                                 <Divider />
-                                <AiChatWidget firstMessage={firstMessage} />
+                                <AiChatWidget firstMessage={firstMessage} inputPlaceholder={inputPlaceholder} />
                             </VStack>
                         </Container>
                     </SlideFade>
                 )}
-
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}

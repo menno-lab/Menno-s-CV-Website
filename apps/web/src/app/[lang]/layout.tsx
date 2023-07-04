@@ -9,7 +9,7 @@ import { ReactQueryProvider } from '../../utils/ReactQuery';
 import { Footer } from '../../components/footer/Footer';
 import { navbarTranslationsSchema } from '../../components/navbar/schema';
 import { footerTranslationSchema } from '../../components/footer/schema';
-import { ChatMenu } from '../../components/chat/ChatMenu';
+import { FloatingActionButton } from '../../components/chat/FloatingActionButton';
 import { chatTranslationsSchema } from '../../components/chat/schema';
 
 export const metadata = {
@@ -32,7 +32,7 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
                         <Navbar lang={lang} translations={navbarTranslationsSchema.parse(t('nav'))} />
                         {children}
                         <Footer translations={footerTranslationSchema.parse(t('footer'))} />
-                        <ChatMenu translations={chatTranslationsSchema.parse(t('chat'))} />
+                        <FloatingActionButton translations={chatTranslationsSchema.parse(t('chat'))} />
                     </ThemeProvider>
                 </ReactQueryProvider>
             </body>

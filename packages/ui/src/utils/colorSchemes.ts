@@ -6,7 +6,7 @@ export const COLOR_SCHEMES: BaseThemeConfig = {
             background: '#DAFFFB',
             primary: '#64CCC5',
             secondary: '#176B87',
-            accent: '#7B1FA2',
+            accent: '#B298DC',
             text: '#001C30',
         },
         dark: {
@@ -38,7 +38,7 @@ export const COLOR_SCHEMES: BaseThemeConfig = {
             background: '#B6EAFA',
             primary: '#FF55BB',
             secondary: '#FFB84C',
-            accent: '#A459D1',
+            accent: '#E384FF',
             text: '#000000',
         },
         dark: {

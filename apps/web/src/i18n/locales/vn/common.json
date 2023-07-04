@@ -152,7 +152,8 @@
     },
     "chat": {
         "title": "Chat với Menno",
-        "placeholder": "Nhập tin nhắn của bạn...",
+        "inputPlaceholder": "Nhập tin nhắn của bạn...",
+        "legalNotice": "In het gebruik van deze chat stemt u ermee in dat uw berichten worden opgeslagen en gelezen door Menno.",
         "firstMessageOptions": [
             "Menno đang ngoại tuyến ngay bây giờ, có lẽ đang ở đâu đó biến cà phê thành mã. Tuy nhiên, người anh em song sinh AI của anh ấy đang ở đây, đã được cung cấp đầy đủ cafein và sẵn lòng trả lời câu hỏi của bạn! Hãy tiếp tục, hỏi bất cứ điều gì!",
             "Menno đang ngoại tuyến, có lẽ đang ở đâu đó sâu trong một quá trình merge Git. Nhưng trong khi anh ấy đang đối mặt với trận chiến hào hùng đó, bản alter ego AI của anh ấy đang ở đây, sẵn sàng trả lời cho câu hỏi của bạn. Vậy hãy bắn câu hỏi của bạn đi, bởi vì không giống Menno, tôi không cần tạm nghỉ uống cà phê!",

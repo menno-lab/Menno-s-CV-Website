@@ -38,7 +38,7 @@ export function getThemeConfig(theme: ThemeParams, isDarkMode: boolean) {
             },
             Divider: {
                 baseStyle: {
-                    borderColor: isDarkMode ? 'gray.200' : 'gray.400',
+                    borderColor: isDarkMode ? 'gray.200' : 'gray.500',
                 },
             },
         },
