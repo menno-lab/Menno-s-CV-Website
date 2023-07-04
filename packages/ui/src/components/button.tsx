@@ -7,7 +7,7 @@ interface CustomButtonProps extends ButtonProps {
     colorScheme: SemanticColor;
 }
 
-export function Button({ children, variant, colorScheme, ...props }: PropsWithChildren<CustomButtonProps>) {
+export function Button({ children, colorScheme, ...props }: PropsWithChildren<CustomButtonProps>) {
     const { theme } = useTheme();
     const color = theme[colorScheme];
     return (
@@ -17,6 +17,12 @@ export function Button({ children, variant, colorScheme, ...props }: PropsWithCh
     );
 }
 
-export function IconButton({ ...props }: IconButtonProps) {
-    return <ChakraIconButton {...props} _hover={{ opacity: 0.8 }} />;
+interface CustomIconButtonProps extends IconButtonProps {
+    colorScheme: SemanticColor;
+}
+
+export function IconButton({ colorScheme, ...props }: CustomIconButtonProps) {
+    const { theme } = useTheme();
+    const color = theme[colorScheme];
+    return <ChakraIconButton {...props} bg={color} _hover={{ opacity: 0.8 }} />;
 }
