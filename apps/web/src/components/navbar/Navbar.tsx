@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box, Button, Container, Flex, Stack, Text, Link as ChakraLink } from 'ui';
+import { Box, Button, Container, Flex, Stack, Text, Link } from 'ui';
 import { MobileNav } from './MobileNav';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { NavbarTranslations } from './schema';
 import { NavbarController } from './NavbarController';
 import { LanguageSelector } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelector } from './navbar-dropdown/ThemeSelector';
 import { Language } from '../../i18n/types';
+import { HashLink } from './HashLink';
 
 interface NavbarProps {
     lang: Language;
@@ -23,19 +24,17 @@ export function Navbar({ lang, translations }: NavbarProps) {
                     <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
                         <MobileNav translations={translations} />
                         <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }}>
-                            <Link href={`/${lang}`}>
+                            <Link as={NextLink} href='/'>
                                 <Text fontFamily={'heading'} fontWeight={600}>
                                     Menno Jager
                                 </Text>
                             </Link>
                             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                                 <Stack direction={'row'} spacing={4}>
-                                    {navItems.map((navItem) => (
-                                        <Box key={navItem.label}>
-                                            <ChakraLink p={2} href={`#${navItem.href}`} fontWeight={500}>
-                                                {navItem.label}
-                                            </ChakraLink>
-                                        </Box>
+                                    {navItems.map(({ href, label }) => (
+                                        <HashLink key={href} href={href}>
+                                            {label}
+                                        </HashLink>
                                     ))}
                                     <ThemeSelector cta={theme} />
                                     <LanguageSelector cta={language} />
@@ -43,7 +42,7 @@ export function Navbar({ lang, translations }: NavbarProps) {
                             </Flex>
                         </Flex>
                         <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-                            <Link href={`/${lang}/contact`}>
+                            <Link as={NextLink} href={`/${lang}/contact`}>
                                 <Button
                                     colorScheme='primary'
                                     display={{ base: 'none', md: 'inline-flex' }}

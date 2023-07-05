@@ -21,7 +21,7 @@ export function HeroSection({ translations }: HeroSectionProps) {
     };
 
     return (
-        <Container as='section' maxW={'7xl'} px={4} height='100vh' pt={{ base: '80px', md: 0 }}>
+        <Container as='section' maxW={'7xl'} px={4} pt={{ base: '80px', md: 0 }}>
             <Stack spacing={6}>
                 <Stack
                     align={'center'}
@@ -47,7 +47,7 @@ export function HeroSection({ translations }: HeroSectionProps) {
                                     {primaryCta}
                                 </Button>
                             </Link>
-                            <ClearHashAnchor />
+
                             <ChakraLink href='#projects'>
                                 <Button {...ctaProps} colorScheme='secondary'>
                                     {secondaryCta}

@@ -17,7 +17,7 @@ export function ProjectsSection({ translations }: ProjectsSectionProps) {
     const { title, subtitle, items } = translations;
     const illustrations = useProjectIllustrations();
     return (
-        <PageSection title={title} subtitle={subtitle}>
+        <PageSection title={title} subtitle={subtitle} hash='#projects'>
             <SimpleGrid minChildWidth='240px' spacing='20px'>
                 {items.map((item, i) => (
                     <motion.div

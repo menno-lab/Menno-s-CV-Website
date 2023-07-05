@@ -1,9 +1,10 @@
 'use client';
 
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import { Hash } from '../../utils/types';
 
 interface ScrollToViewProps {
-    hash: `#${string}`;
+    hash: Hash;
 }
 
 export function ScrollToView({ hash, children }: PropsWithChildren<ScrollToViewProps>) {

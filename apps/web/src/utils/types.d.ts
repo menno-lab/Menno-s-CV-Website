@@ -10,3 +10,5 @@ export interface RouteWithLang {
         lang: Language;
     };
 }
+
+export type Hash = `#${string}`;

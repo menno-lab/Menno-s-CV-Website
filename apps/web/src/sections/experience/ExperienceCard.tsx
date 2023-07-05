@@ -24,7 +24,7 @@ export function ExperienceCard({ item, illustration }: ExperienceCardProps) {
             <Card boxShadow='2xl' cursor='pointer' height={{ base: '100%', xl: '540px' }}>
                 <CardBody>
                     <Stack spacing={6}>
-                        <Box mb='24px'>
+                        <Box mb='18px'>
                             <HStack height={logoSize} gap={2}>
                                 <Box height='100%'>{illustration}</Box>
                                 <VStack height='100%' justifyContent='space-between' alignItems='flex-start'>
@@ -37,13 +37,13 @@ export function ExperienceCard({ item, illustration }: ExperienceCardProps) {
                                 </VStack>
                             </HStack>
                         </Box>
-                        <Tag size='md' variant='subtle' backgroundColor={theme.accent} color={'white'} width='fit-content'>
-                            <TagLeftIcon as={FaMapPin} textColor='white' />
-                            <TagLabel letterSpacing={1}>{item.location}</TagLabel>
+                        <Tag size='md' variant='subtle' backgroundColor={theme.accent} color={theme.text} width='fit-content'>
+                            <TagLeftIcon as={FaMapPin} />
+                            <TagLabel>{item.location}</TagLabel>
                         </Tag>
-                        <Tag size='md' variant='subtle' backgroundColor={theme.accent} color={'white'} width='fit-content'>
-                            <TagLeftIcon as={FaCalendar} textColor='white' />
-                            <TagLabel letterSpacing={1}>{item.date}</TagLabel>
+                        <Tag size='md' variant='subtle' backgroundColor={theme.accent} color={theme.text} width='fit-content'>
+                            <TagLeftIcon as={FaCalendar} />
+                            <TagLabel>{item.date}</TagLabel>
                         </Tag>
                         <UnorderedList>
                             {item.tasks.map((task, i) => (

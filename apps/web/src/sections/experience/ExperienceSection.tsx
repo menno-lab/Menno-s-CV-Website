@@ -17,7 +17,7 @@ export function ExperienceSection({ translations }: ExperienceSectionProps) {
     const illustrations = useExperienceIllustrations();
 
     return (
-        <PageSection title={title} subtitle={subtitle}>
+        <PageSection title={title} subtitle={subtitle} hash='#experience'>
             <SimpleGrid minChildWidth='300px' spacing='30px'>
                 {items.map((item, i) => (
                     <motion.div
