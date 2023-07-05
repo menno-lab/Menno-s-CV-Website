@@ -11,7 +11,7 @@ import { navbarTranslationsSchema } from '../../components/navbar/schema';
 import { footerTranslationSchema } from '../../components/footer/schema';
 import { FloatingActionButton } from '../../components/chat/FloatingActionButton';
 import { chatTranslationsSchema } from '../../components/chat/schema';
-import { InitializeAnalytics } from '../../analytics/InitializeAnalytics';
+import { InitializeAnalytics } from 'analytics';
 
 export const metadata = {
     title: "Menno's CV Website",

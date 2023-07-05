@@ -24,7 +24,7 @@ import { ChatTranslations } from './schema';
 import { getRandomItemFromArray } from '../../utils/arrayUtils';
 import { motion } from 'framer-motion';
 import { AiChatWidget } from './AiChatWidget';
-import { useAiAnalytics } from '../../analytics/hooks/useAiAnalytics';
+import { useAiAnalytics } from 'analytics';
 
 const src = 'https://esseemot.sirv.com/Images/square.png';
 

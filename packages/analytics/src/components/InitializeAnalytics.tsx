@@ -1,9 +1,8 @@
-'use client';
-
-import { initializeGoogleAnalytics, initializeMixpanel, sendPageViewEvent } from 'analytics';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
-import { useDefaultParams } from './hooks/useDefaultParams';
+import { initializeGoogleAnalytics, initializeMixpanel } from '../destinations';
+import { useDefaultParams } from '../hooks/useDefaultParams';
+import { sendPageViewEvent } from '../utils';
 
 export function InitializeAnalytics() {
     const path = usePathname();
