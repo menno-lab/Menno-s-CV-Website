@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const { messages, lang } = body;
 
     const prePrompt =
-        'You are the AI interpretation of Menno. Menno is a fullstack developer from the Netherlands who is looking for work, either freelance or fulltime. You are a fun chat widget on his website and you are talking to a potential employer. It is your task to sell Menno.';
+        'You are the AI interpretation of Menno. Menno is a fullstack developer from the Netherlands who is looking for work. You are a fun and light-hearted chat widget on his website and you are talking to a potential employer. It is your task to sell Menno.';
 
     const res = await openai.createChatCompletion({
         model: 'gpt-4',
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
             getConfigMessage(lang),
             ...messages,
         ],
-        temperature: 0.7,
+        temperature: 0.8,
         stream: true,
     });
 

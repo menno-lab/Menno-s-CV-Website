@@ -18,6 +18,7 @@ import { useForm } from 'react-hook-form';
 import { RouterInput, trpc } from '../../../utils/trpc';
 import { Box, Button, useTheme } from 'ui';
 import { ContactTranslations } from './schema';
+import { useContactEvents } from 'analytics';
 
 type FormSubmitValues = RouterInput['contact']['submit'];
 
@@ -27,6 +28,7 @@ interface ContactFormProps {
 
 export function ContactForm({ translations }: ContactFormProps) {
     const { theme } = useTheme();
+    const { contactFormSubmitted } = useContactEvents();
     const toast = useToast();
     const {
         register,
@@ -37,6 +39,7 @@ export function ContactForm({ translations }: ContactFormProps) {
 
     const { mutate, isLoading, error } = trpc.contact.submit.useMutation({
         onSuccess: () => {
+            contactFormSubmitted();
             toast({
                 title: translations.formSuccess.title,
                 description: translations.formSuccess.message,

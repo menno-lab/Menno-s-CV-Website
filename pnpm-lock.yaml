@@ -6,7 +6,7 @@ importers:
     devDependencies:
       '@turbo/gen':
         specifier: ^1.9.7
-        version: 1.9.7(@types/node@11.13.0)(typescript@5.1.3)
+        version: 1.9.7(@types/node@20.3.3)(typescript@5.1.3)
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
@@ -80,6 +80,9 @@ importers:
       ai:
         specifier: ^2.1.14
         version: 2.1.14(react@18.2.0)(svelte@3.59.2)(vue@3.3.4)
+      analytics:
+        specifier: workspace:*
+        version: link:../../packages/analytics
       axios:
         specifier: ^1.4.0
         version: 1.4.0
@@ -147,6 +150,70 @@ importers:
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
+
+  packages/analytics:
+    dependencies:
+      '@chakra-ui/css-reset':
+        specifier: ^2.1.2
+        version: 2.1.2(@emotion/react@11.11.1)(react@18.2.0)
+      '@chakra-ui/icons':
+        specifier: ^2.0.19
+        version: 2.0.19(@chakra-ui/system@2.5.8)(react@18.2.0)
+      '@chakra-ui/next-js':
+        specifier: ^2.1.4
+        version: 2.1.4(@chakra-ui/react@2.7.1)(@emotion/react@11.11.1)(next@13.4.1)(react@18.2.0)
+      '@chakra-ui/react':
+        specifier: ^2.7.1
+        version: 2.7.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.8)(framer-motion@10.12.17)(react-dom@18.2.0)(react@18.2.0)
+      '@emotion/react':
+        specifier: ^11.11.1
+        version: 11.11.1(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/styled':
+        specifier: ^11.11.0
+        version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.8)(react@18.2.0)
+      '@types/node':
+        specifier: ^20.3.3
+        version: 20.3.3
+      framer-motion:
+        specifier: ^10.12.17
+        version: 10.12.17(react-dom@18.2.0)(react@18.2.0)
+      mixpanel-browser:
+        specifier: ^2.47.0
+        version: 2.47.0
+      next:
+        specifier: ^13.4.1
+        version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
+      react-ga4:
+        specifier: ^2.1.0
+        version: 2.1.0
+      react-icons:
+        specifier: ^4.10.1
+        version: 4.10.1(react@18.2.0)
+      ui:
+        specifier: workspace:*
+        version: link:../ui
+      zod:
+        specifier: ^3.20.6
+        version: 3.21.4
+    devDependencies:
+      '@types/mixpanel-browser':
+        specifier: ^2.47.0
+        version: 2.47.0
+      '@types/react':
+        specifier: 18.2.8
+        version: 18.2.8
+      '@types/react-dom':
+        specifier: 18.2.4
+        version: 18.2.4
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/tsconfig: {}
 
@@ -3037,7 +3104,7 @@ packages:
     resolution: {integrity: sha512-DTuBFbqu4gGfajREEMrkq5jBhcnskinhr4+AnfJEk48zhVeEv3XnUKGIX98B74kxhYsIMfApGGySTn7V3b5yBA==}
     engines: {node: '>= 12.13.0', npm: '>= 6.12.0'}
     dependencies:
-      '@types/node': 20.2.5
+      '@types/node': 20.3.3
     dev: false
 
   /@slack/types@2.8.0:
@@ -3052,7 +3119,7 @@ packages:
       '@slack/logger': 3.0.0
       '@slack/types': 2.8.0
       '@types/is-stream': 1.1.0
-      '@types/node': 20.2.5
+      '@types/node': 20.3.3
       axios: 0.27.2
       eventemitter3: 3.1.2
       form-data: 2.5.1
@@ -3162,7 +3229,7 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@turbo/gen@1.9.7(@types/node@11.13.0)(typescript@5.1.3):
+  /@turbo/gen@1.9.7(@types/node@20.3.3)(typescript@5.1.3):
     resolution: {integrity: sha512-mjenROdRNvYxZixNfamJY/XxwKMT+01PuQby8+qdRUUa5ZLBPOv4rw11n+II1O8ZnpFpBJIGGFJcnRNY+lCddw==}
     dependencies:
       chalk: 2.4.2
@@ -3172,7 +3239,7 @@ packages:
       minimatch: 9.0.0
       node-plop: 0.26.3
       semver: 7.5.0
-      ts-node: 10.9.1(@types/node@11.13.0)(typescript@5.1.3)
+      ts-node: 10.9.1(@types/node@20.3.3)(typescript@5.1.3)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -3238,11 +3305,19 @@ packages:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: true
 
+  /@types/mixpanel-browser@2.47.0:
+    resolution: {integrity: sha512-CAMxjbBSmJz+zS8yaTvywvgdfL7ARhuABvON2THxIyczhIxtCAZT4h0LHfLUYUCg8gWux4xH/E5PTgMQR34DIQ==}
+    dev: true
+
   /@types/node@11.13.0:
     resolution: {integrity: sha512-rx29MMkRdVmzunmiA4lzBYJNnXsW/PhG4kMBy2ATsYaDjGGR75dCFEVVROKpNwlVdcUX3xxlghKQOeDPBJobng==}
 
   /@types/node@20.2.5:
     resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
+    dev: true
+
+  /@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
 
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -4825,6 +4900,7 @@ packages:
   /eslint@7.32.0:
     resolution: {integrity: sha512-VHZ8gX+EDfz+97jGcgyGCyRia/dPOd6Xh9yPv8Bl1+SoaIwD+a/vlrOmGRUyOYu7MwUhc7CxqeaDZU13S4+EpA==}
     engines: {node: ^10.12.0 || >=12.0.0}
+    hasBin: true
     dependencies:
       '@babel/code-frame': 7.12.11
       '@eslint/eslintrc': 0.4.3
@@ -6690,6 +6766,10 @@ packages:
       is-extendable: 1.0.1
     dev: true
 
+  /mixpanel-browser@2.47.0:
+    resolution: {integrity: sha512-Ldrva0fRBEIFWmEibBQO1PulfpJVF3pf28Guk09lDirDaSQqqU/xs9zQLwN2rL5VwVtsP1aD3JaCgaa98EjojQ==}
+    dev: false
+
   /mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     dependencies:
@@ -7419,6 +7499,10 @@ packages:
       react-clientside-effect: 1.2.6(react@18.2.0)
       use-callback-ref: 1.3.0(@types/react@18.2.8)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.8)(react@18.2.0)
+    dev: false
+
+  /react-ga4@2.1.0:
+    resolution: {integrity: sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==}
     dev: false
 
   /react-hook-form@7.45.1(react@18.2.0):
@@ -8522,7 +8606,7 @@ packages:
       escape-string-regexp: 1.0.5
     dev: true
 
-  /ts-node@10.9.1(@types/node@11.13.0)(typescript@5.1.3):
+  /ts-node@10.9.1(@types/node@20.3.3)(typescript@5.1.3):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -8541,7 +8625,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 11.13.0
+      '@types/node': 20.3.3
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3

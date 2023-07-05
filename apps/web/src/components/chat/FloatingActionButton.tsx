@@ -24,6 +24,7 @@ import { ChatTranslations } from './schema';
 import { getRandomItemFromArray } from '../../utils/arrayUtils';
 import { motion } from 'framer-motion';
 import { AiChatWidget } from './AiChatWidget';
+import { useAiAnalytics } from 'analytics';
 
 const src = 'https://esseemot.sirv.com/Images/square.png';
 
@@ -33,8 +34,16 @@ interface FloatingActionButtonProps {
 
 export function FloatingActionButton({ translations }: FloatingActionButtonProps) {
     const { theme, themeConfig } = useTheme();
+    const { openChatWindow, closeChatWindow } = useAiAnalytics();
     const { title, inputPlaceholder, firstMessageOptions, legalNotice } = translations;
-    const { isOpen, onToggle, onClose } = useDisclosure();
+    const { isOpen, onToggle, onClose } = useDisclosure({
+        onOpen: () => {
+            openChatWindow();
+        },
+        onClose: () => {
+            closeChatWindow();
+        },
+    });
     const breakPoint = useBreakpoint();
     const isMobile = breakPoint === 'base';
     const firstMessage = getRandomItemFromArray(firstMessageOptions);

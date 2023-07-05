@@ -4,6 +4,7 @@ import React from 'react';
 import { NavbarDropdown } from './NavbarDropdown';
 import { useRouter } from 'next/navigation';
 import { NavbarDropdownMobile } from './NavbarDropdownMobile';
+import { useCustomizationEvents } from 'analytics';
 
 interface LanguageSelectorProps {
     cta: string;
@@ -17,11 +18,32 @@ const items = [
 
 export function LanguageSelector({ cta }: LanguageSelectorProps) {
     const { push } = useRouter();
+    const { changeLanguage } = useCustomizationEvents();
 
-    return <NavbarDropdown cta={cta} items={items} onChange={(value) => push('/' + value)} />;
+    return (
+        <NavbarDropdown
+            cta={cta}
+            items={items}
+            onChange={(value) => {
+                changeLanguage(value);
+                push('/' + value);
+            }}
+        />
+    );
 }
 
 export function LanguageSelectorMobile({ cta }: LanguageSelectorProps) {
     const { push } = useRouter();
-    return <NavbarDropdownMobile cta={cta} items={items} onChange={(value) => push('/' + value)} />;
+    const { changeLanguage } = useCustomizationEvents();
+
+    return (
+        <NavbarDropdownMobile
+            cta={cta}
+            items={items}
+            onChange={(value) => {
+                changeLanguage(value);
+                push('/' + value);
+            }}
+        />
+    );
 }
