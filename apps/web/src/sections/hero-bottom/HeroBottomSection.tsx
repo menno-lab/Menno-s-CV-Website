@@ -15,7 +15,7 @@ export function HeroBottomSection({ translations }: HeroBottomSectionProps) {
                     <Heading as='h2' textAlign='center' fontSize='3xl'>
                         {translations.title}
                     </Heading>
-                    <Box width='md'>
+                    <Box width={{ base: '80w', sm: 'md' }}>
                         <Link href='/contact'>
                             <Button colorScheme='accent' width='100%'>
                                 {translations.cta}

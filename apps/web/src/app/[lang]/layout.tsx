@@ -3,15 +3,15 @@ import { dir } from 'i18next';
 import { languages } from '../../i18n/settings';
 import { ThemeProvider } from 'ui';
 import { RouteWithChildren } from '../../utils/types';
-import { Navbar } from '../../components/navbar/Navbar';
 import { useTranslation } from '../../i18n';
 import { ReactQueryProvider } from '../../utils/ReactQuery';
 import { Footer } from '../../components/footer/Footer';
-import { navbarTranslationsSchema } from '../../components/navbar/schema';
 import { footerTranslationSchema } from '../../components/footer/schema';
 import { FloatingActionButton } from '../../components/chat/FloatingActionButton';
 import { chatTranslationsSchema } from '../../components/chat/schema';
 import { InitializeAnalytics } from 'analytics';
+import { navbarTranslationsSchema } from '../../features/navigation/components/schema';
+import { Navbar } from '../../features/navigation/components/Navbar';
 
 export const metadata = {
     title: "Menno's CV Website",

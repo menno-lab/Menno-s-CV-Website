@@ -3,6 +3,7 @@
 import React, { PropsWithChildren } from 'react';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { Link } from '@chakra-ui/react';
+import { useNavigation } from '../hooks/useNavigation';
 
 interface HashLinkProps {
     href: string;
@@ -11,8 +12,7 @@ interface HashLinkProps {
 export function HashLink({ href, children }: PropsWithChildren<HashLinkProps>) {
     const router = useRouter();
     const { lang } = useParams();
-    const pathname = usePathname();
-    const pathWithoutLang = pathname.replace(`/${lang}`, '');
+    const { pathWithoutLang } = useNavigation();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (pathWithoutLang) {
