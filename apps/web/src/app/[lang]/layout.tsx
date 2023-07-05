@@ -11,7 +11,7 @@ import { navbarTranslationsSchema } from '../../components/navbar/schema';
 import { footerTranslationSchema } from '../../components/footer/schema';
 import { FloatingActionButton } from '../../components/chat/FloatingActionButton';
 import { chatTranslationsSchema } from '../../components/chat/schema';
-import { Analytics } from '../../components/Analytics';
+import { InitializeAnalytics } from '../../analytics/InitializeAnalytics';
 
 export const metadata = {
     title: "Menno's CV Website",
@@ -34,9 +34,9 @@ export default async function RootLayout({ children, params: { lang } }: RouteWi
                         {children}
                         <Footer translations={footerTranslationSchema.parse(t('footer'))} />
                         <FloatingActionButton translations={chatTranslationsSchema.parse(t('chat'))} />
+                        <InitializeAnalytics />
                     </ThemeProvider>
                 </ReactQueryProvider>
-                <Analytics />
             </body>
         </html>
     );

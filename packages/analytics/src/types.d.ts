@@ -1,4 +1,5 @@
 export interface DefaultParams {
-    isMobile: boolean;
+    breakPoint: string;
     language: string;
+    theme: string;
 }

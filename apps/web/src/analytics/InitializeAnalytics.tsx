@@ -3,9 +3,11 @@
 import { initializeGoogleAnalytics, initializeMixpanel, sendPageViewEvent } from 'analytics';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import { useDefaultParams } from './hooks/useDefaultParams';
 
-export function Analytics() {
+export function InitializeAnalytics() {
     const path = usePathname();
+    const defaultParams = useDefaultParams();
 
     useEffect(() => {
         initializeGoogleAnalytics(process.env.NEXT_PUBLIC_GA_PROPERTY_ID!);
@@ -13,7 +15,7 @@ export function Analytics() {
     }, []);
 
     useEffect(() => {
-        sendPageViewEvent(path);
+        sendPageViewEvent(path, defaultParams);
     }, [path]);
 
     return null;
