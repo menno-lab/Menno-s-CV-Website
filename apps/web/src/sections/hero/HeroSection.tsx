@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack, Heading, Button, Flex, Text, Container, ProfilePicture, Link as ChakraLink, SlideInFade } from 'ui';
-import { ClearHashAnchor } from './clearHashAnchor';
 import { HeroTranslations } from './schema';
 import { TechStack } from './TechStack';
 import Link from 'next/link';
@@ -47,7 +46,6 @@ export function HeroSection({ translations }: HeroSectionProps) {
                                     {primaryCta}
                                 </Button>
                             </Link>
-
                             <ChakraLink href='#projects'>
                                 <Button {...ctaProps} colorScheme='secondary'>
                                     {secondaryCta}

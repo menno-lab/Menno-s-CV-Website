@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button } from 'ui';
+import NextLink from 'next/link';
+import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button, Link } from 'ui';
 import { GITHUB_PROFILE_URL, GITHUB_REPO_URL, LINKEDIN_PROFILE_URL } from '../../utils/constants';
 import { FooterTranslation } from './schema';
 
@@ -21,13 +21,13 @@ export function Footer({ translations }: FooterProps) {
                     <Heading size='md' color='accent'>
                         MJ
                     </Heading>
-                    <a href='https://storyset.com/' target='_blank'>
+                    <Link as={NextLink} href='https://storyset.com/' target='_blank'>
                         Illustrations by Storyset
-                    </a>
+                    </Link>
                     <Text>© 2023 Menno Jager</Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
                         <Stack direction='row' spacing={6}>
-                            <Link href={LINKEDIN_PROFILE_URL} target='_blank'>
+                            <NextLink href={LINKEDIN_PROFILE_URL} target='_blank'>
                                 <IconButton
                                     bg='secondary'
                                     variant='solid'
@@ -38,9 +38,9 @@ export function Footer({ translations }: FooterProps) {
                                     _hover={{ bg: 'accent' }}
                                     colorScheme='secondary'
                                 />
-                            </Link>
+                            </NextLink>
 
-                            <Link href={GITHUB_PROFILE_URL} target='_blank'>
+                            <NextLink href={GITHUB_PROFILE_URL} target='_blank'>
                                 <IconButton
                                     bg='secondary'
                                     variant='solid'
@@ -51,13 +51,13 @@ export function Footer({ translations }: FooterProps) {
                                     _hover={{ bg: 'accent' }}
                                     colorScheme='secondary'
                                 />
-                            </Link>
+                            </NextLink>
                         </Stack>
-                        <Link href={GITHUB_REPO_URL} target='_blank'>
+                        <NextLink href={GITHUB_REPO_URL} target='_blank'>
                             <Button colorScheme='secondary' rightIcon={<FaExternalLinkAlt />} _hover={{ bg: 'accent' }}>
                                 {translations.sourceCode}
                             </Button>
-                        </Link>
+                        </NextLink>
                     </Stack>
                 </Stack>
             </Container>

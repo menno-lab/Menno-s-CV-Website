@@ -25,7 +25,7 @@ export function Navbar({ lang, translations }: NavbarProps) {
                         <MobileNav translations={translations} />
                         <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }}>
                             <Link as={NextLink} href='/'>
-                                <Text fontFamily={'heading'} fontWeight={600}>
+                                <Text fontFamily={'heading'} fontWeight={700} fontSize='lg'>
                                     Menno Jager
                                 </Text>
                             </Link>

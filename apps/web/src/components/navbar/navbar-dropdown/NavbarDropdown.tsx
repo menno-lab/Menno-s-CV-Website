@@ -22,7 +22,7 @@ export function NavbarDropdown({ cta, items, onChange, submenu }: NavbarDropdown
 
     return (
         <Menu>
-            <MenuButton as={Button} variant='link' rightIcon={<ChevronDownIcon />} color={theme.text}>
+            <MenuButton as={Button} variant='link' color={theme.text}>
                 <Text>{cta}</Text>
             </MenuButton>
             <MenuList bg={theme.backgroundSecondary} borderColor={theme.hover}>
