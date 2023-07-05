@@ -1,3 +1,5 @@
+import { Language } from './types';
+
 export const fallbackLang = 'en';
 export const languages = [fallbackLang, 'nl', 'vn'];
 export const defaultNS = 'translation';
@@ -13,3 +15,9 @@ export function getOptions(lng = fallbackLang, ns = defaultNS) {
         returnObjects: true,
     };
 }
+
+export const languagesMap: Record<Language, string> = {
+    en: 'English',
+    nl: 'Dutch',
+    vn: 'Vietnamese',
+};

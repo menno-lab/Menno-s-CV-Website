@@ -7,6 +7,10 @@
             {
                 "label": "Projecten",
                 "href": "projects"
+            },
+            {
+                "label": "Ervaring",
+                "href": "experience"
             }
         ]
     },

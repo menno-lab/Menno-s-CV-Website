@@ -4,6 +4,9 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowForwardIcon, IconButton, useTheme } from 'ui';
 import { ChatBubble } from './ChatBubble';
 import { ChatBubbleLoading } from './ChatBubbleLoading';
+import { useParams } from 'next/navigation';
+import { languagesMap } from '../../i18n/settings';
+import { Language } from '../../i18n/types';
 
 interface AiChatWidgetProps {
     firstMessage: string;
@@ -12,7 +15,17 @@ interface AiChatWidgetProps {
 
 export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetProps) {
     const { theme } = useTheme();
-    const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+    const { lang } = useParams() as { lang: Language };
+    const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+        initialMessages: [
+            {
+                id: '1',
+                content: firstMessage,
+                role: 'assistant',
+            },
+        ],
+        body: { lang: languagesMap[lang] },
+    });
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -22,13 +35,6 @@ export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetPro
     return (
         <>
             <VStack pr='10px' spacing={4} py={4} overflow='auto' flexGrow={1}>
-                <ChatBubble
-                    message={{
-                        id: '1',
-                        content: firstMessage,
-                        role: 'assistant',
-                    }}
-                />
                 {messages.map((message) => (
                     <ChatBubble key={message.id} message={message} />
                 ))}

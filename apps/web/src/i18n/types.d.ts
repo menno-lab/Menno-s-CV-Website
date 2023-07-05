@@ -1,2 +1,2 @@
-export type Language = 'en' | 'nl';
+export type Language = 'en' | 'nl' | 'vn';
 export type NameSpace = 'common';

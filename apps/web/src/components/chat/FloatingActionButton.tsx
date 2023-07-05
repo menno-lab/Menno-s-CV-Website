@@ -95,7 +95,7 @@ export function FloatingActionButton({ translations }: FloatingActionButtonProps
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 2 }}
+                    transition={{ duration: 0.5, delay: 1 }}
                 >
                     <Avatar
                         aria-label='Open chat'

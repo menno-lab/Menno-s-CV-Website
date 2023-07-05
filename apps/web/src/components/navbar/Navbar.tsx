@@ -23,9 +23,9 @@ export function Navbar({ lang, translations }: NavbarProps) {
                 <Container maxW={'7xl'} py={2} px={4}>
                     <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
                         <MobileNav translations={translations} />
-                        <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }}>
+                        <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }} alignItems='center'>
                             <Link as={NextLink} href='/'>
-                                <Text fontFamily={'heading'} fontWeight={700} fontSize='lg'>
+                                <Text fontFamily={'heading'} fontWeight={700}>
                                     Menno Jager
                                 </Text>
                             </Link>
