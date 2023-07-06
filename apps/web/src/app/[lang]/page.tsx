@@ -1,14 +1,14 @@
 import { VStack } from 'ui';
-import { HeroSection } from '../../sections/hero/HeroSection';
-import { ProjectsSection } from '../../sections/projects/ProjectsSection';
 import { RouteWithLang } from '../../utils/types';
 import { useTranslation } from '../../i18n';
-import { heroTranslationsSchema } from '../../sections/hero/schema';
-import { projectsTranslationsSchema } from '../../sections/projects/schema';
-import { HeroBottomSection } from '../../sections/hero-bottom/HeroBottomSection';
-import { heroBottomTranslationsSchema } from '../../sections/hero-bottom/schema';
-import { ExperienceSection } from '../../sections/experience/ExperienceSection';
-import { experienceTranslationsSchema } from '../../sections/experience/schema';
+import { ExperienceSection } from '../../layout/home-sections/experience/ExperienceSection';
+import { experienceTranslationsSchema } from '../../layout/home-sections/experience/schema';
+import { HeroBottomSection } from '../../layout/home-sections/hero-bottom/HeroBottomSection';
+import { heroBottomTranslationsSchema } from '../../layout/home-sections/hero-bottom/schema';
+import { HeroSection } from '../../layout/home-sections/hero/HeroSection';
+import { heroTranslationsSchema } from '../../layout/home-sections/hero/schema';
+import { ProjectsSection } from '../../layout/home-sections/projects/ProjectsSection';
+import { projectsTranslationsSchema } from '../../layout/home-sections/projects/schema';
 
 export default async function Page({ params: { lang } }: RouteWithLang) {
     const { t } = await useTranslation(lang);

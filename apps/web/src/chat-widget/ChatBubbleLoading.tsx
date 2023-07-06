@@ -1,6 +1,5 @@
 import { Box, SkeletonCircle } from '@chakra-ui/react';
 import React from 'react';
-import { useTheme } from 'ui';
 
 export function ChatBubbleLoading() {
     return (

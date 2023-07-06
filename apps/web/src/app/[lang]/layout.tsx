@@ -4,14 +4,14 @@ import { languages } from '../../i18n/settings';
 import { ThemeProvider } from 'ui';
 import { RouteWithChildren } from '../../utils/types';
 import { useTranslation } from '../../i18n';
-import { ReactQueryProvider } from '../../utils/ReactQuery';
-import { Footer } from '../../components/footer/Footer';
-import { footerTranslationSchema } from '../../components/footer/schema';
-import { FloatingActionButton } from '../../components/chat/FloatingActionButton';
-import { chatTranslationsSchema } from '../../components/chat/schema';
 import { InitializeAnalytics } from 'analytics';
-import { navbarTranslationsSchema } from '../../features/navigation/components/schema';
-import { Navbar } from '../../features/navigation/components/Navbar';
+import { ReactQueryProvider } from '../../layout/ReactQuery';
+import { Navbar } from '../../layout/navigation/components/Navbar';
+import { FloatingActionButton } from '../../chat-widget/FloatingActionButton';
+import { chatTranslationsSchema } from '../../chat-widget/schema';
+import { Footer } from '../../layout/footer/Footer';
+import { footerTranslationSchema } from '../../layout/footer/schema';
+import { navbarTranslationsSchema } from '../../layout/navigation/schema';
 
 export const metadata = {
     title: "Menno's CV Website",

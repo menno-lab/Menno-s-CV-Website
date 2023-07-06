@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { PropsWithChildren, useState, useEffect } from 'react';
 
-export function NavbarController({ children }: PropsWithChildren<{}>) {
+export function NavbarVisibilityController({ children }: PropsWithChildren<{}>) {
     const [scrollDirection, setScrollDirection] = useState('up');
 
     useEffect(() => {

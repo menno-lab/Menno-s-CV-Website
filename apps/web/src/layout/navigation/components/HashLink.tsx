@@ -1,9 +1,8 @@
 'use client';
 
 import React, { PropsWithChildren } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { Link } from '@chakra-ui/react';
-import { useNavigation } from '../hooks/useNavigation';
 import { Hash } from '../../../utils/types';
 
 interface HashLinkProps {
@@ -13,7 +12,8 @@ interface HashLinkProps {
 export function HashLink({ href, children }: PropsWithChildren<HashLinkProps>) {
     const router = useRouter();
     const { lang } = useParams();
-    const { pathWithoutLang } = useNavigation();
+    const pathname = usePathname();
+    const pathWithoutLang = pathname.length > 3 ? pathname.substring(3) : undefined;
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (pathWithoutLang) {

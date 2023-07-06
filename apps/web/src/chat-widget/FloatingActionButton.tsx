@@ -21,10 +21,10 @@ import {
 import React from 'react';
 import { ChatIcon, CloseIcon, useTheme } from 'ui';
 import { ChatTranslations } from './schema';
-import { getRandomItemFromArray } from '../../utils/arrayUtils';
 import { motion } from 'framer-motion';
 import { AiChatWidget } from './AiChatWidget';
 import { useAiAnalytics } from 'analytics';
+import { getRandomItemFromArray } from '../utils/arrayUtils';
 
 const src = 'https://esseemot.sirv.com/Images/square.png';
 

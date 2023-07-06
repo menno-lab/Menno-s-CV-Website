@@ -5,9 +5,9 @@ import { ArrowForwardIcon, useTheme, IconButton } from 'ui';
 import { ChatBubble } from './ChatBubble';
 import { ChatBubbleLoading } from './ChatBubbleLoading';
 import { useParams } from 'next/navigation';
-import { languagesMap } from '../../i18n/settings';
-import { Language } from '../../i18n/types';
 import { useAiAnalytics } from 'analytics';
+import { Language } from '../i18n/types';
+import { languagesMap } from '../i18n/settings';
 
 interface AiChatWidgetProps {
     firstMessage: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
-import { Hash } from '../../utils/types';
+import { Hash } from '../../../utils/types';
 
 interface ScrollToViewProps {
     hash: Hash;

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Box, Container, Heading, Stack, Text } from 'ui';
 import { ScrollToView } from './ScrollToView';
-import { Hash } from '../../utils/types';
+import { Hash } from '../../../utils/types';
 
 interface PageSectionProps {
     title: string;

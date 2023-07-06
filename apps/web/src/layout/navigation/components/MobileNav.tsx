@@ -13,10 +13,10 @@ import {
     IconButton,
 } from 'ui';
 import { useDisclosure } from '@chakra-ui/react';
-import { NavbarTranslations } from './schema';
 import { LanguageSelectorMobile } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelectorMobile } from './navbar-dropdown/ThemeSelector';
 import { useRouter } from 'next/navigation';
+import { NavbarTranslations } from '../schema';
 
 interface MobileNavProps {
     translations: NavbarTranslations;
