@@ -1,81 +1,39 @@
-# Turborepo starter
+# Menno's Developer Portfolio
 
-This is an official starter Turborepo.
+This portfolio serves as a comprehensive display of my developer skills. It's intentionally engineered beyond the requirements of a typical website to demonstrate my skills and familiarity with a range of tools.
 
-## Using this example
+Although a simpler approach would usually suffice for such a project, I over engineered it on purpose to showcase my proficiency and adaptability as a developer.
 
-Run the following command:
+## Tooling:
 
-```sh
-npx create-turbo@latest
-```
+-   **TypeScript**: A statically typed superset of JavaScript that ensures type safety and enhances code readability. Chosen for its ability to prevent potential runtime errors.
 
-## What's inside?
+-   **React**: A JavaScript library for creating interactive UIs. Selected for its component-based architecture and efficient updates and rendering.
 
-This Turborepo includes the following packages/apps:
+-   **Next.js 13**: The latest iteration of a React framework that enables server-side rendering and generates static websites. This version supports Server Side Components, allowing for improved performance and SEO outcomes.
 
-### Apps and Packages
+-   **Chakra UI**: A simple, modular and accessible component library that helps build beautiful React applications. Chosen for its ease of customization and wide array of components.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+-   **tRPC**: A framework for creating typesafe APIs, providing end-to-end type safety. Used to ensure robust and secure data communication.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+-   **Turborepo**: An efficient code sharing and workspace management tool. Selected for its ability to streamline development across multiple packages.
 
-### Utilities
+-   **Slack API**: A powerful tool that allows for integration with Slack's messaging platform. Incorporated to facilitate interactive communication features.
 
-This Turborepo has some additional tools already setup for you:
+-   **AWS Lambda**: A serverless computing service that runs code in response to events. Chosen for its scalability and pay-only-for-what-you-use pricing model, reducing operational costs.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+-   **OpenAI**: An artificial intelligence system that provides a range of AI services. Leveraged to add a dynamic and interactive element to the portfolio.
 
-### Build
+-   **Multi-language support**: An implementation that allows the portfolio to support multiple languages. Incorporated to make the portfolio accessible to a global audience.
 
-To build all apps and packages, run the following command:
+-   **Multiple theme support**: A feature that allows users to customize the portfolio's appearance. Used to provide a more personalized user experience.
 
-```
-cd my-turborepo
-pnpm build
-```
+-   **Framer Motion**: A library that helps create animations and transitions for React applications. Chosen to enhance the visual experience of the portfolio.
 
-### Develop
+-   **Responsive Design**: A design approach that ensures the portfolio looks good on all devices and screen sizes. Essential for a user-friendly experience across multiple device types.
 
-To develop all apps and packages, run the following command:
+## Who is this for?
 
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+-   Potential Employers: To evaluate my skills and coding style.
+-   Developers: To draw inspiration and share knowledge.
+-   General Public: To understand my work and capability.
