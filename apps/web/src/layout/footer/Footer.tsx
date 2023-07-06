@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button } from 'ui';
 import { GITHUB_PROFILE_URL, GITHUB_REPO_URL, LINKEDIN_PROFILE_URL } from '../../utils/constants';
 import { FooterTranslation } from './schema';
+import { LanguageSelector } from '../navigation/components/navbar-dropdown/LanguageSelector';
 
 interface FooterProps {
     translations: FooterTranslation;
@@ -18,9 +19,12 @@ export function Footer({ translations }: FooterProps) {
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}
                 >
-                    <Heading size='md' color='accent'>
-                        MJ
-                    </Heading>
+                    <Stack direction='row' spacing={4}>
+                        <Heading size='md' color='accent'>
+                            MJ
+                        </Heading>
+                        <LanguageSelector cta={translations.language} />
+                    </Stack>
                     <Text>© 2023 Menno Jager</Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
                         <Stack direction='row' spacing={6}>

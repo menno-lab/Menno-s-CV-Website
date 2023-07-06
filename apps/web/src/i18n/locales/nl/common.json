@@ -1,7 +1,6 @@
 {
     "nav": {
         "theme": "Thema",
-        "language": "Taal",
         "contact": "Contact",
         "navItems": [
             {
@@ -152,6 +151,7 @@
         "cta": "Neem contact met mij op"
     },
     "footer": {
+        "language": "Taal",
         "sourceCode": "Broncode"
     },
     "chat": {

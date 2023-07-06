@@ -2,12 +2,11 @@ import React from 'react';
 import { Box, Button, Container, Flex, Stack, Text, Link } from 'ui';
 import { MobileNav } from './MobileNav';
 import NextLink from 'next/link';
-import { LanguageSelector } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelector } from './navbar-dropdown/ThemeSelector';
 import { HashLink } from './HashLink';
 import { NavbarTranslations } from '../schema';
 import { NavbarVisibilityController } from './NavbarVisibilityController';
-import { Language } from '../../../i18n/types';
+import { Language } from '../../../i18n/settings';
 
 interface NavbarProps {
     lang: Language;
@@ -15,7 +14,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ lang, translations }: NavbarProps) {
-    const { theme, language, contact, navItems } = translations;
+    const { theme, contact, navItems } = translations;
 
     return (
         <NavbarVisibilityController>
@@ -37,7 +36,6 @@ export function Navbar({ lang, translations }: NavbarProps) {
                                         </HashLink>
                                     ))}
                                     <ThemeSelector cta={theme} />
-                                    <LanguageSelector cta={language} />
                                 </Stack>
                             </Flex>
                         </Flex>

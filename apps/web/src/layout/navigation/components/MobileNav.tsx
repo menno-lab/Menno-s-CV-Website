@@ -13,7 +13,6 @@ import {
     IconButton,
 } from 'ui';
 import { useDisclosure } from '@chakra-ui/react';
-import { LanguageSelectorMobile } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelectorMobile } from './navbar-dropdown/ThemeSelector';
 import { useRouter } from 'next/navigation';
 import { NavbarTranslations } from '../schema';
@@ -23,7 +22,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ translations }: MobileNavProps) {
-    const { theme, language } = translations;
+    const { theme } = translations;
     const { isOpen, onToggle, onClose } = useDisclosure();
     const router = useRouter();
 
@@ -44,7 +43,6 @@ export function MobileNav({ translations }: MobileNavProps) {
                     <DrawerBody>
                         <Flex flexDirection={'column'} justifyContent={'center'} height='100%' gap={14}>
                             <ThemeSelectorMobile cta={theme} />
-                            <LanguageSelectorMobile cta={language} />
                             <Button
                                 colorScheme={'primary'}
                                 onClick={() => {

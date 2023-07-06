@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const footerTranslationSchema = z.object({
+    language: z.string(),
     sourceCode: z.string(),
 });
 

@@ -16,7 +16,7 @@ export function ProjectCard({ item, illustration }: ProjectCardProps) {
                 scale: 1.05,
             }}
         >
-            <Card boxShadow='2xl' cursor='pointer' height={{ base: '100%', sm: '300px' }}>
+            <Card boxShadow='2xl' cursor='pointer' height={{ base: '100%', sm: '320px' }}>
                 <CardBody>
                     <Stack spacing={4}>
                         <Box height='36px'>{illustration}</Box>

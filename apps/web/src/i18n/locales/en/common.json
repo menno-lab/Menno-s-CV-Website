@@ -1,7 +1,6 @@
 {
     "nav": {
         "theme": "Theme",
-        "language": "Language",
         "contact": "Contact",
         "navItems": [
             {
@@ -152,7 +151,8 @@
         "cta": "Contact me"
     },
     "footer": {
-        "sourceCode": "Source code"
+        "sourceCode": "Source code",
+        "language": "Language"
     },
     "chat": {
         "title": "Chat with Menno",

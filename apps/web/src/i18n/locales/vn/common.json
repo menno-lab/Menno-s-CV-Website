@@ -1,7 +1,6 @@
 {
     "nav": {
         "theme": "Chủ đề",
-        "language": "Ngôn ngữ",
         "contact": "Liên hệ",
         "navItems": [
             {
@@ -76,7 +75,7 @@
                     "key": "supermetrics",
                     "label": "Supermetrics"
                 },
-                "role": "Nhà phát triển phần mềm Junior",
+                "role": "Junior Software Developer",
                 "location": "Helsinki, Phần Lan",
                 "date": "Tháng 4 năm 2022 - Hiện tại",
                 "tasks": [
@@ -106,7 +105,7 @@
                     "key": "supermetrics",
                     "label": "Supermetrics"
                 },
-                "role": "Chuyên viên hỗ trợ kỹ thuật",
+                "role": "Technical Support Specialist",
                 "location": "Helsinki, Phần Lan",
                 "date": "Tháng 11 năm 2020 - Tháng 4 năm 2022",
                 "tasks": [
@@ -121,7 +120,7 @@
                     "key": "linkedin",
                     "label": "LinkedIn"
                 },
-                "role": "Tư vấn giải pháp tiếp thị",
+                "role": "Marketing Solutions Consultant",
                 "location": "Dublin, Ireland",
                 "date": "Tháng 8 năm 2019 - Tháng 11 năm 2020",
                 "tasks": [
@@ -135,7 +134,7 @@
                     "key": "google",
                     "label": "Google (thông qua Accenture)"
                 },
-                "role": "Trưởng nhóm Workflow / Chuyên viên quảng cáo",
+                "role": "Workflow Lead / Advertising Specialist",
                 "location": "Dublin, Ireland",
                 "date": "Tháng 9 năm 2018 - Tháng 8 năm 2019",
                 "tasks": [
@@ -152,6 +151,7 @@
         "cta": "Liên hệ với tôi"
     },
     "footer": {
+        "language": "Ngôn ngữ",
         "sourceCode": "Mã nguồn"
     },
     "chat": {

@@ -6,8 +6,7 @@ import { ChatBubble } from './ChatBubble';
 import { ChatBubbleLoading } from './ChatBubbleLoading';
 import { useParams } from 'next/navigation';
 import { useAiAnalytics } from 'analytics';
-import { Language } from '../i18n/types';
-import { languagesMap } from '../i18n/settings';
+import { Language, languagesMap } from '../i18n/settings';
 
 interface AiChatWidgetProps {
     firstMessage: string;

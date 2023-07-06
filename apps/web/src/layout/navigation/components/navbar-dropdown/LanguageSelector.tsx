@@ -5,16 +5,18 @@ import { NavbarDropdown } from './NavbarDropdown';
 import { useRouter } from 'next/navigation';
 import { NavbarDropdownMobile } from './NavbarDropdownMobile';
 import { useCustomizationEvents } from 'analytics';
+import { languagesMap } from '../../../../i18n/settings';
 
 interface LanguageSelectorProps {
     cta: string;
 }
 
-const items = [
-    { key: 'en', label: 'English' },
-    { key: 'nl', label: 'Nederlands' },
-    { key: 'vn', label: 'Tiếng Việt' },
-];
+const items = Object.keys(languagesMap).map((key) => ({
+    key,
+    label: languagesMap[key].nativeName,
+}));
+
+console.log(items);
 
 export function LanguageSelector({ cta }: LanguageSelectorProps) {
     const { push } = useRouter();
