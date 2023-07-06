@@ -16,8 +16,6 @@ const items = Object.keys(languagesMap).map((key) => ({
     label: languagesMap[key].nativeName,
 }));
 
-console.log(items);
-
 export function LanguageSelector({ cta }: LanguageSelectorProps) {
     const { push } = useRouter();
     const { changeLanguage } = useCustomizationEvents();

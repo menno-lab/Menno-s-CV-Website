@@ -1,4 +1,4 @@
-import { Box, VStack, Divider, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Box, VStack, Divider, Input, InputGroup, InputRightElement, Alert, AlertIcon, AlertDescription } from '@chakra-ui/react';
 import { useChat } from 'ai/react';
 import React, { useEffect, useRef } from 'react';
 import { ArrowForwardIcon, useTheme, IconButton } from 'ui';
@@ -17,8 +17,7 @@ export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetPro
     const { theme } = useTheme();
     const { lang } = useParams() as { lang: Language };
     const { chatMessageSent, chatMessageReceived } = useAiAnalytics();
-
-    const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
         initialMessages: [
             {
                 id: '1',
@@ -26,7 +25,7 @@ export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetPro
                 role: 'assistant',
             },
         ],
-        body: { lang: languagesMap[lang] },
+        body: { lang: languagesMap[lang].name },
         onFinish: ({ content }) => {
             chatMessageReceived(content);
         },
@@ -45,6 +44,12 @@ export function AiChatWidget({ firstMessage, inputPlaceholder }: AiChatWidgetPro
                     <ChatBubble key={message.id} message={message} />
                 ))}
                 {isLoading && <ChatBubbleLoading />}
+                {error && (
+                    <Alert status='error'>
+                        <AlertIcon />
+                        <AlertDescription color='black'>Your Chakra experience may be degraded.</AlertDescription>
+                    </Alert>
+                )}
                 <div ref={ref} />
             </VStack>
             <Divider />
