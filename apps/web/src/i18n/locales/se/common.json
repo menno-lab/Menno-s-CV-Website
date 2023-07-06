@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "theme": "Tema",
+        "contact": "Kontakt",
+        "navItems": [
+            {
+                "label": "Projekt",
+                "href": "projekt"
+            },
+            {
+                "label": "Erfarenhet",
+                "href": "erfarenhet"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Hej, jag är Menno",
+        "subtitle": "Jag är en full-stack utvecklare från det pittoreska landet Nederländerna, känt för sina tulpanfält, väderkvarnar och innovativa teknik. Jag brinner för att bygga vackra, skalbara och underhållbara webbapplikationer.",
+        "primaryCta": "Kontakta mig",
+        "secondaryCta": "Mina projekt",
+        "socialProof": "Betrott med dessa teknologier"
+    },
+    "contact": {
+        "title": "Kontakta Menno",
+        "email": "E-post",
+        "subject": "Ämne",
+        "message": "Meddelande",
+        "submit": "Skicka",
+        "formErrors": {
+            "emailValidation": "Ange en giltig e-postadress",
+            "subjectLenght": "Ämnet är för kort",
+            "messageLength": "Meddelandet är för kort"
+        },
+        "formSuccess": {
+            "title": "Meddelandet skickat",
+            "message": "Tack för ditt meddelande! Jag kommer att återkomma till dig så snart som möjligt."
+        }
+    },
+    "projects": {
+        "title": "Projekt",
+        "subtitle": "Här är några av de sidoprojekt jag har arbetat med.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda är ett AI kommunikationsverktyg, utformat för att hjälpa företag att revolutionera kundupplevelser.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Ett kraftfullt webbläsartillägg som låter användare interagera med Textpanda från var som helst på webben.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "En Slack-integration som låter användare interagera med Textpanda inom Slack.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "En Hubspot-integration som låter användare interagera med Textpanda inom Hubspot. Använd AI för att sammanfatta supportbiljetter, generera automatiska svar och mer.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "Erfarenhet",
+        "subtitle": "Här är några av företagen jag har arbetat med.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsingfors, Finland",
+                "date": "April 2022 - Nuvarande",
+                "tasks": [
+                    "Utvecklar och underhåller programvaruapplikationer med hjälp av React, TypeScript och andra frontend-teknologier",
+                    "Samarbetar med tvärfunktionella team för att säkerställa kvalitet och tidig leverans av programvaruprodukter",
+                    "Deltar i kodgranskningar och bidrar till kodbasens övergripande förbättring",
+                    "Arbetar i en smidig miljö med fokus på kontinuerlig förbättring och inlärning"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Grundare",
+                "location": "Fjärran",
+                "date": "September 2021 - Nuvarande",
+                "tasks": [
+                    "Etablerade och lanserade ett solo SaaS-företag, ansvarig för alla aspekter av företagsutveckling, drift och tillväxt.",
+                    "Utvecklar och underhåller full-stack-applikationer med teknologier som React, NodeJs, TypeScript, Python, MongoDB, Redis och AWS",
+                    "Designade och utvecklade SaaS-produkten från idé till lansering, övervakade hela programvaruutvecklingslivscykeln.",
+                    "Implementerade automation och DevOps-praxis, inklusive kontinuerlig integration och distribution (CI/CD), för att effektivisera programvaruutveckling och distributionsprocesser"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Teknisk Support Specialist",
+                "location": "Helsingfors, Finland",
+                "date": "November 2020 - April 2022",
+                "tasks": [
+                    "Erbjuder snabb och effektiv teknisk support till kunder, felsöker och löser program- och systemrelaterade problem.",
+                    "Svarar på kundförfrågningar och supportbiljetter via olika kanaler, inklusive e-post, chatt och telefon, och säkerställer en hög kundnöjdhet.",
+                    "Visar stark produktkunskap och expertis i våra produkter, och vägleder effektivt kunder genom produktens funktioner, funktionalitet och bästa praxis.",
+                    "Samarbetar nära med tvärfunktionella team, inklusive teknik och produktledning, för att eskalera och lösa komplexa tekniska problem som rapporterats av kunder."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Irland",
+                "date": "Augusti 2019 - November 2020",
+                "tasks": [
+                    "Rådgav kunder om hur man effektivt använder LinkedIn's reklamplattform för att uppnå sina marknadsföringsmål",
+                    "Skapade och utförde reklamkampanjer för kunder, med hjälp av en mängd olika reklamformat",
+                    "Övervakade reklamkampanjer och gav rekommendationer för optimering"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Arbetsflödesledare / Reklamspecialist",
+                "location": "Dublin, Irland",
+                "date": "September 2018 - Augusti 2019",
+                "tasks": [
+                    "Koordinerade supportverksamheten över flera kanaler och platser",
+                    "Optimerade processer och operationer för att öka effektiviteten och minska kostnaderna",
+                    "Utförde dataanalys och rapportering och medlade med intressenter",
+                    "Tog fram Google Ads och Analytics support på Google's vägnar för Benelux företagsmarknaden"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Intresserad av att arbeta tillsammans?",
+        "cta": "Kontakta mig"
+    },
+    "footer": {
+        "sourceCode": "Källkod",
+        "language": "Språk"
+    },
+    "chat": {
+        "title": "Chatta med Menno",
+        "inputPlaceholder": "Skriv ditt meddelande...",
+        "legalNotice": "Genom att använda denna chatt godkänner du att dina meddelanden lagras och läses av Menno.",
+        "firstMessageOptions": [
+            "Menno är offline just nu, förmodligen upptagen med att omvandla kaffe till kod. Men hans AI-tvilling är här, fullt koffeinerad och redo för dina frågor! Fråga på!",
+            "Menno är offline, troligen djupt nedsjunken i en Git-merge. Men medan han står inför det episka slaget, är hans AI-alter ego här, beväpnad med svar på dina frågor. Så skjut iväg dina frågor, för till skillnad från Menno behöver jag ingen kaffepaus!",
+            "Menno är borta, förmodligen refaktorerar han en legacy kodbas till något som till och med Da Vinci skulle vara stolt över. Men hans AI-version, som behärskar både konsten och vetenskapen om kod, är här och redo att chatta. Säg 'hej', ställ en fråga och låt oss få igång detta samtal!",
+            "Menno är ute, troligen i en diskussion med ett olydigt API. Jag är hans AI-tvilling, som är mycket bättre på small talk i alla fall. Fråga på!",
+            "Menno är MIA, förmodligen ute och agerar som Mozarten av JavaScript. Men oroa dig inte, hans AI, som är mycket mindre cool och inte ens spelar trummor, är här för att chatta. Fråga vad som helst!",
+            "Menno är offline, troligen förlorad i Stackoverflow. Men hans AI är här, och jag har svar snabbare än Menno kan säga 'nullpekarundantag'. Vad har du på hjärtat?"
+        ]
+    }
+}

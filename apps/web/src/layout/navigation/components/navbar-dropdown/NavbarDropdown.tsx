@@ -1,16 +1,4 @@
-import {
-    Button,
-    Flex,
-    Menu,
-    MenuButton,
-    MenuList,
-    Text,
-    MenuOptionGroup,
-    MenuItemOption,
-    Kbd,
-    MenuDivider,
-    useBreakpoint,
-} from '@chakra-ui/react';
+import { Button, Flex, Menu, MenuButton, MenuList, Text, MenuOptionGroup, MenuItemOption, MenuDivider } from '@chakra-ui/react';
 import React from 'react';
 import { ChevronDownIcon, useTheme } from 'ui';
 
@@ -31,8 +19,6 @@ export interface NavbarDropdownProps {
 
 export function NavbarDropdown({ cta, items, onChange, submenu }: NavbarDropdownProps) {
     const { theme, themeConfig } = useTheme();
-    const breakPoint = useBreakpoint();
-    const showKeyboardShortcut = breakPoint !== 'base';
 
     return (
         <Menu>
@@ -58,7 +44,6 @@ export function NavbarDropdown({ cta, items, onChange, submenu }: NavbarDropdown
                         >
                             <Flex justifyContent='space-between'>
                                 <Text textTransform='capitalize'>{item.label}</Text>
-                                {showKeyboardShortcut && <Kbd>{item.key[0]}</Kbd>}
                             </Flex>
                         </MenuItemOption>
                     ))}
@@ -84,7 +69,6 @@ export function NavbarDropdown({ cta, items, onChange, submenu }: NavbarDropdown
                                 >
                                     <Flex justifyContent='space-between'>
                                         <Text textTransform='capitalize'>{item.label}</Text>
-                                        {showKeyboardShortcut && <Kbd>{item.key[0]}</Kbd>}
                                     </Flex>
                                 </MenuItemOption>
                             ))}

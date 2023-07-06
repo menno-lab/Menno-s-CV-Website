@@ -1,6 +1,5 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
-import { format } from 'date-fns';
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai-edge';
+import { Configuration, OpenAIApi } from 'openai-edge';
 
 export const runtime = 'edge';
 
@@ -9,14 +8,6 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
-function getConfigMessage(language: string): ChatCompletionRequestMessage {
-    const curDate = format(new Date(), 'yyyy-MM-dd');
-    if (language.toLowerCase() !== 'english') {
-        return { role: 'system', content: `Your output language is ${language}. Current date: ${curDate}` };
-    }
-    return { role: 'system', content: `Current date: ${curDate}` };
-}
 
 export async function POST(req: Request) {
     const body = await req.json();
@@ -43,10 +34,10 @@ export async function POST(req: Request) {
                 role: 'system',
                 content: prePrompt,
             },
-            getConfigMessage(lang),
+            lang.toLowerCase() !== 'english' ? { role: 'system', content: `All your responses must be in ${lang}` } : null,
             ...messages,
         ],
-        temperature: 0.8,
+        temperature: 0.7,
         stream: true,
     });
 

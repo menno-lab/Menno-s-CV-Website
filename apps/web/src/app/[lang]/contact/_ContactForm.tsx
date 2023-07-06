@@ -13,6 +13,7 @@ import {
     AlertDescription,
     AlertIcon,
     AlertTitle,
+    Text,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { RouterInput, trpc } from '../../../utils/trpc';
@@ -113,7 +114,12 @@ export function ContactForm({ translations }: ContactFormProps) {
                         <Alert status='error'>
                             <AlertIcon />
                             <AlertTitle>Error</AlertTitle>
-                            <AlertDescription>{error.message}</AlertDescription>
+                            <AlertDescription>
+                                <VStack>
+                                    <Text color='black'>{error.message}</Text>
+                                    <Text color='black'>Please contact menno.c.jager@gmail.com</Text>
+                                </VStack>
+                            </AlertDescription>
                         </Alert>
                     )}
                 </VStack>
