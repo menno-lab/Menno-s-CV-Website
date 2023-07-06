@@ -1,0 +1,167 @@
+{
+    "nav": {
+        "theme": "테마",
+        "contact": "연락처",
+        "navItems": [
+            {
+                "label": "프로젝트",
+                "href": "projects"
+            },
+            {
+                "label": "경험",
+                "href": "experience"
+            }
+        ]
+    },
+    "hero": {
+        "title": "안녕하세요, 저는 Menno입니다",
+        "subtitle": "저는 풍경이 아름다운 네덜란드 출신의 풀스택 개발자입니다. 네덜란드는 튤립 농장, 풍차, 그리고 혁신적인 기술로 유명합니다. 저는 아름답고, 확장 가능하며, 유지 관리가 가능한 웹 애플리케이션을 만드는 것에 열정을 가지고 있습니다.",
+        "primaryCta": "저에게 연락하기",
+        "secondaryCta": "내 프로젝트",
+        "socialProof": "다음과 같은 기술로 신뢰받고 있습니다"
+    },
+    "contact": {
+        "title": "Menno에게 연락하기",
+        "email": "이메일",
+        "subject": "제목",
+        "message": "메시지",
+        "submit": "제출",
+        "formErrors": {
+            "emailValidation": "유효한 이메일 주소를 입력해 주세요",
+            "subjectLenght": "제목이 너무 짧습니다",
+            "messageLength": "메시지가 너무 짧습니다"
+        },
+        "formSuccess": {
+            "title": "메시지 전송됨",
+            "message": "귀하의 메시지를 감사드립니다! 가능한 한 빨리 답변드리겠습니다."
+        }
+    },
+    "projects": {
+        "title": "프로젝트",
+        "subtitle": "다음은 제가 작업한 몇 가지 부가 프로젝트입니다.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "텍스트팬다",
+                "description": "텍스트팬다는 AI 통신 툴킷으로, 기업들이 고객 경험을 혁신적으로 바꿀 수 있도록 돕는 것이 목표입니다.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "텍스트팬다 x 크롬",
+                "description": "웹 전체에서 텍스트팬다와 상호작용 할 수 있게 해주는 강력한 브라우저 확장 프로그램입니다.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "텍스트팬다 x 슬랙",
+                "description": "사용자가 슬랙 내에서 텍스트팬다와 상호작용 할 수 있게 해주는 슬랙 통합입니다.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "텍스트팬다 x 허브스팟",
+                "description": "사용자가 허브스팟 내에서 텍스트팬다와 상호작용 할 수 있게 해주는 허브스팟 통합입니다. AI를 사용하여 지원 티켓을 요약하고, 자동으로 응답을 생성하고 더 많은 업무를 수행하십시오.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "경험",
+        "subtitle": "다음은 제가 함께 일한 몇 가지 기업입니다.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "슈퍼메트릭스"
+                },
+                "role": "Junior Software Developer",
+                "location": "핀란드, 헬싱키",
+                "date": "2022년 4월 - 현재",
+                "tasks": [
+                    "React, TypeScript 및 기타 프론트엔드 기술을 사용하여 소프트웨어 애플리케이션 개발 및 유지 관리",
+                    "품질과 소프트웨어 제품의 시기 적절한 전달을 보장하기 위해 여러 기능 간팀과 협력",
+                    "코드 검토에 참여하고 코드베이스의 전반적인 개선에 기여",
+                    "지속적인 개선과 학습에 초점을 맞춘 애자일 환경에서 작업"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "텍스트팬다"
+                },
+                "role": "Founder",
+                "location": "원격",
+                "date": "2021년 9월 - 현재",
+                "tasks": [
+                    "솔로 SaaS 회사를 설립하고 출시하여 비즈니스 개발, 운영 및 성장의 모든 측면을 담당",
+                    "React, NodeJs, TypeScript, Python, MongoDB, Redis 및 AWS와 같은 기술을 사용하여 풀스택 애플리케이션 개발 및 유지 관리",
+                    "아이디어에서 출시까지 SaaS 제품을 설계 및 개발하고 전체 소프트웨어 개발 수명주기를 감독",
+                    "소프트웨어 개발 및 배포 프로세스를 간소화하기 위해 계속해서 통합 및 배포 (CI/CD)와 같은 자동화 및 DevOps 관행을 구현"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "슈퍼메트릭스"
+                },
+                "role": "Technical Support Specialist",
+                "location": "핀란드, 헬싱키",
+                "date": "2020년 11월 - 2022년 4월",
+                "tasks": [
+                    "고객에게 신속하고 효율적인 기술 지원을 제공하여 소프트웨어 및 시스템 관련 문제를 해결",
+                    "이메일, 채팅, 전화 등 다양한 채널을 통해 고객 문의 및 지원 티켓에 응답하여 고객 만족도를 높이기",
+                    "제품의 특징, 기능, 및 모범 사례를 효과적으로 고객에게 안내하기 위해 강력한 제품 지식과 전문성을 보여줌",
+                    "고객이 보고한 복잡한 기술 문제를 해결하기 위해 엔지니어링 및 제품 관리와 같은 크로스 펑셔널 팀과 긴밀하게 협력"
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "링크드인"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "아일랜드, 더블린",
+                "date": "2019년 8월 - 2020년 11월",
+                "tasks": [
+                    "고객들에게 어떻게 LinkedIn의 광고 플랫폼을 효과적으로 사용하여 마케팅 목표를 달성할 수 있는지 상담",
+                    "다양한 광고 형식을 사용하여 고객의 광고 캠페인을 생성하고 실행",
+                    "광고 캠페인을 모니터링하고 최적화를 위한 권장 사항 제공"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "아일랜드, 더블린",
+                "date": "2018년 9월 - 2019년 8월",
+                "tasks": [
+                    "다양한 채널과 위치에서 지원 작업을 조정",
+                    "효율성을 높이고 비용을 줄이기 위해 프로세스와 작업 최적화",
+                    "데이터 분석 및 보고 수행 및 이해당사자와 완화",
+                    "엔터프라이즈 베네룩스 시장을 대상으로 Google을 대신하여 Google Ads 및 Analytics 지원 제공"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "함께 일하기에 관심이 있나요?",
+        "cta": "저에게 연락하기"
+    },
+    "footer": {
+        "sourceCode": "소스 코드",
+        "language": "언어"
+    },
+    "chat": {
+        "title": "Menno와 대화하기",
+        "inputPlaceholder": "메시지를 입력하세요...",
+        "legalNotice": "이 채팅을 사용함으로써, 귀하의 메시지가 Menno에 의해 저장되고 읽힐 수 있다는 것에 동의하는 것입니다.",
+        "firstMessageOptions": [
+            "Menno가 현재 오프라인 상태입니다, 아마 커피를 코드로 바꾸는 곳에 있을 것입니다. 그러나 AI 분신은 여기에 있습니다, 완전히 커피를 마시고 귀하의 질문을 기다리고 있습니다! 말해보세요, 무엇이든 물어보세요!",
+            "Menno가 오프라인입니다, 아마 Git 병합에 깊이 몰입하고 있을 것입니다. 그러나 그가 그 엄청난 싸움을 벌이는 동안, 그의 AI alter ego는 귀하의 질문에 대한 답변을 가지고 여기에 있습니다. 질문을 던져보세요, Menno와 달리 저는 커피 휴식을 필요로 하지 않습니다!",
+            "Menno가 없습니다, 아마도 레거시 코드 베이스를 다 빈치가 자랑스럽게 여길만한 것으로 리팩토링하고 있을 것입니다. 하지만 코드의 예술과 과학에 능통한 그의"
+        ]
+    }
+}

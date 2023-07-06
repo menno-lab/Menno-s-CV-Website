@@ -1,19 +1,19 @@
 'use client';
 
 import React from 'react';
-import { NavbarDropdown } from './NavbarDropdown';
+import { NavbarDropdown, NavbarItem } from './NavbarDropdown';
 import { useRouter } from 'next/navigation';
 import { NavbarDropdownMobile } from './NavbarDropdownMobile';
 import { useCustomizationEvents } from 'analytics';
-import { languagesMap } from '../../../../i18n/settings';
+import { Language, languagesMap } from '../../../../i18n/settings';
 
 interface LanguageSelectorProps {
     cta: string;
 }
 
-const items = Object.keys(languagesMap).map((key) => ({
+const items: NavbarItem[] = Object.keys(languagesMap).map((key) => ({
     key,
-    label: languagesMap[key].nativeName,
+    label: languagesMap[key as Language].nativeName,
 }));
 
 export function LanguageSelector({ cta }: LanguageSelectorProps) {
