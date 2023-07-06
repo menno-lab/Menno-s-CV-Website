@@ -6,6 +6,7 @@ import { makeColorBrighter, makeColorDarker } from '../utils/modifyColor';
 import { ThemeConfig, ThemeParams } from '../types';
 import { getThemeConfig } from '../utils/getThemeConfig';
 import { LoadingScreen } from '../components';
+import { getDefaultTheme } from '../utils/defaultTheme';
 
 interface ColorModeState {
     theme: ThemeParams;
@@ -24,15 +25,8 @@ export function ThemeProvider({ children }: PropsWithChildren<{}>) {
     }
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const localStorageTheme = localStorage.getItem('theme');
-            localStorageTheme ? JSON.parse(localStorageTheme) : null;
-            const theme = localStorageTheme
-                ? JSON.parse(localStorageTheme)
-                : { themeName: 'neon', mode: prefersDarkMode ? 'dark' : 'light' };
-            setThemeConfig(theme);
-        }
+        const defaultTheme = getDefaultTheme();
+        setThemeConfig(defaultTheme);
     }, []);
 
     if (!themeConfig) {

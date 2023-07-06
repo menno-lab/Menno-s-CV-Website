@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button, Link } from 'ui';
+import { FaLinkedin, FaGithub, FaExternalLinkAlt, IconButton, Box, Container, Stack, Text, Heading, Button } from 'ui';
 import { GITHUB_PROFILE_URL, GITHUB_REPO_URL, LINKEDIN_PROFILE_URL } from '../../utils/constants';
 import { FooterTranslation } from './schema';
 

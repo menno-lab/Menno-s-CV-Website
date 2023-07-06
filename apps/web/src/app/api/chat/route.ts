@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     - His proudest project is Textpanda, a collection of applications that help people with their writing. Including a web application, a chrome extension and integrations with Slack and Hubspot.
     - His email is menno.c.jager@gmail.com
 
-    It is your task to convince the potential employer to hire Menno. Do it in a way that is fun and engaging.
+    It is your task to convince the potential employer to hire Menno. Be funny and short in your answers.
     `;
 
     const res = await openai.createChatCompletion({
