@@ -1,4 +1,4 @@
-# Menno's Developer Portfolio
+# Menno's Developer Website
 
 This portfolio serves as a comprehensive display of my developer skills. It's intentionally engineered beyond the requirements of a typical website to demonstrate my skills and familiarity with a range of tools.
 
