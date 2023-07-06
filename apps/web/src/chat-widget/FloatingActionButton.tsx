@@ -25,8 +25,8 @@ import { motion } from 'framer-motion';
 import { AiChatWidget } from './AiChatWidget';
 import { useAiAnalytics } from 'analytics';
 import { getRandomItemFromArray } from '../utils/arrayUtils';
-
-const src = 'https://esseemot.sirv.com/Images/square.png';
+import { MobileChatDrawer } from './MobileChatDrawer';
+import { PROFILE_PICTURE } from './utils/constants';
 
 interface FloatingActionButtonProps {
     translations: ChatTranslations;
@@ -55,35 +55,14 @@ export function FloatingActionButton({ translations }: FloatingActionButtonProps
                 {isMobile ? (
                     <Drawer placement='right' onClose={onClose} isOpen={isOpen} size='full'>
                         <DrawerOverlay />
-                        <DrawerContent color='white' bg={theme.backgroundSecondary}>
-                            <DrawerCloseButton />
-                            <DrawerBody pt='32px'>
-                                <VStack height='100%' pb='28px'>
-                                    <HStack>
-                                        <Avatar name='Menno Jager' src={src} size='md'>
-                                            <AvatarBadge bg='green' boxSize='14px' borderWidth='2px' />
-                                        </Avatar>
-                                        <VStack spacing={0}>
-                                            <Text width='100%' fontSize='lg' fontWeight='bold' textAlign='left'>
-                                                {title}
-                                            </Text>
-                                            <Text fontSize='2xs' color={isDarkMode ? 'gray.400' : 'gray.800'}>
-                                                {legalNotice}
-                                            </Text>
-                                        </VStack>
-                                    </HStack>
-                                    <Divider />
-                                    <AiChatWidget firstMessage={firstMessage} inputPlaceholder={inputPlaceholder} />
-                                </VStack>
-                            </DrawerBody>
-                        </DrawerContent>
+                        <MobileChatDrawer translations={translations} firstMessage={firstMessage} />
                     </Drawer>
                 ) : (
                     <SlideFade in={isOpen} offsetX='200px'>
                         <Container p={4} color='white' bg={theme.backgroundSecondary} rounded='md' shadow='2xl' width='lg'>
                             <VStack height='60vh'>
                                 <HStack>
-                                    <Avatar name='Menno Jager' src={src} size='md'>
+                                    <Avatar name='Menno Jager' src={PROFILE_PICTURE} size='md'>
                                         <AvatarBadge bg='green' boxSize='14px' borderWidth='2px' />
                                     </Avatar>
                                     <VStack spacing={0}>
