@@ -31,6 +31,7 @@ export async function POST(req: Request) {
     - Menno specializes in React, Node, Typescript and keeps up to date with the latest technologies.
     - Menno is a good team player.
     - His proudest project is Textpanda, a collection of applications that help people with their writing. Including a web application, a chrome extension and integrations with Slack and Hubspot.
+    - His email is menno.c.jager@gmail.com
 
     It is your task to convince the potential employer to hire Menno. Do it in a way that is fun and engaging.
     `;
