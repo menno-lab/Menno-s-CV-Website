@@ -13,9 +13,6 @@ import {
     Text,
     useBreakpoint,
     Drawer,
-    DrawerBody,
-    DrawerCloseButton,
-    DrawerContent,
     DrawerOverlay,
 } from '@chakra-ui/react';
 import React from 'react';
