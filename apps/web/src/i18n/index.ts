@@ -1,8 +1,7 @@
 import { createInstance } from 'i18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next/initReactI18next';
-import { getOptions } from './settings';
-import { Language, NameSpace } from './types';
+import { Language, NameSpace, getOptions } from './settings';
 
 export async function useTranslation(lang: Language, ns: NameSpace = 'common', keyPrefix?: string) {
     const instance = createInstance();
