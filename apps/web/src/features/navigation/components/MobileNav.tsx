@@ -1,28 +1,31 @@
 'use client';
 
-import { CloseIcon, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, HamburgerIcon, IconButton, Text } from 'ui';
-import { Button, useDisclosure } from '@chakra-ui/react';
+import {
+    Button,
+    CloseIcon,
+    Drawer,
+    DrawerBody,
+    DrawerCloseButton,
+    DrawerContent,
+    DrawerOverlay,
+    Flex,
+    HamburgerIcon,
+    IconButton,
+} from 'ui';
+import { useDisclosure } from '@chakra-ui/react';
 import { NavbarTranslations } from './schema';
 import { LanguageSelectorMobile } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelectorMobile } from './navbar-dropdown/ThemeSelector';
-import { useNavigation } from '../hooks/useNavigation';
+import { useRouter } from 'next/navigation';
 
 interface MobileNavProps {
     translations: NavbarTranslations;
 }
 
 export function MobileNav({ translations }: MobileNavProps) {
-    const { theme, language, navItems } = translations;
+    const { theme, language } = translations;
     const { isOpen, onToggle, onClose } = useDisclosure();
-    const { pathWithoutLang } = useNavigation();
-
-    console.log(pathWithoutLang);
-
-    function handleNavItemClick(href: string) {
-        console.log('handleNavItemClick', href);
-
-        // onClose();
-    }
+    const router = useRouter();
 
     return (
         <>
@@ -39,20 +42,18 @@ export function MobileNav({ translations }: MobileNavProps) {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerBody>
-                        <Flex flexDirection={'column'} justifyContent={'center'} height='100%' gap={12}>
-                            {navItems.map(({ label, href }, i) => (
-                                <Button
-                                    key={i}
-                                    onClick={() => handleNavItemClick(href)}
-                                    variant='unstyled'
-                                    fontWeight={600}
-                                    textAlign={'center'}
-                                >
-                                    {label}
-                                </Button>
-                            ))}
+                        <Flex flexDirection={'column'} justifyContent={'center'} height='100%' gap={14}>
                             <ThemeSelectorMobile cta={theme} />
                             <LanguageSelectorMobile cta={language} />
+                            <Button
+                                colorScheme={'primary'}
+                                onClick={() => {
+                                    onClose();
+                                    router.push('/contact');
+                                }}
+                            >
+                                Contact
+                            </Button>
                         </Flex>
                     </DrawerBody>
                 </DrawerContent>

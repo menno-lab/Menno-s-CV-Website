@@ -6,8 +6,8 @@ import { NavbarTranslations } from './schema';
 import { NavbarController } from './NavbarController';
 import { LanguageSelector } from './navbar-dropdown/LanguageSelector';
 import { ThemeSelector } from './navbar-dropdown/ThemeSelector';
-import { Language } from '../../i18n/types';
 import { HashLink } from './HashLink';
+import { Language } from '../../../i18n/types';
 
 interface NavbarProps {
     lang: Language;
@@ -32,7 +32,7 @@ export function Navbar({ lang, translations }: NavbarProps) {
                             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                                 <Stack direction={'row'} spacing={4}>
                                     {navItems.map(({ href, label }) => (
-                                        <HashLink key={href} href={href}>
+                                        <HashLink key={href} href={`#${href}`}>
                                             {label}
                                         </HashLink>
                                     ))}
