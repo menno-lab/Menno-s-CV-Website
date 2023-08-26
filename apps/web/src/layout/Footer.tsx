@@ -4,7 +4,7 @@ import { IconButton, Box, Container, Stack, Text, Heading, Button, FaLinkedin, F
 
 export function Footer() {
     return (
-        <Box width='100vw' borderTop='1px'>
+        <Box width='100vw' borderTop='1px' borderColor='inherit' minHeight='60px'>
             <Container maxW={'7xl'} px={4}>
                 <Stack
                     py={4}
@@ -33,7 +33,6 @@ export function Footer() {
                                     colorScheme='secondary'
                                 />
                             </NextLink>
-
                             <NextLink href={GITHUB_PROFILE_URL} target='_blank'>
                                 <IconButton
                                     bg='secondary'

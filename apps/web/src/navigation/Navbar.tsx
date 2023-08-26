@@ -6,9 +6,11 @@ import { HashLink } from './HashLink';
 import { MobileNav } from './MobileNav';
 import { NavItem } from './types';
 import { Language } from '@/i18n/settings';
+import { useTranslation } from '@/i18n';
 
-export function Navbar({ lang }: { lang: Language }) {
-    const navItems: NavItem[] = [];
+export async function Navbar({ lang }: { lang: Language }) {
+    const { t } = await useTranslation('common', 'nav');
+    const navItems = t<NavItem[]>('navItems');
     return (
         <NavbarVisibilityController>
             <Box position='fixed' width='100vw' zIndex={2} top={0} borderBottom='1px' borderColor='inherit'>
@@ -39,7 +41,7 @@ export function Navbar({ lang }: { lang: Language }) {
                                     fontSize={'sm'}
                                     fontWeight={600}
                                 >
-                                    reee
+                                    {t('contact')}
                                 </Button>
                             </Link>
                         </Stack>

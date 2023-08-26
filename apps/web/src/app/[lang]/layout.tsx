@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { RouteWithChildren } from '../_types';
-import { ChakraProviders } from 'ui';
+import { ChakraProviders, Container } from 'ui';
 import './globals.css';
 import { Navbar } from '@/navigation/Navbar';
-import { Footer } from '@/footer/Footer';
+import { Footer } from '@/layout/Footer';
 
 export const metadata: Metadata = {
     title: 'Menno Jager',
@@ -16,7 +16,9 @@ export default function RootLayout({ children, params: { lang } }: RouteWithChil
             <body>
                 <ChakraProviders>
                     <Navbar lang={lang} />
-                    {children}
+                    <Container maxW={'7xl'} px={4} pt='100px'>
+                        {children}
+                    </Container>
                     <Footer />
                 </ChakraProviders>
             </body>
