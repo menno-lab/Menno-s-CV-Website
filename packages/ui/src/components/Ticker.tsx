@@ -1,8 +1,6 @@
-import { Box, ChakraProvider, Flex, Spinner } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { PropsWithChildren } from 'react';
-import { getDefaultTheme } from '../utils/defaultTheme';
-import { COLOR_SCHEMES } from '../utils/colorSchemes';
 
 interface TickerProps {
     direction: 'left' | 'right';
@@ -27,15 +25,5 @@ export function Ticker({ direction, duration, children }: PropsWithChildren<Tick
                 {children}
             </motion.div>
         </Box>
-    );
-}
-
-export function LoadingScreen() {
-    return (
-        <ChakraProvider>
-            <Flex width='100vw' height='100vh' justifyContent='center' alignItems='center' bg='gray.800'>
-                <Spinner size='xl' color='purple.400' />
-            </Flex>
-        </ChakraProvider>
     );
 }
