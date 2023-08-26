@@ -48,7 +48,7 @@ export function Footer() {
                         </Stack>
                         <NextLink href={GITHUB_REPO_URL} target='_blank'>
                             <Button colorScheme='secondary' rightIcon={<FaExternalLinkAlt />} _hover={{ bg: 'accent' }}>
-                                dsfsdf
+                                Source code
                             </Button>
                         </NextLink>
                     </Stack>
