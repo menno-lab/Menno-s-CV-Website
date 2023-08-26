@@ -1,5 +1,5 @@
 {
-    "name": "webDEP",
+    "name": "web-old",
     "version": "1.0.0",
     "private": true,
     "scripts": {
@@ -16,7 +16,6 @@
         "@trpc/server": "10.10.0",
         "accept-language": "^3.0.18",
         "ai": "^2.1.14",
-        "analytics": "workspace:*",
         "axios": "^1.4.0",
         "backend": "workspace:*",
         "date-fns": "^2.30.0",
