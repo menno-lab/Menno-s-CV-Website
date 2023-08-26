@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { HashLink } from './HashLink';
 import { MobileNav } from './MobileNav';
 import { NavItem } from './types';
+import { Language } from '@/i18n/settings';
 
-export function Navbar() {
+export function Navbar({ lang }: { lang: Language }) {
     const navItems: NavItem[] = [];
     return (
         <NavbarVisibilityController>

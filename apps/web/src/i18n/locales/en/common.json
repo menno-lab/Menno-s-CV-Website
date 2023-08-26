@@ -1,0 +1,25 @@
+{
+    "hero": {
+        "title": "What if you never had to write full paragraphs again?",
+        "subtitle": "Textpanda is an all-in-one writing assistant that combines text expansion with AI-generated writing",
+        "addToChrome": "Add to Chrome - It's Free",
+        "rating": "Chrome Web Store Rating"
+    },
+    "snippets": {
+        "title": "Create, Share and Generate Snippets",
+        "description": "With Textpanda you can store predefined snippets that you would normally type manually. You can assign keyboard triggers to snippets to inject them on your command. You can also have shared team snippets and use AI to generate them. Give it a try!",
+        "sidebar": "Sidebar",
+        "sidebarDescription": "The Chrome Extension also gives you access to the sidebar where you can manage your snippets and generate content with AI.",
+        "openSidebar": "Open Sidebar"
+    },
+    "wwyw": {
+        "title": "Works Where You Work",
+        "description": "Supercharge your writing across the web. Textpanda works on text fields on nearly all websites."
+    },
+    "bottomHero": {
+        "title": "Fast & Solid Writing Ahead",
+        "subtitle": "Discover how Textpanda can help you write faster and better.",
+        "cta": "Start for Free"
+    },
+    "support": "Contact us"
+}

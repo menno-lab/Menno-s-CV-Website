@@ -68,9 +68,18 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
+      accept-language:
+        specifier: ^3.0.18
+        version: 3.0.18
       framer-motion:
         specifier: ^10.12.17
         version: 10.12.17(react-dom@18.2.0)(react@18.2.0)
+      i18next:
+        specifier: ^23.4.6
+        version: 23.4.6
+      i18next-resources-to-backend:
+        specifier: ^1.1.4
+        version: 1.1.4
       next:
         specifier: 13.4.19
         version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
@@ -80,6 +89,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-i18next:
+        specifier: ^13.2.0
+        version: 13.2.0(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -5919,6 +5931,12 @@ packages:
       '@babel/runtime': 7.22.5
     dev: false
 
+  /i18next@23.4.6:
+    resolution: {integrity: sha512-jBE8bui969Ygv7TVYp0pwDZB7+he0qsU+nz7EcfdqSh+QvKjEfl9YPRQd/KrGiMhTYFGkeuPaeITenKK/bSFDg==}
+    dependencies:
+      '@babel/runtime': 7.22.5
+    dev: false
+
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -7613,6 +7631,26 @@ packages:
       '@babel/runtime': 7.22.5
       html-parse-stringify: 3.0.1
       i18next: 23.2.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-i18next@13.2.0(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-YD8xMc+I0jkHHLotd8ERMzZ53hMaCBVLCndbcbBveJn3FbppRP4jyYOAkmR8XItN01sTD9ilAjoEjpH1i42IgA==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.5
+      html-parse-stringify: 3.0.1
+      i18next: 23.4.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
