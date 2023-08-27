@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/navigation/nav-bar/Navbar';
 import { ReactQueryProvider } from '@/layout/ReactQuery';
 import { Footer } from '@/layout/components/Footer';
+import { ChatWidget } from '@/chat-widget/ChatWidget';
 
 export const metadata: Metadata = {
     title: 'Menno Jager',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             {children}
                         </Container>
                         <Footer />
+                        <ChatWidget />
                     </ChakraProviders>
                 </ReactQueryProvider>
             </body>
