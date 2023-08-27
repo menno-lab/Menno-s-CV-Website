@@ -8,7 +8,7 @@ export async function ProjectsSection() {
     const { t } = await useTranslation('common', 'projects');
     const items = t<ProjectItem[]>('items');
     return (
-        <HomePageSection title={t('title')} subtitle={t('subtitle')} hash='#projects'>
+        <HomePageSection title={t('title')} subtitle={t('subtitle')} id='projects'>
             <ProjectsGrid items={items} />
         </HomePageSection>
     );

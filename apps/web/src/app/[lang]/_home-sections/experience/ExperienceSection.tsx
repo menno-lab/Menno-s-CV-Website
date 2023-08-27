@@ -9,7 +9,7 @@ export async function ExperienceSection() {
     const items = t<ExperienceItem[]>('items');
 
     return (
-        <HomePageSection title={t('title')} subtitle={t('subtitle')} hash='#experience'>
+        <HomePageSection title={t('title')} subtitle={t('subtitle')} id='experience'>
             <ExperienceGrid items={items} />
         </HomePageSection>
     );
