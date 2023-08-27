@@ -1,6 +1,6 @@
-import { SlackBlock } from './types';
+import { SlackBlock } from '../types';
 
-export function createBlocks(text: string, payload: Record<string, any>): SlackBlock[] {
+export function createSlackBlocks(text: string, payload: Record<string, any>): SlackBlock[] {
     return [
         {
             type: 'section',
