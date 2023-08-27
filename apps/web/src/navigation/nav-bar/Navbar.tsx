@@ -18,7 +18,7 @@ export async function Navbar() {
         <NavbarVisibilityController>
             <Container maxW={'7xl'} py={2} px={4}>
                 <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
-                    <MobileNav />
+                    <MobileNav lang={lang} />
                     <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }} alignItems='center'>
                         <Link href='/'>
                             <Text fontFamily={'heading'} fontWeight={700}>
@@ -37,7 +37,7 @@ export async function Navbar() {
                     </Flex>
                     <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
                         <ColorModeSwitch />
-                        <LanguageSelector lang={getLanguage()} />
+                        <LanguageSelector lang={lang} />
                         <Link href={`/${lang}/contact`}>
                             <Button colorScheme='primary' display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={600}>
                                 {t('contact')}

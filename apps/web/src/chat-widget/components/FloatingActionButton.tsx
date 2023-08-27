@@ -79,7 +79,7 @@ export function FloatingActionButton({ copies, firstMessage }: FloatingActionBut
                     <ChatHeader title={title} legalNotice={legalNotice} />
                 </PopoverHeader>
                 <PopoverBody>
-                    <VStack height={{ base: '80v', md: '50vh' }} spacing={4} py={4} overflowY='auto' pr={4}>
+                    <VStack height='50vh' spacing={4} py={4} overflowY='auto' pr={4}>
                         {messages.map((message) => (
                             <ChatBubble key={message.id} message={message} />
                         ))}

@@ -12,10 +12,18 @@ import {
     HamburgerIcon,
     IconButton,
     useDisclosure,
+    VStack,
 } from 'ui';
 import { useRouter } from 'next/navigation';
+import { Language } from '@/i18n/types';
+import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
+import { LanguageSelector } from '@/layout/components/LanguageSelector';
 
-export function MobileNav() {
+interface MobileNavProps {
+    lang: Language;
+}
+
+export function MobileNav({ lang }: MobileNavProps) {
     const { isOpen, onToggle, onClose } = useDisclosure();
     const router = useRouter();
 
@@ -34,7 +42,9 @@ export function MobileNav() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerBody>
-                        <Flex flexDirection={'column'} justifyContent={'center'} height='100%' gap={14}>
+                        <VStack align='stretch' justifyContent='center' height='100%' px={4} spacing={6}>
+                            <ColorModeSwitch />
+                            <LanguageSelector lang={lang} />
                             <Button
                                 colorScheme={'primary'}
                                 onClick={() => {
@@ -44,7 +54,7 @@ export function MobileNav() {
                             >
                                 Contact
                             </Button>
-                        </Flex>
+                        </VStack>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
