@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { ChakraProviders, Container } from 'ui';
 import './globals.css';
-import { Footer } from '@/layout/Footer';
 import { Navbar } from '@/navigation/nav-bar/Navbar';
 import { ReactQueryProvider } from '@/layout/ReactQuery';
+import { Footer } from '@/layout/components/Footer';
 
 export const metadata: Metadata = {
     title: 'Menno Jager',
