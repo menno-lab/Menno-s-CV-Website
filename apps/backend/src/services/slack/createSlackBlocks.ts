@@ -1,4 +1,4 @@
-import { SlackBlock } from '../types';
+import { SlackBlock } from './types';
 
 export function createSlackBlocks(text: string, payload: Record<string, any>): SlackBlock[] {
     return [
