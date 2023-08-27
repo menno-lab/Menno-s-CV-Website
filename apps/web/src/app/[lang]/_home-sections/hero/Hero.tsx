@@ -2,11 +2,15 @@ import React from 'react';
 import { Button, Heading, Stack, Text, VStack } from 'ui';
 import { useTranslation } from '@/i18n';
 import Link from 'next/link';
-import { getLanguage } from '@/i18n/utils/getLanguage';
+import { Language } from '@/i18n/types';
 
-export async function Hero() {
-    const { t } = await useTranslation('common', 'hero');
-    const lang = getLanguage();
+interface HeroProps {
+    lang: Language;
+}
+
+export async function Hero({ lang }: HeroProps) {
+    const { t } = await useTranslation(lang, 'common', 'hero');
+
     return (
         <VStack spacing={8} pt={{ base: '4vh', md: '14vh' }} pb={{ base: '10vh', md: '20vh' }}>
             <Heading as='h1' size={{ base: '3xl', md: '4xl' }} textAlign='center'>

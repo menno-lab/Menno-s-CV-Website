@@ -3,9 +3,10 @@ import { Center, Container, Heading, VStack } from 'ui';
 import { ContactFormCopies } from './types';
 import { ContactForm } from './_ContactForm';
 import { useTranslation } from '@/i18n';
+import { PageProps } from '../_types';
 
-export default async function ContactPage() {
-    const { t } = await useTranslation('common');
+export default async function ContactPage({ params: { lang } }: PageProps) {
+    const { t } = await useTranslation(lang, 'common');
     const copies = t<ContactFormCopies>('contact');
     return (
         <Container as='main' maxW={'7xl'} minHeight='calc(100vh - 180px)' py={8}>

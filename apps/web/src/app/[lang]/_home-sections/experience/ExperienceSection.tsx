@@ -3,9 +3,14 @@ import { HomePageSection } from '../HomePageSection';
 import { useTranslation } from '@/i18n';
 import { ExperienceItem } from './types';
 import { ExperienceGrid } from './ExperienceGrid';
+import { Language } from '@/i18n/types';
 
-export async function ExperienceSection() {
-    const { t } = await useTranslation('common', 'experience');
+interface ExperienceSectionProps {
+    lang: Language;
+}
+
+export async function ExperienceSection({ lang }: ExperienceSectionProps) {
+    const { t } = await useTranslation(lang, 'common', 'experience');
     const items = t<ExperienceItem[]>('items');
 
     return (

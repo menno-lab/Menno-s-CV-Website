@@ -5,14 +5,17 @@ import Link from 'next/link';
 import { HashLink } from './HashLink';
 import { MobileNav } from './MobileNav';
 import { useTranslation } from '@/i18n';
-import { getLanguage } from '@/i18n/utils/getLanguage';
 import { NavItem } from '../types';
 import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
 import { LanguageSelector } from '@/layout/components/LanguageSelector';
+import { Language } from '@/i18n/types';
 
-export async function Navbar() {
-    const { t } = await useTranslation('common', 'nav');
-    const lang = getLanguage();
+interface NavbarProps {
+    lang: Language;
+}
+
+export async function Navbar({ lang }: NavbarProps) {
+    const { t } = await useTranslation(lang, 'common', 'nav');
     const navItems = t<NavItem[]>('navItems');
     return (
         <NavbarVisibilityController>
