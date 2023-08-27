@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { HashLink } from './HashLink';
 import { MobileNav } from './MobileNav';
 import { NavItem } from './types';
-import { Language } from '@/i18n/settings';
 import { useTranslation } from '@/i18n';
+import { getLanguage } from '@/i18n/utils/getLanguage';
 
-export async function Navbar({ lang }: { lang: Language }) {
+export async function Navbar() {
     const { t } = await useTranslation('common', 'nav');
+    const lang = getLanguage();
     const navItems = t<NavItem[]>('navItems');
     return (
         <NavbarVisibilityController>
