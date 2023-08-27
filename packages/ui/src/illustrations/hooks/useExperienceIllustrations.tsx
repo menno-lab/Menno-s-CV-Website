@@ -1,9 +1,9 @@
 import { Google, LinkedIn, Supermetrics } from '../experience';
 import { Textpanda } from '../projects';
-import { useColorScheme } from './useColorScheme';
+import { useIllustrationColorScheme } from './useIllustrationColorScheme';
 
 export function useExperienceIllustrations(): Record<string, JSX.Element> {
-    const colorScheme = useColorScheme();
+    const colorScheme = useIllustrationColorScheme();
     return {
         supermetrics: <Supermetrics {...colorScheme} alt='Supermetrics illustration' />,
         textpanda: <Textpanda {...colorScheme} alt='Textpanda illustration' />,

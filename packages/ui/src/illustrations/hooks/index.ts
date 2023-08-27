@@ -1,3 +1,3 @@
-export * from './useColorScheme';
 export * from './useExperienceIllustrations';
+export * from './useProjectIllustrations';
 export * from './useTechStackLogos';

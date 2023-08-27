@@ -1,4 +1,3 @@
-import { useColorModeValue, useToken } from '@chakra-ui/react';
 import {
     Aws,
     Css,
@@ -21,10 +20,10 @@ import {
     TypeScript,
     Vite,
 } from '../technologies';
-import { useColorScheme } from './useColorScheme';
+import { useIllustrationColorScheme } from './useIllustrationColorScheme';
 
 export function useTechStackLogos() {
-    const colorScheme = useColorScheme();
+    const colorScheme = useIllustrationColorScheme();
     return [
         {
             name: 'AWS',
