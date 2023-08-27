@@ -1,11 +1,7 @@
 import React from 'react';
 import { IllustrationProps } from './types';
 
-export function Vite({ color, alt }: IllustrationProps) {
-    const primary = 'red';
-    const secondary = 'blue';
-    const accent = 'green';
-
+export function Vite({ color, secondaryColor, textColor, alt }: IllustrationProps) {
     return (
         <svg aria-label={alt} height='100%' viewBox='0 0 410 404' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -18,13 +14,13 @@ export function Vite({ color, alt }: IllustrationProps) {
             />
             <defs>
                 <linearGradient id='paint0_linear' x1='6.00017' y1='32.9999' x2='235' y2='344' gradientUnits='userSpaceOnUse'>
-                    <stop stopColor={primary} />
-                    <stop offset='1' stopColor={secondary} />
+                    <stop stopColor={color} />
+                    <stop offset='1' stopColor={secondaryColor} />
                 </linearGradient>
                 <linearGradient id='paint1_linear' x1='194.651' y1='8.81818' x2='236.076' y2='292.989' gradientUnits='userSpaceOnUse'>
                     <stop stopColor={color} />
-                    <stop offset='0.0833333' stopColor={accent} />
-                    <stop offset='1' stopColor={accent} />
+                    <stop offset='0.0833333' stopColor={textColor} />
+                    <stop offset='1' stopColor={textColor} />
                 </linearGradient>
             </defs>
         </svg>

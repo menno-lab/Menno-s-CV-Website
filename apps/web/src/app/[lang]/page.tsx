@@ -5,6 +5,7 @@ import { SocialProof } from './_home-sections/social-proof/SocialProof';
 import { useTranslation } from '@/i18n';
 import { ExperienceSection } from './_home-sections/experience/ExperienceSection';
 import { ProjectsSection } from './_home-sections/projects/ProjectsSection';
+import { HeroBottom } from './_home-sections/hero-bottom/HeroBottom';
 
 export default async function Home() {
     const { t } = await useTranslation();
@@ -17,6 +18,7 @@ export default async function Home() {
             <SocialProof />
             <ExperienceSection />
             <ProjectsSection />
+            <HeroBottom />
         </>
     );
 }
