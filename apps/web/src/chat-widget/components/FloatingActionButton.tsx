@@ -20,6 +20,7 @@ import {
     Alert,
     AlertDescription,
     AlertIcon,
+    useBreakpoint,
 } from 'ui';
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
@@ -41,6 +42,8 @@ export function FloatingActionButton({ copies, firstMessage }: FloatingActionBut
     const { title, inputPlaceholder, legalNotice } = copies;
     const scrollRef = useRef<HTMLDivElement>(null);
     const initialFocusRef = useRef<HTMLInputElement>(null);
+    const breakPoint = useBreakpoint();
+
     const { isOpen, onOpen, onToggle, onClose } = useDisclosure();
     const { lang } = useParams() as { lang: Language };
     const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
@@ -59,6 +62,10 @@ export function FloatingActionButton({ copies, firstMessage }: FloatingActionBut
         scrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, [messages]);
 
+    if (breakPoint === 'base') {
+        // TODO: chat widget for mobile. (Use drawer instead of popover)
+        return null;
+    }
     return (
         <Popover closeOnBlur={false} placement='top-end' onClose={onClose} onOpen={onOpen} initialFocusRef={initialFocusRef}>
             <PopoverTrigger>

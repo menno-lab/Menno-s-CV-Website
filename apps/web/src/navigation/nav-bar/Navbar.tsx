@@ -37,7 +37,9 @@ export async function Navbar() {
                     </Flex>
                     <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
                         <ColorModeSwitch />
-                        <LanguageSelector lang={lang} />
+                        <Box display={{ base: 'none', md: 'block' }}>
+                            <LanguageSelector lang={lang} />
+                        </Box>
                         <Link href={`/${lang}/contact`}>
                             <Button colorScheme='primary' display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={600}>
                                 {t('contact')}

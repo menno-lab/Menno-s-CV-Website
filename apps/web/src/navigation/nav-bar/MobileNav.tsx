@@ -16,7 +16,6 @@ import {
 } from 'ui';
 import { useRouter } from 'next/navigation';
 import { Language } from '@/i18n/types';
-import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
 import { LanguageSelector } from '@/layout/components/LanguageSelector';
 
 interface MobileNavProps {
@@ -43,7 +42,6 @@ export function MobileNav({ lang }: MobileNavProps) {
                     <DrawerCloseButton />
                     <DrawerBody>
                         <VStack align='stretch' justifyContent='center' height='100%' px={4} spacing={6}>
-                            <ColorModeSwitch />
                             <LanguageSelector lang={lang} />
                             <Button
                                 colorScheme={'primary'}
