@@ -3,6 +3,7 @@ import { Hero } from './_home-sections/hero/Hero';
 import { Text } from 'ui';
 import { SocialProof } from './_home-sections/social-proof/SocialProof';
 import { useTranslation } from '@/i18n';
+import { ExperienceSection } from './_home-sections/experience/ExperienceSection';
 
 export default async function Home() {
     const { t } = await useTranslation();
@@ -13,6 +14,7 @@ export default async function Home() {
                 {t('hero.socialProof')}
             </Text>
             <SocialProof />
+            <ExperienceSection />
         </div>
     );
 }

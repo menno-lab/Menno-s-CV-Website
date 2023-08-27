@@ -21,16 +21,10 @@ import {
     TypeScript,
     Vite,
 } from '../technologies';
+import { useColorScheme } from './useColorScheme';
 
 export function useTechStackLogos() {
-    const [color, secondaryColor] = useToken('colors', ['primary.500', 'secondary.500']);
-    const textColor = useColorModeValue('gray.800', 'white');
-    const colorScheme = {
-        color,
-        secondaryColor,
-        textColor,
-    };
-
+    const colorScheme = useColorScheme();
     return [
         {
             name: 'AWS',
