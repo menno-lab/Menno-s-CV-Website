@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "theme": "Teema",
+        "contact": "Yhteys",
+        "navItems": [
+            {
+                "label": "Projektit",
+                "href": "projects"
+            },
+            {
+                "label": "Kokemus",
+                "href": "experience"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Hei, olen Menno 👋",
+        "subtitle": "Olen fullstack developer viehättävästä Alankomaista, joka on tunnettu tulppaanipelloistaan, tuulimyllyistään ja innovatiivisesta teknologiasta. Rakastan kauniiden, skaalautuvien ja ylläpidettävien verkkosovellusten rakentamista.",
+        "primaryCta": "Ota yhteyttä",
+        "secondaryCta": "Omat projektit",
+        "socialProof": "Luotettu näiden teknologioiden parissa"
+    },
+    "contact": {
+        "title": "Ota yhteyttä Mennoon",
+        "email": "Sähköposti",
+        "subject": "Aihe",
+        "message": "Viesti",
+        "submit": "Lähetä",
+        "formErrors": {
+            "emailValidation": "Anna kelvollinen sähköpostiosoite",
+            "subjectLenght": "Aihe on liian lyhyt",
+            "messageLength": "Viesti on liian lyhyt"
+        },
+        "formSuccess": {
+            "title": "Viesti lähetetty",
+            "message": "Kiitos viestistäsi! Palaan asiaan niin pian kuin mahdollista."
+        }
+    },
+    "projects": {
+        "title": "Projektit",
+        "subtitle": "Tässä on joitakin sivuprojekteja, joissa olen työskennellyt.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda on tekoälyä hyödyntävä viestintätyökalupakki, suunniteltu auttamaan yrityksiä mullistamaan asiakaskokemuksia.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Voimakas selainlaajennus, joka sallii käyttäjien vuorovaikuttaa Textpandan kanssa missä tahansa verkossa.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "Slack-integraatio, joka mahdollistaa käyttäjien vuorovaikutuksen Textpandan kanssa suoraan Slackista.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Hubspot-integraatio, joka mahdollistaa käyttäjien vuorovaikutuksen Textpandan kanssa suoraan Hubspotista. Käytä tekoälyä tukilippujen tiivistämiseen, automaattisten vastausten luomiseen ja paljon muuta.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "Kokemus",
+        "subtitle": "Tässä on joitakin yrityksiä, joiden kanssa olen työskennellyt.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsinki, Suomi",
+                "date": "Huhtikuu 2022 - Nykyhetki",
+                "tasks": [
+                    "Ohjelmistosovellusten kehittäminen ja ylläpito käyttäen Reactia, TypeScriptia ja muita frontend-teknologioita",
+                    "Yhteistyö ristiintoiminnallisten tiimien kanssa varmistaakseen ohjelmistotuotteiden laadun ja ajoissa toimituksen",
+                    "Osallistuminen koodikatselmuksiin ja panos koodikannan kokonaisparannukseen",
+                    "Työskentely ketterässä ympäristössä, jossa keskitytään jatkuvaan parantamiseen ja oppimiseen"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Perustaja",
+                "location": "Etätyö",
+                "date": "Syyskuu 2021 - Nykyhetki",
+                "tasks": [
+                    "Perusti ja lanseerasi yksin SaaS-yrityksen, vastuussa kaikista liiketoiminnan kehittämisen, toiminnan ja kasvun näkökulmista.",
+                    "Kehitti ja ylläpiti fullstack-sovelluksia, käyttäen teknologioita kuten React, Node.js, TypeScript, Python, MongoDB, Redis ja AWS",
+                    "Suunnitteli ja kehitti SaaS-tuotteen ideasta lanseeraukseen, ohjasi koko ohjelmistokehityksen elinkaarta.",
+                    "Toteutti automaation ja DevOps-käytännöt, mukaan lukien jatkuvan integraation ja jatkuvan toimituksen (CI/CD), tehostaakseen ohjelmistokehitys- ja käyttöönottoprosesseja"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "Helsinki, Suomi",
+                "date": "Marraskuu 2020 - Huhtikuu 2022",
+                "tasks": [
+                    "Tarjosi nopeaa ja tehokasta teknistä tukea asiakkaille, vianmääritystä ja ohjelmisto- ja järjestelmäongelmien ratkaisua.",
+                    "Vastasi asiakaskyselyihin ja tukilippuihin eri kanavien kautta, mukaan lukien sähköposti, chat ja puhelin, tavoitteena korkea asiakastyytyväisyys.",
+                    "Osoitti vahvaa tuotetietämystä ja asiantuntemusta tuotteissamme, ohjasi tehokkaasti asiakkaita tuotteen ominaisuuksissa, toiminnallisuudessa ja parhaissa käytännöissä.",
+                    "Tehtiin tiivistä yhteistyötä ristiintoiminnallisten tiimien kanssa, mukaan lukien tekniikka ja tuotehallinto, eskaloitiin ja ratkaistiin asiakkaiden raportoimat monimutkaiset tekniset ongelmat."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Irlanti",
+                "date": "Elokuu 2019 - Marraskuu 2020",
+                "tasks": [
+                    "Konsultoi asiakkaita siitä, miten käyttää tehokkaasti LinkedInin mainostusalustaa heidän markkinointitavoitteidensa saavuttamiseksi",
+                    "Luo ja toteuttaa mainoskampanjoita asiakkaille, käyttäen erilaisia mainosmuotoja",
+                    "Seuraa mainoskampanjoita ja tarjoaa suosituksia optimointiin"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "Dublin, Irlanti",
+                "date": "Syyskuu 2018 - Elokuu 2019",
+                "tasks": [
+                    "Koordinoidut tukitoimet eri kanavilla ja paikoissa",
+                    "Optimoitu prosesseja ja toimintoja tehokkuuden lisäämiseksi ja kustannusten vähentämiseksi",
+                    "Suoritettu data-analyysiä ja raportointia sekä lievennetty sidosryhmien kanssa",
+                    "Tarjosi Google Ads- ja Analytics-tukea Googlen puolesta yritysten Benelux-markkinoilla"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Kiinnostunut työskentelemään yhdessä?",
+        "cta": "Ota yhteyttä"
+    },
+    "footer": {
+        "language": "Kieli",
+        "sourceCode": "Lähdekoodi"
+    },
+    "chat": {
+        "title": "Chattaile Mennoon",
+        "inputPlaceholder": "Kirjoita viestisi...",
+        "legalNotice": "Käyttämällä tätä chattia suostut siihen, että viestisi tallennetaan ja Menno lukee ne.",
+        "firstMessageOptions": [
+            "Menno on tällä hetkellä offline-tilassa, todennäköisesti jossain muuttaen kahvia koodiksi. Hänen tekoälytwininsä on kuitenkin täällä, ja se on täynnä kofeiinia ja valmiina vastaamaan kysymyksiisi! Mene eteenpäin, kysy mitä tahansa!",
+            "Menno on offline-tilassa, todennäköisesti syvällä Git-mergessä. Mutta kun hän kohtaa tuon eeppisen taistelun, hänen tekoälyalter egonsa on täällä, aseistettu vastauksilla kysymyksiisi. Joten heitä kysymyksesi, koska toisin kuin Menno, minun ei tarvitse pitää kahvitaukoa!",
+            "Menno on poissa, todennäköisesti refaktoroimassa legacy-koodikantaa joksikin, josta jopa Da Vinci olisi ylpeä. Mutta hänen tekoälyversionsa, joka on sujuvasti koodin taidetta ja tiedettä, on täällä ja valmis chattailemaan. Sano 'hei', esitä kysymys, ja aloitetaan tämä keskustelu kompiloinnilla!",
+            "Menno on poissa, todennäköisesti väittelemässä kanssa hankalan API:n. Olen hänen tekoäly-kaksosensa, joka on paljon parempi pienessä jutustelussa joka tapauksessa. Tulita pois!",
+            "Menno on MIA, todennäköisesti jossain olemassa JavaScriptin Mozart. Mutta älä huoli, hänen tekoälynsä, joka on paljon vähemmän cool eikä edes soita rumpuja, on täällä chatissa. Kysy mitä tahansa!",
+            "Menno on offline-tilassa, todennäköisesti hukkunut Stackoverflow'ssa. Mutta hänen tekoälynsä on täällä, ja minulla on vastaukset nopeammin kuin Menno voi sanoa 'null pointer exception'. Mitä mielessä?"
+        ]
+    }
+}

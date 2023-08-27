@@ -1,16 +1,13 @@
-export const fallbackLang = 'en';
-export const languages = [fallbackLang] as const;
-export const defaultNS = 'translation';
+import { Language, NameSpace } from './types';
+import { fallbackLang, languages } from './utils/constants';
 
-export type Language = (typeof languages)[number];
-
-export function getOptions(lng = fallbackLang, ns = defaultNS) {
+export function getOptions(lng: Language, ns: NameSpace) {
     return {
         supportedLngs: languages,
         fallbackLang,
         lng,
-        fallbackNS: defaultNS,
-        defaultNS,
+        fallbackNS: 'common',
+        defaultNS: 'common',
         ns,
         returnObjects: true,
     };

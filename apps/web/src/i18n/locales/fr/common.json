@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "theme": "Thème",
+        "contact": "Contact",
+        "navItems": [
+            {
+                "label": "Projets",
+                "href": "projects"
+            },
+            {
+                "label": "Expérience",
+                "href": "experience"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Salut, je suis Menno 👋",
+        "subtitle": "Je suis un développeur fullstack du pays pittoresque des Pays-Bas, connu pour ses champs de tulipes, ses moulins à vent, et sa technologie innovante. Je suis passionné par la construction de belles applications web évolutives et maintenables.",
+        "primaryCta": "Contactez-moi",
+        "secondaryCta": "Mes projets",
+        "socialProof": "Confiance en ces technologies"
+    },
+    "contact": {
+        "title": "Contacter Menno",
+        "email": "Email",
+        "subject": "Sujet",
+        "message": "Message",
+        "submit": "Envoyer",
+        "formErrors": {
+            "emailValidation": "Veuillez entrer une adresse e-mail valide",
+            "subjectLenght": "Sujet trop court",
+            "messageLength": "Message trop court"
+        },
+        "formSuccess": {
+            "title": "Message envoyé",
+            "message": "Merci pour votre message! Je vous répondrai dès que possible."
+        }
+    },
+    "projects": {
+        "title": "Projets",
+        "subtitle": "Voici quelques-uns des projets annexes sur lesquels j'ai travaillé.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda est une trousse de communication IA, conçue pour aider les entreprises à révolutionner les expériences client.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Une extension de navigateur puissante qui permet aux utilisateurs d'interagir avec Textpanda depuis n'importe où sur le web.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "Une intégration Slack qui permet aux utilisateurs d'interagir avec Textpanda depuis Slack.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Une intégration Hubspot qui permet aux utilisateurs d'interagir avec Textpanda depuis Hubspot. Utilisez l'IA pour résumer les tickets de support, générer automatiquement des réponses et plus encore.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "Expérience",
+        "subtitle": "Voici quelques-unes des entreprises avec lesquelles j'ai travaillé.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsinki, Finlande",
+                "date": "Avril 2022 - Présent",
+                "tasks": [
+                    "Développement et maintenance d'applications logicielles en utilisant React, TypeScript, et d'autres technologies frontend",
+                    "Collaboration avec des équipes interfonctionnelles pour assurer la qualité et la livraison en temps voulu des produits logiciels",
+                    "Participation aux revues de code et contribution à l'amélioration globale de la base de code",
+                    "Travail dans un environnement agile avec un focus sur l'amélioration continue et l'apprentissage"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Founder",
+                "location": "Remote",
+                "date": "Septembre 2021 - Présent",
+                "tasks": [
+                    "Création et lancement d'une entreprise SaaS solo, responsable de tous les aspects du développement commercial, des opérations et de la croissance.",
+                    "Développement et maintenance d'applications fullstack, en utilisant des technologies comme React, NodeJs, TypeScript, Python, MongoDB, Redis et AWS",
+                    "Conception et développement du produit SaaS de l'idée au lancement, supervisant tout le cycle de vie du développement logiciel.",
+                    "Mise en œuvre de pratiques d'automatisation et de DevOps, y compris l'intégration continue et le déploiement (CI/CD), pour rationaliser les processus de développement et de déploiement logiciel"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "Helsinki, Finlande",
+                "date": "Novembre 2020 - Avril 2022",
+                "tasks": [
+                    "Fourniture d'un support technique rapide et efficace aux clients, dépannage et résolution des problèmes logiciels et système.",
+                    "Réponse aux demandes des clients et aux tickets de support via divers canaux, y compris l'e-mail, le chat, et le téléphone, assurant un haut niveau de satisfaction client.",
+                    "Démonstration d'une solide connaissance du produit et expertise dans nos produits, guidant efficacement les clients à travers les fonctionnalités, fonctionnalités, et les meilleures pratiques du produit.",
+                    "Collaboration étroite avec des équipes interfonctionnelles, y compris l'ingénierie et la gestion de produits, pour escalader et résoudre les problèmes techniques complexes signalés par les clients."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Irlande",
+                "date": "Août 2019 - Novembre 2020",
+                "tasks": [
+                    "Consultation des clients sur comment utiliser efficacement la plateforme publicitaire de LinkedIn pour atteindre leurs objectifs marketing",
+                    "Création et exécution de campagnes publicitaires pour les clients, en utilisant une variété de formats publicitaires",
+                    "Surveillance des campagnes publicitaires et fourniture de recommandations pour l'optimisation"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "Dublin, Irlande",
+                "date": "Septembre 2018 - Août 2019",
+                "tasks": [
+                    "Coordination des opérations de support sur plusieurs canaux et lieux",
+                    "Optimisation des processus et opérations pour augmenter l'efficacité et réduire les coûts",
+                    "Réalisation d'analyses de données et de rapports et atténuation avec les parties prenantes",
+                    "Fourniture de support Google Ads et Analytics au nom de Google pour le marché des entreprises Benelux"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Intéressé à travailler ensemble?",
+        "cta": "Contactez-moi"
+    },
+    "footer": {
+        "sourceCode": "Code source",
+        "language": "Langue"
+    },
+    "chat": {
+        "title": "Chat avec Menno",
+        "inputPlaceholder": "Entrez votre message...",
+        "legalNotice": "En utilisant ce chat, vous acceptez que vos messages soient stockés et lus par Menno.",
+        "firstMessageOptions": [
+            "Menno est hors ligne pour le moment, probablement quelque part en train de transformer du café en code. Son jumeau IA est là cependant, et il est entièrement caféiné et prêt pour vos questions! Allez-y, posez n'importe quelle question!",
+            "Menno est hors ligne, probablement quelque part en train de faire face à une fusion Git. Mais pendant qu'il affronte cette bataille épique, son alter ego IA est là, armé de réponses à vos requêtes. Alors lancez vos questions, parce que contrairement à Menno, je n'ai pas besoin d'une pause café!",
+            "Menno est absent, probablement en train de refactoriser une base de code héritée en quelque chose dont même Da Vinci serait fier. Mais sa version IA, fluente dans l'art et la science du code, est là et prête à discuter. Dites 'bonjour', posez une question, et commençons cette conversation!",
+            "Menno est sorti, probablement en train de se disputer avec une API récalcitrante. Je suis son jumeau IA, qui est bien meilleur pour les petites discussions de toute façon. Allez-y, posez vos questions!",
+            "Menno a disparu, probablement en train d'être le Mozart de JavaScript. Mais ne vous inquiétez pas, son IA, qui est bien moins cool et ne joue même pas de batterie, est là pour discuter. Posez n'importe quelle question!",
+            "Menno est hors ligne, probablement perdu dans Stackoverflow. Mais son IA est là, et j'ai des réponses plus rapidement que Menno ne peut dire 'exception de pointeur nul'. Qu'est-ce qui vous préoccupe?"
+        ]
+    }
+}

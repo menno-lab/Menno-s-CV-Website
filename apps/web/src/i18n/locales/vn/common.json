@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "theme": "Chủ đề",
+        "contact": "Liên hệ",
+        "navItems": [
+            {
+                "label": "Dự án",
+                "href": "projects"
+            },
+            {
+                "label": "Kinh nghiệm",
+                "href": "experience"
+            }
+        ]
+    },
+    "hero": {
+        "title": "Xin chào, tôi là Menno 👋",
+        "subtitle": "Tôi là một nhà phát triển fullstack đến từ đất nước tươi đẹp Hà Lan, nổi tiếng với các đồng cỏ tulip, cối xay gió và công nghệ đổi mới. Tôi đam mê xây dựng các ứng dụng web đẹp, có thể mở rộng và dễ bảo dưỡng.",
+        "primaryCta": "Liên hệ với tôi",
+        "secondaryCta": "Dự án của tôi",
+        "socialProof": "Được tin tưởng với những công nghệ này"
+    },
+    "contact": {
+        "title": "Liên hệ với Menno",
+        "email": "Email",
+        "subject": "Chủ đề",
+        "message": "Tin nhắn",
+        "submit": "Gửi",
+        "formErrors": {
+            "emailValidation": "Vui lòng nhập một địa chỉ email hợp lệ",
+            "subjectLenght": "Chủ đề quá ngắn",
+            "messageLength": "Tin nhắn quá ngắn"
+        },
+        "formSuccess": {
+            "title": "Tin nhắn đã được gửi",
+            "message": "Cảm ơn bạn đã gửi tin nhắn! Tôi sẽ phản hồi bạn sớm nhất có thể."
+        }
+    },
+    "projects": {
+        "title": "Dự án",
+        "subtitle": "Dưới đây là một số dự án phụ mà tôi đã làm.",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpanda là một bộ công cụ truyền thông AI, được thiết kế để giúp các doanh nghiệp cải tiến trải nghiệm khách hàng.",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Một tiện ích mở rộng trình duyệt mạnh mẽ cho phép người dùng tương tác với Textpanda từ bất kỳ nơi nào trên web.",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "Một tích hợp Slack cho phép người dùng tương tác với Textpanda từ bên trong Slack.",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Một tích hợp Hubspot cho phép người dùng tương tác với Textpanda từ bên trong Hubspot. Sử dụng AI để tóm tắt vé hỗ trợ, tự động tạo phản hồi và nhiều hơn nữa.",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "Kinh nghiệm",
+        "subtitle": "Đây là một số công ty mà tôi đã từng làm việc.",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "Helsinki, Phần Lan",
+                "date": "Tháng 4 năm 2022 - Hiện tại",
+                "tasks": [
+                    "Phát triển và duy trì các ứng dụng phần mềm bằng cách sử dụng React, TypeScript và các công nghệ frontend khác",
+                    "Hợp tác với các nhóm chéo chức năng để đảm bảo chất lượng và giao hàng kịp thời của các sản phẩm phần mềm",
+                    "Tham gia đánh giá mã và đóng góp vào việc cải thiện tổng thể của cơ sở mã",
+                    "Làm việc trong một môi trường agile với trọng tâm vào việc cải thiện liên tục và học hỏi"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Người sáng lập",
+                "location": "Từ xa",
+                "date": "Tháng 9 năm 2021 - Hiện tại",
+                "tasks": [
+                    "Thành lập và ra mắt một công ty SaaS đơn lẻ thành công, chịu trách nhiệm cho tất cả các khía cạnh của phát triển doanh nghiệp, hoạt động và tăng trưởng.",
+                    "Phát triển và duy trì các ứng dụng fullstack, sử dụng công nghệ như React, NodeJs, TypeScript, Python, MongoDB, Redis và AWS",
+                    "Thiết kế và phát triển sản phẩm SaaS từ ý tưởng đến ra mắt, giám sát toàn bộ vòng đời phát triển phần mềm.",
+                    "Triển khai thực hành tự động hóa và DevOps, bao gồm tích hợp liên tục và triển khai (CI/CD), để tối ưu hóa quy trình phát triển và triển khai phần mềm"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "Helsinki, Phần Lan",
+                "date": "Tháng 11 năm 2020 - Tháng 4 năm 2022",
+                "tasks": [
+                    "Cung cấp hỗ trợ kỹ thuật nhanh chóng và hiệu quả cho khách hàng, xử lý và khắc phục các vấn đề liên quan đến phần mềm và hệ thống.",
+                    "Phản hồi các yêu cầu và vé hỗ trợ của khách hàng qua các kênh khác nhau, bao gồm email, trò chuyện và điện thoại, đảm bảo mức độ hài lòng của khách hàng cao.",
+                    "Trình bày kiến thức sản phẩm mạnh mẽ và chuyên môn trong các sản phẩm của chúng tôi, hướng dẫn khách hàng thông qua các tính năng sản phẩm, chức năng và thực hành tốt nhất.",
+                    "Hợp tác chặt chẽ với các nhóm chéo chức năng, bao gồm kỹ thuật và quản lý sản phẩm, để nâng cao và giải quyết các vấn đề kỹ thuật phức tạp được báo cáo bởi khách hàng."
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "Dublin, Ireland",
+                "date": "Tháng 8 năm 2019 - Tháng 11 năm 2020",
+                "tasks": [
+                    "Tư vấn cho khách hàng về cách sử dụng hiệu quả nền tảng quảng cáo của LinkedIn để đạt được mục tiêu tiếp thị của họ",
+                    "Tạo và thực hiện các chiến dịch quảng cáo cho khách hàng, sử dụng một loạt các định dạng quảng cáo",
+                    "Theo dõi các chiến dịch quảng cáo và cung cấp các đề xuất để tối ưu hóa"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (thông qua Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "Dublin, Ireland",
+                "date": "Tháng 9 năm 2018 - Tháng 8 năm 2019",
+                "tasks": [
+                    "Điều phối hoạt động hỗ trợ qua nhiều kênh và địa điểm",
+                    "Tối ưu hóa quy trình và hoạt động để tăng hiệu quả và giảm chi phí",
+                    "Tiến hành phân tích dữ liệu và báo cáo và giảm bớt với các bên liên quan",
+                    "Cung cấp hỗ trợ Google Ads và Analytics thay mặt Google cho thị trường doanh nghiệp Benelux"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "Quan tâm đến việc cộng tác?",
+        "cta": "Liên hệ với tôi"
+    },
+    "footer": {
+        "language": "Ngôn ngữ",
+        "sourceCode": "Mã nguồn"
+    },
+    "chat": {
+        "title": "Chat với Menno",
+        "inputPlaceholder": "Nhập tin nhắn của bạn...",
+        "legalNotice": "Khi sử dụng trò chuyện này, bạn đồng ý cho phép tin nhắn của mình được lưu trữ và đọc bởi Menno.",
+        "firstMessageOptions": [
+            "Menno đang ngoại tuyến ngay bây giờ, có lẽ đang ở đâu đó biến cà phê thành mã. Tuy nhiên, người anh em song sinh AI của anh ấy đang ở đây, đã được cung cấp đầy đủ cafein và sẵn lòng trả lời câu hỏi của bạn! Hãy tiếp tục, hỏi bất cứ điều gì!",
+            "Menno đang ngoại tuyến, có lẽ đang ở đâu đó sâu trong một quá trình merge Git. Nhưng trong khi anh ấy đang đối mặt với trận chiến hào hùng đó, bản alter ego AI của anh ấy đang ở đây, sẵn sàng trả lời cho câu hỏi của bạn. Vậy hãy bắn câu hỏi của bạn đi, bởi vì không giống Menno, tôi không cần tạm nghỉ uống cà phê!",
+            "Menno đang vắng, có lẽ đang tái cấu trúc một codebase cũ thành thứ mà ngay cả Da Vinci cũng sẽ tự hào. Nhưng phiên bản AI của anh ấy, thông thạo ngôn ngữ và khoa học của mã, đang ở đây và sẵn lòng trò chuyện. Hãy nói 'xin chào', đặt một câu hỏi, và hãy để cuộc trò chuyện này được biên dịch!",
+            "Menno không ở đây, có lẽ đang tranh cãi với một API không biết xử lý. Tôi là người anh em song sinh AI của anh ấy, người giỏi hơn nhiều trong việc trò chuyện nhỏ. Hãy bắt đầu!",
+            "Menno đang MIA, có lẽ đang là Mozart của JavaScript. Nhưng đừng lo, AI của anh ấy, kẻ kém hơn nhiều và thậm chí không biết chơi trống, đang ở đây để trò chuyện. Hãy hỏi bất cứ điều gì!",
+            "Menno đang ngoại tuyến, có thể đã bị lạc trong Stackoverflow. Nhưng AI của anh ấy đang ở đây, và tôi có câu trả lời nhanh hơn Menno có thể nói 'null pointer exception'. Bạn đang nghĩ gì?"
+        ]
+    }
+}

@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "theme": "テーマ",
+        "contact": "連絡先",
+        "navItems": [
+            {
+                "label": "プロジェクト",
+                "href": "projects"
+            },
+            {
+                "label": "経験",
+                "href": "experience"
+            }
+        ]
+    },
+    "hero": {
+        "title": "こんにちは、メンノです 👋",
+        "subtitle": "風車とチューリップの畑、革新的なテクノロジーで知られる風光明媚なオランダ出身のフルスタック開発者です。美しく、スケーラブルで保守可能なWebアプリケーションを作成することに情熱を注いでいます。",
+        "primaryCta": "私に連絡する",
+        "secondaryCta": "私のプロジェクト",
+        "socialProof": "これらのテクノロジーで信頼されています"
+    },
+    "contact": {
+        "title": "メンノに連絡する",
+        "email": "メール",
+        "subject": "件名",
+        "message": "メッセージ",
+        "submit": "送信",
+        "formErrors": {
+            "emailValidation": "有効なメールアドレスを入力してください",
+            "subjectLenght": "件名が短すぎます",
+            "messageLength": "メッセージが短すぎます"
+        },
+        "formSuccess": {
+            "title": "メッセージを送信しました",
+            "message": "メッセージをありがとうございました！できるだけ早くご返信いたします。"
+        }
+    },
+    "projects": {
+        "title": "プロジェクト",
+        "subtitle": "これまでに取り組んだサイドプロジェクトの一部です。",
+        "items": [
+            {
+                "key": "textpanda",
+                "title": "Textpanda",
+                "description": "Textpandaは、企業が顧客体験を革新するのを支援するために設計されたAIコミュニケーションツールキットです。",
+                "href": "https://textpanda.io/"
+            },
+            {
+                "key": "tp_chrome",
+                "title": "Textpanda x Chrome",
+                "description": "Web上の任意の場所からTextpandaと対話できる強力なブラウザ拡張機能です。",
+                "href": "https://chrome.google.com/webstore/detail/textpanda-chatgpt-sidebar/jpcbjhgehejfcgmlkidfnpedfeamipga"
+            },
+            {
+                "key": "tp_slack",
+                "title": "Textpanda x Slack",
+                "description": "ユーザがSlack内でTextpandaと対話できるSlackインテグレーションです。",
+                "href": "https://textpanda.io/integrations/slack"
+            },
+            {
+                "key": "tp_hubspot",
+                "title": "Textpanda x Hubspot",
+                "description": "Hubspot内でユーザがTextpandaと対話できるHubspotインテグレーションです。AIを使ってサポートチケットを要約し、自動的にレスポンスを生成し、その他のことを行います。",
+                "href": "https://textpanda.io/integrations/hubspot"
+            }
+        ]
+    },
+    "experience": {
+        "title": "経験",
+        "subtitle": "これまでに協力した企業の一部です。",
+        "items": [
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Junior Software Developer",
+                "location": "ヘルシンキ、フィンランド",
+                "date": "2022年4月 - 現在",
+                "tasks": [
+                    "React、TypeScript、その他のフロントエンド技術を使用してソフトウェアアプリケーションを開発および保守",
+                    "ソフトウェア製品の品質とタイムリーな配信を確保するためにクロス機能チームと共同で作業",
+                    "コードレビューに参加し、コードベースの全体的な改善に貢献",
+                    "継続的な改善と学習に焦点を当てたアジャイルな環境での作業"
+                ]
+            },
+            {
+                "company": {
+                    "key": "textpanda",
+                    "label": "Textpanda"
+                },
+                "role": "Founder",
+                "location": "リモート",
+                "date": "2021年9月 - 現在",
+                "tasks": [
+                    "ソロのSaaS企業を設立し、起動し、ビジネス開発、運用、成長のすべての側面を担当。",
+                    "React、NodeJs、TypeScript、Python、MongoDB、Redis、AWSなどのテクノロジーを使用してフルスタックアプリケーションを開発および保守",
+                    "アイデアからローンチまでのSaaS製品を設計および開発し、ソフトウェア開発ライフサイクル全体を監督。",
+                    "ソフトウェア開発とデプロイメントプロセスを合理化するための自動化とDevOpsの実践（CI/CDなど）を実装"
+                ]
+            },
+            {
+                "company": {
+                    "key": "supermetrics",
+                    "label": "Supermetrics"
+                },
+                "role": "Technical Support Specialist",
+                "location": "ヘルシンキ、フィンランド",
+                "date": "2020年11月 - 2022年4月",
+                "tasks": [
+                    "迅速かつ効率的に技術サポートを提供し、ソフトウェアおよびシステム関連の問題をトラブルシューティングおよび解決。",
+                    "メール、チャット、電話などのさまざまなチャネルを介して顧客の問い合わせとサポートチケットに対応し、高い顧客満足度を確保。",
+                    "製品の知識と専門知識を強く示し、顧客を製品の特徴、機能、ベストプラクティスを通じて効果的にガイド。",
+                    "エンジニアリングおよび製品管理を含むクロス機能チームと緊密に協力して、顧客から報告された複雑な技術問題をエスカレートおよび解決。"
+                ]
+            },
+            {
+                "company": {
+                    "key": "linkedin",
+                    "label": "LinkedIn"
+                },
+                "role": "Marketing Solutions Consultant",
+                "location": "ダブリン、アイルランド",
+                "date": "2019年8月 - 2020年11月",
+                "tasks": [
+                    "クライアントに、どのようにLinkedInの広告プラットフォームを効果的に使用してマーケティング目標を達成するかについてアドバイス",
+                    "さまざまな広告形式を使用してクライアントの広告キャンペーンを作成および実行",
+                    "広告キャンペーンを監視し、最適化のための推奨事項を提供"
+                ]
+            },
+            {
+                "company": {
+                    "key": "google",
+                    "label": "Google (via Accenture)"
+                },
+                "role": "Workflow Lead / Advertising Specialist",
+                "location": "ダブリン、アイルランド",
+                "date": "2018年9月 - 2019年8月",
+                "tasks": [
+                    "複数のチャネルと場所を横断したサポート操作を調整",
+                    "効率を高め、コストを削減するためのプロセスと操作を最適化",
+                    "データ分析と報告を行い、ステークホルダーと調整",
+                    "エンタープライズBenelux市場のためのGoogle代表としてGoogle AdsとAnalyticsのサポートを提供"
+                ]
+            }
+        ]
+    },
+    "heroBottom": {
+        "title": "一緒に働くことに興味がありますか？",
+        "cta": "私に連絡する"
+    },
+    "footer": {
+        "sourceCode": "ソースコード",
+        "language": "言語"
+    },
+    "chat": {
+        "title": "メンノとチャットする",
+        "inputPlaceholder": "あなたのメッセージを入力してください...",
+        "legalNotice": "このチャットを使用すると、あなたのメッセージがメンノによって保存され、読まれることに同意したことになります。",
+        "firstMessageOptions": [
+            "メンノは現在オフラインで、おそらくどこかでコーヒーをコードに変えています。しかし彼のAIの双子はここにいます、そしてそれは完全にカフェインが含まれており、あなたの質問のために準備ができています！どんなことでも聞いてみてください！",
+            "メンノはオフラインで、おそらくどこか深くでGitマージに取り組んでいます。しかし彼がその壮大な戦闘に直面している間、彼のAIの別の自己がここにいます、そしてあなたの問いに対する答えを武装しています。だからあなたの質問を撃ってください、なぜならメンノと違って、私はコーヒーブレイクを必要としません！",
+            "メンノは離れています、おそらくレガシーコードベースをダ・ヴィンチが誇りに思うようなものにリファクタリングしています。しかし彼のAI版は、コードの芸術と科学に精通しており、チャットする準備ができています。'こんにちは'と言って質問をしてみて、この対話をコンパイルしましょう！",
+            "メンノは出ています、おそらく不適切なAPIと議論しています。私は彼のAIの双子で、とにかくスモールトークが得意です。Fire away！",
+            "メンノはMIAで、おそらくJavaScriptのMozartである場所。しかし心配しないでください、彼のAIはここにいます、それは非常にクールではなく、ドラムすら演奏しないですが、チャットする準備ができています。何でも聞いてみてください！",
+            "メンノはオフラインで、おそらくStackoverflowに迷い込んでいます。しかし彼のAIはここにいます、そして私はメンノが'null pointer exception'と言うよりも早く答えを持っています。あなたの心に何がありますか？"
+        ]
+    }
+}

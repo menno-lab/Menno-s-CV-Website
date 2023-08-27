@@ -8,6 +8,7 @@ import { useTranslation } from '@/i18n';
 import { getLanguage } from '@/i18n/utils/getLanguage';
 import { NavItem } from '../types';
 import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
+import { LanguageSelector } from '@/layout/components/LanguageSelector';
 
 export async function Navbar() {
     const { t } = await useTranslation('common', 'nav');
@@ -36,6 +37,7 @@ export async function Navbar() {
                     </Flex>
                     <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
                         <ColorModeSwitch />
+                        <LanguageSelector lang={getLanguage()} />
                         <Link href={`/${lang}/contact`}>
                             <Button colorScheme='primary' display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={600}>
                                 {t('contact')}
