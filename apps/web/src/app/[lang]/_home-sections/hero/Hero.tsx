@@ -8,21 +8,21 @@ export async function Hero() {
     const { t } = await useTranslation('common', 'hero');
     const lang = getLanguage();
     return (
-        <VStack spacing={8} pt={{ base: 6, md: '14vh' }} pb={{ base: 6, md: '20vh' }}>
-            <Heading as='h1' size='4xl' textAlign='center'>
+        <VStack spacing={8} pt={{ base: '4vh', md: '14vh' }} pb={{ base: '10vh', md: '20vh' }}>
+            <Heading as='h1' size={{ base: '3xl', md: '4xl' }} textAlign='center'>
                 {t('title')}
             </Heading>
-            <Text as='h2' fontSize='xl' textAlign='center'>
+            <Text as='h2' size={{ base: 'lg', md: 'xl' }} textAlign='center'>
                 {t('subtitle')}
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                 <Link href={`/${lang}/contact`}>
-                    <Button size='lg' colorScheme='primary'>
+                    <Button size='lg' colorScheme='primary' width='full'>
                         {t('primaryCta')}
                     </Button>
                 </Link>
                 <Link href={`/${lang}#projects`}>
-                    <Button size='lg' colorScheme='secondary'>
+                    <Button size='lg' colorScheme='secondary' width='full'>
                         {t('secondaryCta')}
                     </Button>
                 </Link>

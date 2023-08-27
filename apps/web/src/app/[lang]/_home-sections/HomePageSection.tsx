@@ -11,7 +11,9 @@ export function HomePageSection({ title, subtitle, id, children }: PropsWithChil
     return (
         <Container as='section' maxW={'7xl'} id={id}>
             <Stack py='10'>
-                <Heading as='h2'>{title}</Heading>
+                <Heading as='h2' fontSize={{ base: '2xl', md: '3xl' }}>
+                    {title}
+                </Heading>
                 <Text>{subtitle}</Text>
                 <Box py={6}>{children}</Box>
             </Stack>

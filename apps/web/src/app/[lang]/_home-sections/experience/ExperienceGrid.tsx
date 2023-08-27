@@ -12,7 +12,7 @@ export function ExperienceGrid({ items }: ExperienceGridProps) {
     const illustrations = useExperienceIllustrations();
 
     return (
-        <SimpleGrid minChildWidth='400px' spacing='30px'>
+        <SimpleGrid minChildWidth={{ base: '80vw', md: '400px' }} spacing='30px'>
             {items.map((item, i) => (
                 <ExperienceCard key={i} item={item} illustration={illustrations[item.company.key]} />
             ))}

@@ -12,7 +12,7 @@ export default async function Home() {
     return (
         <>
             <Hero />
-            <Text as='h3' fontSize='3xl' fontWeight='bold' textAlign='center'>
+            <Text as='h3' fontSize={{ base: '2xl', md: '3xl' }} fontWeight='bold' textAlign='center'>
                 {t('hero.socialProof')}
             </Text>
             <SocialProof />

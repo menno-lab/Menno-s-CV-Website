@@ -16,6 +16,7 @@ import {
     FaMapPin,
     TagLabel,
     TagLeftIcon,
+    Stack,
 } from 'ui';
 
 interface ExperienceCardProps {
@@ -39,7 +40,7 @@ export function ExperienceCard({ item, illustration }: ExperienceCardProps) {
             </CardHeader>
             <CardBody pb={12}>
                 <VStack align='stretch' spacing={4}>
-                    <HStack spacing={4}>
+                    <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                         <Tag size='md' variant='subtle' width='fit-content' colorScheme='secondary'>
                             <TagLeftIcon as={FaMapPin} boxSize='10px' />
                             <TagLabel>{item.location}</TagLabel>
@@ -48,7 +49,7 @@ export function ExperienceCard({ item, illustration }: ExperienceCardProps) {
                             <TagLeftIcon as={FaCalendar} boxSize='10px' />
                             <TagLabel>{item.date}</TagLabel>
                         </Tag>
-                    </HStack>
+                    </Stack>
                     <UnorderedList spacing={4}>
                         {item.tasks.map((task, i) => (
                             <ListItem key={i} fontSize='smaller'>
