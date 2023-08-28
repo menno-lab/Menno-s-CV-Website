@@ -1,41 +1,42 @@
-import '../../app.css';
+import type { Metadata } from 'next';
 import { dir } from 'i18next';
-import { languages } from '../../i18n/settings';
-import { ThemeProvider } from 'ui';
-import { RouteWithChildren } from '../../utils/types';
-import { useTranslation } from '../../i18n';
-import { InitializeAnalytics } from 'analytics';
-import { ReactQueryProvider } from '../../layout/ReactQuery';
-import { Navbar } from '../../layout/navigation/components/Navbar';
-import { FloatingActionButton } from '../../chat-widget/FloatingActionButton';
-import { chatTranslationsSchema } from '../../chat-widget/schema';
-import { Footer } from '../../layout/footer/Footer';
-import { footerTranslationSchema } from '../../layout/footer/schema';
-import { navbarTranslationsSchema } from '../../layout/navigation/schema';
+import { Container } from 'ui';
+import './globals.css';
+import { ChatWidget } from '@/chat-widget/ChatWidget';
+import { Language } from '@/i18n/types';
+import { languages } from '@/i18n/utils/constants';
+import { ChakraProviders } from '@/providers/ChakraProviders';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
+import { Footer } from '@/layout/Footer';
+import { Navbar } from '@/layout/navbar/Navbar';
 
-export const metadata = {
-    title: "Menno's CV Website",
-    description: 'Menno Jager CV Website',
+export const metadata: Metadata = {
+    title: 'Menno Jager',
+    description: "Menno Jager's personal website",
 };
 
 export async function generateStaticParams() {
     return languages.map((lang) => ({ lang }));
 }
 
-export default async function RootLayout({ children, params: { lang } }: RouteWithChildren) {
-    const { t } = await useTranslation(lang);
+interface RootLayoutProps {
+    children: React.ReactNode;
+    params: { lang: Language };
+}
 
+export default function RootLayout({ children, params: { lang } }: RootLayoutProps) {
     return (
         <html lang={lang} dir={dir(lang)}>
             <body>
                 <ReactQueryProvider>
-                    <ThemeProvider>
-                        <Navbar lang={lang} translations={navbarTranslationsSchema.parse(t('nav'))} />
-                        {children}
-                        <Footer translations={footerTranslationSchema.parse(t('footer'))} />
-                        <FloatingActionButton translations={chatTranslationsSchema.parse(t('chat'))} />
-                        <InitializeAnalytics />
-                    </ThemeProvider>
+                    <ChakraProviders>
+                        <Navbar lang={lang} />
+                        <Container maxW={'7xl'} px={4} pt='100px'>
+                            {children}
+                        </Container>
+                        <Footer />
+                        <ChatWidget lang={lang} />
+                    </ChakraProviders>
                 </ReactQueryProvider>
             </body>
         </html>

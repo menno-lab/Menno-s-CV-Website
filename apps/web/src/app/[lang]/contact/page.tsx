@@ -1,37 +1,23 @@
 import React from 'react';
-import { Flex, Heading, SlideInFade, Square1, VStack, AbsoluteCenter } from 'ui';
+import { Center, Container, Heading, VStack } from 'ui';
+import { ContactFormCopies } from './types';
 import { ContactForm } from './_ContactForm';
-import { RouteWithLang } from '../../../utils/types';
-import { useTranslation } from '../../../i18n';
-import { contactTranslationsSchema } from './schema';
+import { useTranslation } from '@/i18n';
+import { PageProps } from '../_types';
 
-export default async function page({ params: { lang } }: RouteWithLang) {
-    const { t } = await useTranslation(lang);
+export default async function ContactPage({ params: { lang } }: PageProps) {
+    const { t } = await useTranslation(lang, 'common');
+    const copies = t<ContactFormCopies>('contact');
     return (
-        <>
-            <Flex height='100vh' justifyContent='center' alignItems='center' zIndex={2}>
-                <VStack spacing={8}>
-                    <SlideInFade from={'right'}>
-                        <Heading as='h2' size='2xl' textAlign='center'>
-                            {t('contact.title')}
-                        </Heading>
-                    </SlideInFade>
-                    <SlideInFade from={'left'}>
-                        <ContactForm translations={contactTranslationsSchema.parse(t('contact'))} />
-                    </SlideInFade>
+        <Container as='main' maxW={'7xl'} minHeight='calc(100vh - 180px)' py={8}>
+            <Center>
+                <VStack align='stretch' spacing={8} width='full' maxW={'2xl'}>
+                    <Heading as='h1' size='2xl'>
+                        {t('contact.title')}
+                    </Heading>
+                    <ContactForm copies={copies} />
                 </VStack>
-            </Flex>
-            <AbsoluteCenter
-                height='90vh'
-                width='100vw'
-                display='flex'
-                justifyContent='flex-end'
-                alignItems='flex-end'
-                opacity={0.2}
-                pointerEvents='none'
-            >
-                <Square1 size='33vw' color='accent' />
-            </AbsoluteCenter>
-        </>
+            </Center>
+        </Container>
     );
 }

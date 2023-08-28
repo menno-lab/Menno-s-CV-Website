@@ -1,24 +1,25 @@
-import { VStack } from 'ui';
-import { RouteWithLang } from '../../utils/types';
-import { useTranslation } from '../../i18n';
-import { ExperienceSection } from '../../layout/home-sections/experience/ExperienceSection';
-import { experienceTranslationsSchema } from '../../layout/home-sections/experience/schema';
-import { HeroBottomSection } from '../../layout/home-sections/hero-bottom/HeroBottomSection';
-import { heroBottomTranslationsSchema } from '../../layout/home-sections/hero-bottom/schema';
-import { HeroSection } from '../../layout/home-sections/hero/HeroSection';
-import { heroTranslationsSchema } from '../../layout/home-sections/hero/schema';
-import { ProjectsSection } from '../../layout/home-sections/projects/ProjectsSection';
-import { projectsTranslationsSchema } from '../../layout/home-sections/projects/schema';
+import React from 'react';
+import { Hero } from './_home-sections/hero/Hero';
+import { Text } from 'ui';
+import { SocialProof } from './_home-sections/social-proof/SocialProof';
+import { useTranslation } from '@/i18n';
+import { ExperienceSection } from './_home-sections/experience/ExperienceSection';
+import { ProjectsSection } from './_home-sections/projects/ProjectsSection';
+import { HeroBottom } from './_home-sections/hero-bottom/HeroBottom';
+import { PageProps } from './_types';
 
-export default async function Page({ params: { lang } }: RouteWithLang) {
+export default async function Home({ params: { lang } }: PageProps) {
     const { t } = await useTranslation(lang);
-
     return (
-        <VStack spacing={6}>
-            <HeroSection translations={heroTranslationsSchema.parse(t('hero'))} />
-            <ProjectsSection translations={projectsTranslationsSchema.parse(t('projects'))} />
-            <ExperienceSection translations={experienceTranslationsSchema.parse(t('experience'))} />
-            <HeroBottomSection translations={heroBottomTranslationsSchema.parse(t('heroBottom'))} />
-        </VStack>
+        <>
+            <Hero lang={lang} />
+            <Text as='h3' fontSize={{ base: '2xl', md: '3xl' }} fontWeight='bold' textAlign='center'>
+                {t('hero.socialProof')}
+            </Text>
+            <SocialProof />
+            <ExperienceSection lang={lang} />
+            <ProjectsSection lang={lang} />
+            <HeroBottom lang={lang} />
+        </>
     );
 }

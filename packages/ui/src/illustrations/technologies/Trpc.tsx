@@ -1,6 +1,5 @@
 import React from 'react';
 import { IllustrationProps } from './types';
-import { useTheme } from '../../context/ThemeProvider';
 
 export function Trpc({ textColor, color, alt }: IllustrationProps) {
     return (

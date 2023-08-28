@@ -1,8 +1,7 @@
 {
     "name": "ui",
     "version": "0.0.0",
-    "main": "./src/index.tsx",
-    "types": "./src/index.tsx",
+    "main": "./src/index.ts",
     "license": "MIT",
     "scripts": {
         "lint": "eslint \"**/*.ts*\"",
@@ -13,6 +12,7 @@
         "@chakra-ui/icons": "^2.0.19",
         "@chakra-ui/next-js": "^2.1.4",
         "@chakra-ui/react": "^2.7.1",
+        "@chakra-ui/theme-tools": "^2.1.0",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "framer-motion": "^10.12.17",
