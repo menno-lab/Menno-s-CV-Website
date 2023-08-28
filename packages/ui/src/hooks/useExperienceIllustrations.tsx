@@ -1,5 +1,5 @@
-import { Google, LinkedIn, Supermetrics } from '../experience';
-import { Textpanda } from '../projects';
+import { Google, LinkedIn, Supermetrics } from '../illustrations/experience';
+import { Textpanda } from '../illustrations/projects';
 import { useIllustrationColorScheme } from './useIllustrationColorScheme';
 
 export function useExperienceIllustrations(): Record<string, JSX.Element> {

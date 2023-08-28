@@ -1,5 +1,4 @@
 'use client';
-import { Language } from '@/i18n/types';
 import React from 'react';
 import { Box, Ticker, VStack, useTechStackLogos } from 'ui';
 

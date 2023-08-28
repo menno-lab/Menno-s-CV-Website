@@ -18,11 +18,11 @@ import { useRouter } from 'next/navigation';
 import { Language } from '@/i18n/types';
 import { LanguageSelector } from '@/layout/components/LanguageSelector';
 
-interface MobileNavProps {
+interface NavbarMobileProps {
     lang: Language;
 }
 
-export function MobileNav({ lang }: MobileNavProps) {
+export function NavbarMobile({ lang }: NavbarMobileProps) {
     const { isOpen, onToggle, onClose } = useDisclosure();
     const router = useRouter();
 

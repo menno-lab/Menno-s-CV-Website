@@ -1,4 +1,4 @@
-import { CatAstronaut, Chrome, Hubspot, Slack, Textpanda } from '../projects';
+import { CatAstronaut, Chrome, Hubspot, Slack, Textpanda } from '../illustrations/projects';
 import { useIllustrationColorScheme } from './useIllustrationColorScheme';
 
 export function useProjectIllustrations(): Record<string, JSX.Element> {

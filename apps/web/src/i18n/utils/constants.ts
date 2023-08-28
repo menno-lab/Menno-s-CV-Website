@@ -1,10 +1,8 @@
-import { Language, LanguageDetails } from '../types';
+import { LanguageMap } from '../types';
 
 export const i18nCookieName = 'i18next';
 export const fallbackLang = 'en';
 export const languages = [fallbackLang, 'de', 'fi', 'fr', 'jp', 'kr', 'nl', 'se', 'vn'] as const;
-
-type LanguageMap = Record<Language, LanguageDetails>;
 
 export const languagesMap: LanguageMap = {
     en: {

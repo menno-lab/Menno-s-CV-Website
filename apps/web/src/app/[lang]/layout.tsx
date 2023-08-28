@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { dir } from 'i18next';
-import { ChakraProviders, Container } from 'ui';
+import { Container } from 'ui';
 import './globals.css';
-import { Navbar } from '@/navigation/nav-bar/Navbar';
-import { ReactQueryProvider } from '@/layout/ReactQuery';
 import { Footer } from '@/layout/components/Footer';
 import { ChatWidget } from '@/chat-widget/ChatWidget';
 import { Language } from '@/i18n/types';
 import { languages } from '@/i18n/utils/constants';
+import { ChakraProviders } from '@/providers/ChakraProviders';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
+import { Navbar } from '@/layout/navigation/nav-bar/Navbar';
 
 export const metadata: Metadata = {
     title: 'Menno Jager',

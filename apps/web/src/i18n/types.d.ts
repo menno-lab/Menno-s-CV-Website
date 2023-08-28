@@ -7,3 +7,5 @@ export interface LanguageDetails {
     name: string;
     nativeName: string;
 }
+
+export type LanguageMap = Record<Language, LanguageDetails>;

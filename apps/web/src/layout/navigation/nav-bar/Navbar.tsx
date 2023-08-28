@@ -2,8 +2,7 @@ import React from 'react';
 import { NavbarVisibilityController } from './NavbarVisibilityController';
 import { Box, Button, Container, Flex, Stack, Text } from 'ui';
 import Link from 'next/link';
-import { HashLink } from './HashLink';
-import { MobileNav } from './MobileNav';
+import { NavbarMobile } from './NavbarMobile';
 import { useTranslation } from '@/i18n';
 import { NavItem } from '../types';
 import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
@@ -21,7 +20,7 @@ export async function Navbar({ lang }: NavbarProps) {
         <NavbarVisibilityController>
             <Container maxW={'7xl'} py={2} px={4}>
                 <Flex minH={'60px'} py={{ base: 2 }} alignItems={'center'}>
-                    <MobileNav lang={lang} />
+                    <NavbarMobile lang={lang} />
                     <Flex flex={{ base: 1 }} justifyContent={{ base: 'center', md: 'start' }} alignItems='center'>
                         <Link href='/'>
                             <Text fontFamily={'heading'} fontWeight={700}>
@@ -31,9 +30,9 @@ export async function Navbar({ lang }: NavbarProps) {
                         <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                             <Stack direction={'row'} spacing={4}>
                                 {navItems.map(({ href, label }) => (
-                                    <HashLink key={href} href={`#${href}`}>
+                                    <Link key={href} href={`/${lang}#${href}`}>
                                         {label}
-                                    </HashLink>
+                                    </Link>
                                 ))}
                             </Stack>
                         </Flex>

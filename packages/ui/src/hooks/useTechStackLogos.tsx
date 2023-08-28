@@ -19,7 +19,7 @@ import {
     Trpc,
     TypeScript,
     Vite,
-} from '../technologies';
+} from '../illustrations/technologies';
 import { useIllustrationColorScheme } from './useIllustrationColorScheme';
 
 export function useTechStackLogos() {

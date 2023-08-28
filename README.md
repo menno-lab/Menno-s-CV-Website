@@ -26,10 +26,6 @@ Although a simpler approach would usually suffice for such a project, I over eng
 
 -   **Multi-language support**: An implementation that allows the portfolio to support multiple languages. Incorporated to make the portfolio accessible to a global audience.
 
--   **Framer Motion**: A library that helps create animations and transitions for React applications. Chosen to enhance the visual experience of the portfolio.
-
--   **Responsive Design**: A design approach that ensures the portfolio looks good on all devices and screen sizes. Essential for a user-friendly experience across multiple device types.
-
 ## Who is this for?
 
 -   Potential Employers: To evaluate my skills and coding style.
