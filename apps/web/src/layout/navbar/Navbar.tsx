@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { NavbarMobile } from './NavbarMobile';
 import { useTranslation } from '@/i18n';
 import { NavItem } from '../types';
-import { ColorModeSwitch } from '@/layout/components/ColorModeSwitch';
-import { LanguageSelector } from '@/layout/components/LanguageSelector';
 import { Language } from '@/i18n/types';
+import { ColorModeSwitch } from '../ColorModeSwitch';
+import { LanguageSelector } from '../LanguageSelector';
 
 interface NavbarProps {
     lang: Language;

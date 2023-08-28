@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { dir } from 'i18next';
 import { Container } from 'ui';
 import './globals.css';
-import { Footer } from '@/layout/components/Footer';
 import { ChatWidget } from '@/chat-widget/ChatWidget';
 import { Language } from '@/i18n/types';
 import { languages } from '@/i18n/utils/constants';
 import { ChakraProviders } from '@/providers/ChakraProviders';
 import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
-import { Navbar } from '@/layout/navigation/nav-bar/Navbar';
+import { Footer } from '@/layout/Footer';
+import { Navbar } from '@/layout/navbar/Navbar';
 
 export const metadata: Metadata = {
     title: 'Menno Jager',

@@ -16,7 +16,7 @@ import {
 } from 'ui';
 import { useRouter } from 'next/navigation';
 import { Language } from '@/i18n/types';
-import { LanguageSelector } from '@/layout/components/LanguageSelector';
+import { LanguageSelector } from '../LanguageSelector';
 
 interface NavbarMobileProps {
     lang: Language;
