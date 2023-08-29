@@ -18,10 +18,10 @@
         "subtitle": "Ich bin ein Fullstack-Entwickler aus dem malerischen Land der Niederlande, bekannt für seine Tulpenfelder, Windmühlen und innovative Technologie. Ich bin leidenschaftlich daran interessiert, schöne, skalierbare und wartbare Webanwendungen zu bauen.",
         "primaryCta": "Kontaktiere mich",
         "secondaryCta": "Meine Projekte",
-        "socialProof": "Vertrauenswürdig mit diesen Technologien"
+        "socialProof": "Vertraut mit diesen Technologien"
     },
     "contact": {
-        "title": "Kontakt Menno",
+        "title": "Schreibe Menno",
         "email": "Email",
         "subject": "Betreff",
         "message": "Nachricht",
@@ -43,7 +43,7 @@
             {
                 "key": "textpanda",
                 "title": "Textpanda",
-                "description": "Textpanda ist eine KI-Kommunikationstoolkit, das dazu entworfen wurde, Unternehmen dabei zu helfen, Kundenerlebnisse zu revolutionieren.",
+                "description": "Textpanda ist ein KI-Kommunikationstoolkit, das dazu entworfen wurde, Unternehmen dabei zu helfen, Kundenerlebnisse zu revolutionieren.",
                 "href": "https://textpanda.io/"
             },
             {
@@ -55,13 +55,13 @@
             {
                 "key": "tp_slack",
                 "title": "Textpanda x Slack",
-                "description": "Eine Slack-Integration, die es Benutzern ermöglicht, von innerhalb von Slack mit Textpanda zu interagieren.",
+                "description": "Eine Slack-Integration, die es Benutzern ermöglicht, innerhalb von Slack mit Textpanda zu interagieren.",
                 "href": "https://textpanda.io/integrations/slack"
             },
             {
                 "key": "tp_hubspot",
                 "title": "Textpanda x Hubspot",
-                "description": "Eine Hubspot-Integration, die es Benutzern ermöglicht, von innerhalb von Hubspot mit Textpanda zu interagieren. Verwenden Sie KI, um Support-Tickets zusammenzufassen, automatisch Antworten zu generieren und mehr.",
+                "description": "Eine Hubspot-Integration, die es Benutzern ermöglicht, innerhalb von Hubspot mit Textpanda zu interagieren. Verwenden Sie KI, um Support-Tickets zusammenzufassen, automatisch Antworten zu generieren und mehr.",
                 "href": "https://textpanda.io/integrations/hubspot"
             }
         ]
@@ -94,9 +94,9 @@
                 "location": "Remote",
                 "date": "September 2021 - Gegenwart",
                 "tasks": [
-                    "Gründung und Start eines alleinstehenden SaaS-Unternehmens, verantwortlich für alle Aspekte der Geschäftsentwicklung, des Betriebs und des Wachstums.",
+                    "Gründung und Start eines SaaS-Unternehmens, verantwortlich für alle Aspekte der Geschäftsentwicklung, des Betriebs und des Wachstums.",
                     "Entwicklung und Wartung von Fullstack-Anwendungen, mit Technologien wie React, NodeJs, TypeScript, Python, MongoDB, Redis und AWS",
-                    "Design und Entwicklung des SaaS-Produkts von der Idee bis zum Start, Überwachung des gesamten Softwareentwicklungszyklus.",
+                    "Design und Entwicklung des SaaS-Produkts von der Idee bis zum Start und der Überwachung des gesamten Softwareentwicklungszyklus.",
                     "Implementierung von Automatisierungs- und DevOps-Praktiken, einschließlich Continuous Integration und Continuous Deployment (CI/CD), um den Softwareentwicklungs- und Bereitstellungsprozess zu optimieren"
                 ]
             },
@@ -159,7 +159,7 @@
         "inputPlaceholder": "Geben Sie Ihre Nachricht ein...",
         "legalNotice": "Durch die Nutzung dieses Chats stimmen Sie zu, dass Ihre Nachrichten gespeichert und von Menno gelesen werden.",
         "firstMessageOptions": [
-            "Menno ist gerade offline, wahrscheinlich irgendwo damit beschäftigt, Kaffee in Code umzuwandeln. Sein KI-Zwilling ist jedoch hier und voller Koffein und bereit für Ihre Fragen! Legen Sie los, fragen Sie was Sie wollen!",
+            "Menno ist gerade offline, wahrscheinlich irgendwo damit beschäftigt, Kaffee in Code umzuwandeln. Sein KI-Zwilling ist jedoch hier, voller Koffein und bereit für Ihre Fragen! Legen Sie los, fragen Sie was Sie wollen!",
             "Menno ist offline, wahrscheinlich irgendwo tief in einem Git-Merge. Aber während er diese epische Schlacht führt, ist sein KI-Alter Ego hier, bewaffnet mit Antworten auf Ihre Fragen. Stellen Sie also Ihre Fragen, denn im Gegensatz zu Menno brauche ich keine Kaffeepause!",
             "Menno ist weg, wahrscheinlich dabei, einen veralteten Code in etwas umzuwandeln, auf das sogar Da Vinci stolz wäre. Aber seine KI-Version, die in der Kunst und Wissenschaft des Codes fließend ist, ist hier und bereit zum Chatten. Sagen Sie 'Hallo', stellen Sie eine Frage und lassen Sie uns dieses Gespräch kompilieren!",
             "Menno ist raus, wahrscheinlich im Streit mit einer unkooperativen API. Ich bin sein KI-Zwilling, der sowieso viel besser im Smalltalk ist. Feuern Sie los!",
