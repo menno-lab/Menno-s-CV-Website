@@ -72,12 +72,27 @@
         "items": [
             {
                 "company": {
+                    "key": "boxid",
+                    "label": "Box ID"
+                },
+                "role": "Fullstack Developer",
+                "location": "Remote",
+                "date": "Tháng 11 năm 2023 - Hiện tại",
+                "tasks": [
+                    "Phát triển và duy trì nhiều API và SDK khác nhau, đồng thời tích cực đóng góp vào các công việc phía front-end bằng cách sử dụng React, đảm bảo một bộ kỹ năng linh hoạt trong môi trường phát triển động của chúng tôi.",
+                    "Đề xuất các biện pháp tối ưu hóa mã nguồn và thực hành việc viết mã sạch, tăng cường hiệu suất tổng thể và khả năng bảo trì của các dự án front-end dựa trên React.",
+                    "Đảm nhiệm vai trò chủ đạo trong việc phát triển tính năng theo dõi thời gian thực cho các ứng dụng SaaS vận chuyển, tập trung vào trải nghiệm người dùng mượt mà và độ chính xác vị trí tài sản trong nhóm phát triển nhỏ và hợp tác của chúng tôi.",
+                    "Dưy trì microservices để tối ưu hóa khả năng mở rộng và khả năng bảo trì, khuyến khích giao tiếp hiệu quả giữa các thành phần và nâng cao hiệu suất tổng thể của hệ thống."
+                ]
+            },
+            {
+                "company": {
                     "key": "supermetrics",
                     "label": "Supermetrics"
                 },
                 "role": "Junior Software Developer",
                 "location": "Helsinki, Phần Lan",
-                "date": "Tháng 4 năm 2022 - Hiện tại",
+                "date": "Tháng 4 năm 2022 - Tháng 11 năm 2023",
                 "tasks": [
                     "Phát triển và duy trì các ứng dụng phần mềm bằng cách sử dụng React, TypeScript và các công nghệ frontend khác",
                     "Hợp tác với các nhóm chéo chức năng để đảm bảo chất lượng và giao hàng kịp thời của các sản phẩm phần mềm",

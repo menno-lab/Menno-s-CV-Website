@@ -72,12 +72,27 @@
         "items": [
             {
                 "company": {
+                    "key": "boxid",
+                    "label": "Box ID"
+                },
+                "role": "Fullstack Developer",
+                "location": "Remote",
+                "date": "Novembre 2023 - Présent",
+                "tasks": [
+                    "Développé et maintenu diverses API et SDK tout en contribuant activement aux tâches frontales avec React, garantissant un ensemble de compétences polyvalent dans notre environnement de développement dynamique.",
+                    "Pris des initiatives pour l'optimisation du code et les bonnes pratiques de codage, améliorant ainsi l'efficacité globale et la maintenabilité des projets frontaux basés sur React.",
+                    "Dirigé les efforts dans le développement de fonctionnalités de suivi en temps réel pour des applications logicielles de logistique SaaS, en mettant l'accent sur des expériences utilisateur fluides et une précision de localisation des actifs au sein de notre petite équipe de développement collaborative.",
+                    "Maintenu des microservices pour optimiser la scalabilité et la maintenabilité, favorisant une communication efficace entre les composants et améliorant les performances globales du système."
+                ]
+            },
+            {
+                "company": {
                     "key": "supermetrics",
                     "label": "Supermetrics"
                 },
                 "role": "Junior Software Developer",
                 "location": "Helsinki, Finlande",
-                "date": "Avril 2022 - Présent",
+                "date": "Avril 2022 - Novembre 2023",
                 "tasks": [
                     "Développement et maintenance d'applications logicielles en utilisant React, TypeScript, et d'autres technologies frontend",
                     "Collaboration avec des équipes interfonctionnelles pour assurer la qualité et la livraison en temps voulu des produits logiciels",
