@@ -72,12 +72,27 @@
         "items": [
             {
                 "company": {
+                    "key": "boxid",
+                    "label": "Box ID"
+                },
+                "role": "Fullstack Developer",
+                "location": "Remote",
+                "date": "November 2023 - Present",
+                "tasks": [
+                    "Developed and maintained diverse APIs and SDKs while actively contributing to front-end tasks using React, ensuring a versatile skill set in our dynamic development environment.",
+                    "Took initiatives for code optimization and clean code practices, enhancing the overall efficiency and maintainability of React-based frontend projects.",
+                    "Led efforts in real-time tracking feature development for logistics SaaS applications, focusing on seamless user experiences and asset location accuracy within our small, collaborative development team.",
+                    "Maintained microservices to optimize scalability and maintainability, fostering efficient communication between components and enhancing overall system performance."
+                ]
+            },
+            {
+                "company": {
                     "key": "supermetrics",
                     "label": "Supermetrics"
                 },
-                "role": "Junior Software Developer",
+                "role": "Junior Frontend Developer",
                 "location": "Helsinki, Finland",
-                "date": "April 2022 - Present",
+                "date": "April 2022 - November 2023",
                 "tasks": [
                     "Developing and maintaining software applications using React, TypeScript, and other frontend technologies",
                     "Collaborating with cross-functional teams to ensure quality and timely delivery of software products",
